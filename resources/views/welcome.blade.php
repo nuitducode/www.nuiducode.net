@@ -51,6 +51,8 @@
 					Tous les établissements scolaires français (cours moyen / collège / lycée / post-bac) de l'étranger et de France peuvent y participer. Chaque établissement peut inscrire autant d'élèves qu'il le souhaite. Les inscriptions sont gratuites.
 				</p>
 
+				<iframe style="border-radius:5px" width="100%" height="250px" frameborder="0" allowfullscreen src="https://umap.openstreetmap.fr/en/map/nuit-du-code-2024_960982"></iframe>		
+
 				<div class="text-monospace">
 					Six catégories :
 					<ul class="text-monospace">
@@ -67,7 +69,7 @@
 					L'an dernier, pour l'édition 2023, 371 établissements se sont inscrits. Soit plus de 8600 élèves de 307 villes et 49 pays.
 				</p>
 
-				<iframe style="border-radius:5px" width="100%" height="250px" frameborder="0" allowfullscreen src="//umap.openstreetmap.fr/en/map/nuit-du-c0de-2023_809265"></iframe>				
+						
 
 				<p class="text-monospace  text-justify mt-4">
 					<u>Organisation de l'édition 2024</u>
