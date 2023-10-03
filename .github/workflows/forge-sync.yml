@@ -14,6 +14,6 @@ jobs:
         fetch-depth: 0
     - uses: wangchucheng/git-repo-sync@v0.1.0
       with:
-        target-url: https://forge.aeif.fr/nuit-du-code/www.nuiducode.net
+        target-url: https://forge.apps.education.fr/nuit-du-code/www.nuiducode.net
         target-username: laurentabbal
         target-token: ${{ secrets.GITLAB_TOKEN }}
