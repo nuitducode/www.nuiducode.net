@@ -63,6 +63,7 @@
                     <div class="overflow-auto table-responsive" style="border:1px solid #f1f1f1;background-color:#f1f1f1;border-radius:4px;padding:10px 10px 10px 14px;height:140px">
                         <table class="table table-borderless table-sm text-secondary">
 
+                            <tr><td><b>03/10</b></td><td style="width:100%">Ajout de la catégorie "Post-bac"</td></tr>
                             <tr><td><b>08/08</b></td><td style="width:100%">Ouverture des inscriptions  pour la NDC 2024</td></tr>
                             
                         </table>
