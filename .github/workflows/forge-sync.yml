@@ -15,5 +15,5 @@ jobs:
     - uses: wangchucheng/git-repo-sync@v0.1.0
       with:
         target-url: https://forge.apps.education.fr/nuit-du-code/www.nuiducode.net
-        target-username: laurentabbal
+        target-username: laurent.abbal
         target-token: ${{ secrets.GITLAB_TOKEN }}
