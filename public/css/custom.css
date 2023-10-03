@@ -1,12 +1,22 @@
 body {
-  margin: 0;
-  font-family: "Nunito", sans-serif;
-  font-size: 0.9rem;
-  font-weight: 400;
-  line-height: 1.6;
-  color: #444a4f;
-  text-align: left;
-  background-color: #f8fafc;
+    margin: 0;
+    font-family: "Nunito", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #444a4f;
+    text-align: left;
+    background-color: #f8fafc;
+}
+
+.fade-out {
+    animation: fadeOut ease 8s;
+    animation-fill-mode: forwards;
+}
+  
+@keyframes fadeOut {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
 }
 
 a {

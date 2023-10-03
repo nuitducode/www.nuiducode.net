@@ -80,7 +80,8 @@
                 <h2 class="mb-0">DONNÉES<sup class="text-danger">*</sup></h2>
                 <div class="text-danger text-monospace" style="font-size:70%">à mettre à jour au fur et à mesure que les données sont connues</div>
 
-                <form method="POST" action="{{ route('fiche-inscription-details_post') }}" style="border:1px solid #dfdfdf;border-radius:4px;padding:20px;background-color:#f3f5f7;">
+                <form method="POST" action="{{ route('fiche-inscription-details_post') }}" style="border:1px solid #dfdfdf;border-radius:4px;padding:20px 20px 10px 20px;background-color:#f3f5f7;">
+                
                     @csrf
 
                     <div class="row">
@@ -88,24 +89,23 @@
                         <div class="col-md-4">
 
                             <h3 class="m-0">JOUR J</h3>
-                            
-                            <table class="table table-borderless table-sm table-responsive mt-1">
+                            <table class="mt-1 mb-1" style="border-collapse:separate;border-spacing:5px;">
                                 <tr>
                                     <td></td>
-                                    <td class="text-center text-muted" style="line-height:1em;font-size:70%"><br />Mois</td>
-                                    <td class="text-center text-muted" style="line-height:1em;font-size:70%"><br />Jour</td>
+                                    <td class="text-center text-muted" style="line-height:0.6em;font-size:70%"><br />Mois</td>
+                                    <td class="text-center text-muted" style="line-height:0.6em;font-size:70%"><br />Jour</td>
                                 </tr>
                                 <tr>
                                     <td class="text-right">Date</td>
                                     <td class="text-center">
-                                        <select id="ndc_mois" name="ndc_mois" class="form-control form-control-sm" {{$data_state}}>
+                                        <select id="ndc_mois" name="ndc_mois" class="form-control form-control-sm" style="width:80px;" {{$data_state}}>
                                             <option></option>
                                             <option value="05" @if(isset($mois) AND $mois == '05') selected @endif>mai</option>
                                             <option value="06" @if(isset($mois) AND $mois == '06') selected @endif>juin</option>
                                         </select>
                                     </td>
-                                    <td class="text-center">
-                                        <select id="ndc_jour" name="ndc_jour" class="form-control form-control-sm" {{$data_state}}>
+                                    <td class="text-left">
+                                        <select id="ndc_jour" name="ndc_jour" class="form-control form-control-sm" style="width:60px;" {{$data_state}}>
                                             <option></option>
                                             @for ($j = 1; $j <= 31; $j++)
                                             <option value="{{$j}}" @if(isset($jour) AND $jour == $j) selected @endif>{{ $j }}</option>
@@ -120,26 +120,26 @@
                         <div class="col-md-4">
 
                             <h3 class="m-0">SCRATCH</h3>
-                            <table class="table table-borderless table-sm table-responsive mt-1">
+                            <table class="table table-borderless table-sm mt-1 mb-1" style="border-collapse:separate;border-spacing:5px;">
                                 <tr>
                                     <td></td>
                                     <td class="text-center text-muted" style="line-height:1em;font-size:70%">Nombre<br />d'équipes</td>
                                     <td class="text-center text-muted" style="line-height:1em;font-size:70%">Nombre<br />d'élèves</td>
                                 </tr>
                                 <tr>
-                                    <td class="text-right" style="line-height:1em">Cycle 3<br /><span style="font-size:70%;color:gray">CM1 > 6<sup>e</sup></span></td>
-                                    <td class="text-center"><input id="scratch_nb_equipes_c3" name="scratch_nb_equipes_c3" class="form-control form-control-sm" style="display:inline;width:40px" value="{{Auth::user()->scratch_nb_equipes_c3}}" /></td>
-                                    <td class="text-center"><input id="scratch_nb_eleves_c3" name="scratch_nb_eleves_c3" class="form-control form-control-sm" style="display:inline;width:40px" value="{{Auth::user()->scratch_nb_eleves_c3}}" /></td>
+                                    <td class="text-right align-middle" style="line-height:0.8em">Cycle 3 <sup><i class="fas fa-question-circle text-muted" data-boundary="window" data-toggle="tooltip" data-html="true" data-placement="auto" title="CM1 > 6<sup>e</sup>"></i></sup></td>
+                                    <td class="text-center"><input id="scratch_nb_equipes_c3" name="scratch_nb_equipes_c3" class="form-control form-control-sm text-center" style="display:inline;width:50px" value="{{Auth::user()->scratch_nb_equipes_c3}}" /></td>
+                                    <td class="text-center"><input id="scratch_nb_eleves_c3" name="scratch_nb_eleves_c3" class="form-control form-control-sm text-center" style="display:inline;width:50px" value="{{Auth::user()->scratch_nb_eleves_c3}}" /></td>
                                 </tr>
                                 <tr>
-                                    <td class="text-right" style="line-height:1em">Cycle 4<br /><span style="font-size:70%;color:gray">5<sup>e</sup> > 3<sup>e</sup></span></td>
-                                    <td class="text-center"><input id="scratch_nb_equipes_c4" name="scratch_nb_equipes_c4" class="form-control form-control-sm" style="display:inline;width:40px" value="{{Auth::user()->scratch_nb_equipes_c4}}" /></td>
-                                    <td class="text-center"><input id="scratch_nb_eleves_c4" name="scratch_nb_eleves_c4" class="form-control form-control-sm" style="display:inline;width:40px" value="{{Auth::user()->scratch_nb_eleves_c4}}" /></td>
+                                    <td class="text-right align-middle" style="line-height:0.8em">Cycle 4 <sup><i class="fas fa-question-circle text-muted" data-boundary="window" data-toggle="tooltip" data-html="true" data-placement="auto" title="5<sup>e</sup> > 3<sup>e</sup>"></i></sup></td>
+                                    <td class="text-center"><input id="scratch_nb_equipes_c4" name="scratch_nb_equipes_c4" class="form-control form-control-sm text-center" style="display:inline;width:50px" value="{{Auth::user()->scratch_nb_equipes_c4}}" /></td>
+                                    <td class="text-center"><input id="scratch_nb_eleves_c4" name="scratch_nb_eleves_c4" class="form-control form-control-sm text-center" style="display:inline;width:50px" value="{{Auth::user()->scratch_nb_eleves_c4}}" /></td>
                                 </tr>
                                 <tr>
-                                    <td class="text-right">Lycée</td>
-                                    <td class="text-center"><input id="scratch_nb_equipes_lycee" name="scratch_nb_equipes_lycee" class="form-control form-control-sm" style="display:inline;width:40px" value="{{Auth::user()->scratch_nb_equipes_lycee}}" /></td>
-                                    <td class="text-center"><input id="scratch_nb_eleves_lycee" name="scratch_nb_eleves_lycee" class="form-control form-control-sm" style="display:inline;width:40px" value="{{Auth::user()->scratch_nb_eleves_lycee}}" /></td>
+                                    <td class="text-right align-middle">Lycée</td>
+                                    <td class="text-center"><input id="scratch_nb_equipes_lycee" name="scratch_nb_equipes_lycee" class="form-control form-control-sm text-center" style="display:inline;width:50px" value="{{Auth::user()->scratch_nb_equipes_lycee}}" /></td>
+                                    <td class="text-center"><input id="scratch_nb_eleves_lycee" name="scratch_nb_eleves_lycee" class="form-control form-control-sm text-center" style="display:inline;width:50px" value="{{Auth::user()->scratch_nb_eleves_lycee}}" /></td>
                                 </tr>
                             </table>
 
@@ -148,22 +148,27 @@
                         <div class="col-md-4">
 
                             <h3 class="m-0">PYTHON</h3>
-                            <table class="table table-borderless table-sm table-responsive mt-1">
+                            <table class="table table-borderless table-sm mt-1 mb-1" style="border-collapse:separate;border-spacing:5px;">
                                 <tr>
                                     <td></td>
                                     <td class="text-center text-muted" style="line-height:1em;font-size:70%">Nombre<br />d'équipes</td>
                                     <td class="text-center text-muted" style="line-height:1em;font-size:70%">Nombre<br />d'élèves</td>
                                 </tr>
                                 <tr>
-                                    <td class="text-right">1<sup>re</sup> NSI <sup><i class="fas fa-question-circle text-muted" data-boundary="window" data-toggle="tooltip" data-placement="auto" title="Élèves de Première NSI ou élèves ayant les connaissances suffisantes en programmation impérative Python"></i></sup></td>
-                                    <td class="text-center"><input  id="python_nb_equipes_pi" name="python_nb_equipes_pi" class="form-control form-control-sm" style="display:inline;width:40px" value="{{Auth::user()->python_nb_equipes_pi}}" /></td>
-                                    <td class="text-center"><input  id="python_nb_eleves_pi" name="python_nb_eleves_pi" class="form-control form-control-sm" style="display:inline;width:40px" value="{{Auth::user()->python_nb_eleves_pi}}" /></td>
+                                    <td class="text-right align-middle">1<sup>re</sup> NSI <sup><i class="fas fa-question-circle text-muted" data-boundary="window" data-toggle="tooltip" data-placement="auto" title="Élèves de Première NSI ou élèves ayant les connaissances suffisantes en Python"></i></sup></td>
+                                    <td class="text-center"><input  id="python_nb_equipes_pi" name="python_nb_equipes_pi" class="form-control form-control-sm  text-center" style="display:inline;width:50px" value="{{Auth::user()->python_nb_equipes_pi}}" /></td>
+                                    <td class="text-center"><input  id="python_nb_eleves_pi" name="python_nb_eleves_pi" class="form-control form-control-sm  text-center" style="display:inline;width:50px" value="{{Auth::user()->python_nb_eleves_pi}}" /></td>
                                 </tr>
                                 <tr>
-                                    <td class="text-right">Tle NSI <sup><i class="fas fa-question-circle text-muted" data-boundary="window" data-toggle="tooltip" data-placement="auto" title="Élèves de Terminale NSI ou élèves ayant les connaissances suffisantes en programmation orientée objet Python"></i></sup></td>
-                                    <td class="text-center"><input  id="python_nb_equipes_poo" name="python_nb_equipes_poo" class="form-control form-control-sm" style="display:inline;width:40px" value="{{Auth::user()->python_nb_equipes_poo}}" /></td>
-                                    <td class="text-center"><input  id="python_nb_eleves_poo" name="python_nb_eleves_poo" class="form-control form-control-sm" style="display:inline;width:40px" value="{{Auth::user()->python_nb_eleves_poo}}" /></td>
+                                    <td class="text-right align-middle">Tle NSI <sup><i class="fas fa-question-circle text-muted" data-boundary="window" data-toggle="tooltip" data-placement="auto" title="Élèves de Terminale NSI ou élèves ayant les connaissances suffisantes en Python"></i></sup></td>
+                                    <td class="text-center"><input  id="python_nb_equipes_poo" name="python_nb_equipes_poo" class="form-control form-control-sm  text-center" style="display:inline;width:50px" value="{{Auth::user()->python_nb_equipes_poo}}" /></td>
+                                    <td class="text-center"><input  id="python_nb_eleves_poo" name="python_nb_eleves_poo" class="form-control form-control-sm  text-center" style="display:inline;width:50px" value="{{Auth::user()->python_nb_eleves_poo}}" /></td>
                                 </tr>
+                                <tr>
+                                    <td class="text-right align-middle">Post-bac <sup><i class="fas fa-question-circle text-muted" data-boundary="window" data-toggle="tooltip" data-placement="auto" title="Universités, écoles, prépas..."></i></sup></td>
+                                    <td class="text-center"><input  id="python_nb_equipes_postbac" name="python_nb_equipes_postbac" class="form-control form-control-sm text-center" style="display:inline;width:50px" value="{{Auth::user()->python_nb_equipes_postbac}}" /></td>
+                                    <td class="text-center"><input  id="python_nb_eleves_postbac" name="python_nb_eleves_postbac" class="form-control form-control-sm  text-center" style="display:inline;width:50px" value="{{Auth::user()->python_nb_eleves_postbac}}" /></td>
+                                </tr>                                
                             </table>
 
                         </div>
@@ -171,7 +176,20 @@
                     </div><!-- /row -->
 
                     <div class="text-center">
-                        <button type="submit" class="btn btn-primary btn-sm mt-2 pl-4 pr-4"><i class="fas fa-check"></i></button>
+
+                        @if($errors->any())
+                            <div class="text-monospace text-danger small">{{ $errors->first() }}</div>
+                        @else
+                            <div class="text-monospace text-danger small">&nbsp;</div>
+                        @endif
+
+                        <button type="submit" class="btn btn-primary btn-sm mt-1 pl-4 pr-4"><i class="fas fa-check"></i></button>
+
+                        @if (Session::has('data_updated'))
+                            <div class="mt-1 text-monospace text-success small fade-out">{{ Session::get('data_updated') }}</div>
+                        @else
+                            <div class="mt-1 text-monospace text-success small">&nbsp;</div>
+                        @endif
                     </div>
 
                 </form>
