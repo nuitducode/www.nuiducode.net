@@ -101,6 +101,7 @@
                                     <td class="text-center">
                                         <select id="ndc_mois" name="ndc_mois" class="form-control form-control-sm" style="width:80px;" {{$data_state}}>
                                             <option></option>
+                                            <option value="04" @if(isset($mois) AND $mois == '04') selected @endif>avril</option>
                                             <option value="05" @if(isset($mois) AND $mois == '05') selected @endif>mai</option>
                                             <option value="06" @if(isset($mois) AND $mois == '06') selected @endif>juin</option>
                                         </select>
