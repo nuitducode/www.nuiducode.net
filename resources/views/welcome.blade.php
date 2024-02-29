@@ -48,7 +48,7 @@
 				</p>
 
 				<p class="text-monospace text-justify">
-					Tous les établissements scolaires français (cours moyen / collège / lycée / post-bac) de l'étranger et de France peuvent y participer. Chaque établissement peut inscrire autant d'élèves qu'il le souhaite. Les inscriptions sont gratuites.
+					Peuvent particper: tous les établissements scolaires français situés en France ou à l'étranger ainsi que tous les établissements scolaire francophones où qu'ils soient. Les catégories vont du cours moyen au post-bac en passant par le collège et le lycée. Chaque établissement peut inscrire autant d'élèves qu'il le souhaite. Les inscriptions sont gratuites.
 				</p>
 
 				<iframe style="border-radius:5px" width="100%" height="250px" frameborder="0" allowfullscreen src="https://umap.openstreetmap.fr/en/map/nuit-du-code-2024_960982"></iframe>		
@@ -69,12 +69,10 @@
 					L'an dernier, pour l'édition 2023, 371 établissements se sont inscrits. Soit plus de 8600 élèves de 307 villes et 49 pays.
 				</p>
 
-						
-
 				<p class="text-monospace  text-justify mt-4">
 					<u>Organisation de l'édition 2024</u>
 					<ul class="text-monospace text-justify">
-						<li class="mb-3"><span class="text-primary font-weight-bold">Septembre 2023 - Avril 2024</span> : Inscriptions</li>
+						<li class="mb-3"><span class="text-primary font-weight-bold">Septembre 2023 - fin avril 2024</span> : Inscriptions</li>
 						<li class="mb-3"><span class="text-primary font-weight-bold">Janvier – Mai 2024</span> : Préparatifs / Entraînements / Sélections</li>
 						<li class="mb-3"><span class="text-primary font-weight-bold">Mai 2024</span> : Chaque établissement organise sa <b style="color:#2c3e50">Nuit du Code</b> entre <b style="color:#4cbf56">le 29 avril et le 1<sup>er</sup> juin 2024</b> selon ses ressources et ses contraintes. Les établissements qui ne prévoient pas de proposer des jeux pour la sélection internationale peuvent organiser la <b style="color:#2c3e50">Nuit du Code</b> jusqu'au 29 juin.</li>
 						<li class="mb-3"><span class="text-primary font-weight-bold">Mi-juin 2024</span> : Annonce des jeux de la sélection "<b style="color:#2c3e50">Nuit du Code 2024</b>"</li>
