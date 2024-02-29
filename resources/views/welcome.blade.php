@@ -73,7 +73,7 @@
 					<u>Organisation de l'édition 2024</u>
 					<ul class="text-monospace text-justify">
 						<li class="mb-3"><span class="text-primary font-weight-bold">Septembre 2023 - fin avril 2024</span> : Inscriptions</li>
-						<li class="mb-3"><span class="text-primary font-weight-bold">Janvier – Mai 2024</span> : Préparatifs / Entraînements / Sélections</li>
+						<li class="mb-3"><span class="text-primary font-weight-bold">Janvier - mai 2024</span> : Préparatifs / Entraînements / Sélections</li>
 						<li class="mb-3"><span class="text-primary font-weight-bold">Mai - juin 2024</span> : Chaque établissement organise sa <b style="color:#2c3e50">Nuit du Code</b> entre <b style="color:#4cbf56">le 29 avril et le 1<sup>er</sup> juin 2024</b> selon ses ressources et ses contraintes. Les établissements qui ne prévoient pas de proposer des jeux pour la sélection internationale peuvent organiser la <b style="color:#2c3e50">Nuit du Code</b> <b style="color:#4cbf56">jusqu'au 29 juin</b>.</li>
 						<li class="mb-3"><span class="text-primary font-weight-bold">Mi-juin 2024</span> : Annonce des jeux de la sélection "<b style="color:#2c3e50">Nuit du Code 2024</b>"</li>
 					</ul>
