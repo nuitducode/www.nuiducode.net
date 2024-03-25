@@ -126,18 +126,18 @@ if (Auth::user()->is_admin != 1) {
                                 <th scope="col"></th>
                                 <th scope="col"></th>
                                 <th scope="col"></th>                                
-                                <th scope="col">Prénom</th>
                                 <th scope="col">Nom</th>
                                 <th scope="col"></th>
                                 <th scope="col">Pays</th>
                                 <th scope="col">Courriel</th>
                                 <th scope="col">Nb</th>
                                 <th scope="col">Date</th>
-                                <th scope="col">C3</th>
-                                <th scope="col">C4</th>
-                                <th scope="col">LY</th>
-                                <th scope="col">PI</th>
-                                <th scope="col">POO</th>
+                                <th scope="col">S-C3</th>
+                                <th scope="col">S-C4</th>
+                                <th scope="col">S-L</th>
+                                <th scope="col">P-P</th>
+                                <th scope="col">P-T</th>
+                                <th scope="col">P-PB</th>
                                 <th scope="col">Tot.</th>
                                 <th scope="col">Diff.</th>
                                 <th scope="col">Modif.</th>
@@ -172,8 +172,7 @@ if (Auth::user()->is_admin != 1) {
                                     <td class="text-center" nowrap><a href="/console/admin_jeux?id={{$etablissement->id}}"><i class="fas fa-gamepad mr-1" data-toggle="tooltip" data-placement="top" title="liste des jeux"></i>{{$nb_jeux}}</a></td>
                                     <td class="text-center"><a href="/console/admin_evaluations?id={{$etablissement->id}}"><i class="fas fa-check" data-toggle="tooltip" data-placement="top" title="liste des évaluations"></i></a></td>
                                     <td><a href="/ndc/{{$etablissement->jeton[3].'j'.$etablissement->jeton[2].'w'.$etablissement->jeton[1].'a'.$etablissement->jeton[0]}}"><i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="évaluation"></i></a></td>
-                                    <td>{{$etablissement->prenom}}</td>
-                                    <td>{{$etablissement->nom}}</td>
+                                    <td>{{$etablissement->prenom}} {{$etablissement->nom}}</td>
                                     <td>
                                         <i class="fas fa-question-circle text-muted" data-boundary="window" data-toggle="tooltip" data-placement="top" title="{{$etablissement->etablissement}} - {{$etablissement->ville}} - Ac./zone: {{$etablissement->ac_zone}} "></i>
                                     </td>
@@ -186,7 +185,8 @@ if (Auth::user()->is_admin != 1) {
                                     <td class="text-left">{{$etablissement->scratch_nb_equipes_lycee}}>{{$etablissement->scratch_nb_eleves_lycee}}</td>
                                     <td class="text-left">{{$etablissement->python_nb_equipes_pi}}>{{$etablissement->python_nb_eleves_pi}}</td>
                                     <td class="text-left">{{$etablissement->python_nb_equipes_poo}}>{{$etablissement->python_nb_eleves_poo}}</td>
-                                    <td class="text-center">{{$etablissement->scratch_nb_eleves_c3 + $etablissement->scratch_nb_eleves_c4 + $etablissement->scratch_nb_eleves_lycee + $etablissement->python_nb_eleves_pi + $etablissement->python_nb_eleves_poo }}</td>
+                                    <td class="text-left">{{$etablissement->python_nb_equipes_postbac}}>{{$etablissement->python_nb_eleves_postbac}}</td>
+                                    <td class="text-center">{{$etablissement->scratch_nb_eleves_c3 + $etablissement->scratch_nb_eleves_c4 + $etablissement->scratch_nb_eleves_lycee + $etablissement->python_nb_eleves_pi + $etablissement->python_nb_eleves_poo + $etablissement->python_nb_eleves_postbac }}</td>
                                     <td class="text-center">
                                         <?php
                                         $diff = $etablissement->scratch_nb_eleves_c3 + $etablissement->scratch_nb_eleves_c4 + $etablissement->scratch_nb_eleves_lycee + $etablissement->python_nb_eleves_pi + $etablissement->python_nb_eleves_poo - $etablissement->nb_participants;
@@ -200,8 +200,8 @@ if (Auth::user()->is_admin != 1) {
                                         ?>
                                     </td>
                                     <td nowrap>{{substr($etablissement->updated_at,5,5)}}</td>
-                                    <td class="text-center">{{$etablissement->scratch_nb_equipes_c3+$etablissement->scratch_nb_equipes_c4+$etablissement->scratch_nb_equipes_lycee}}</td>
-                                    <td class="text-center">{{$etablissement->python_nb_equipes_pi+$etablissement->python_nb_equipes_poo}}</td>                                
+                                    <td class="text-center">{{$etablissement->scratch_nb_equipes_c3 + $etablissement->scratch_nb_equipes_c4 + $etablissement->scratch_nb_equipes_lycee}}</td>
+                                    <td class="text-center">{{$etablissement->python_nb_equipes_pi + $etablissement->python_nb_equipes_poo + $etablissement->python_nb_equipes_postbac}}</td>                                
                                     <td class="text-center">
                                         <input type="checkbox" name="scratch" value="{{$etablissement->id}}" onclick="update_udj(this)" @if ($etablissement->udj_scratch) checked @endif>
                                     </td>
@@ -227,7 +227,6 @@ if (Auth::user()->is_admin != 1) {
                             <tr>
                                 <th scope="col"></th>
                                 <th scope="col">Id</th>
-                                <th scope="col">Prénom</th>
                                 <th scope="col">Nom</th>
                                 <th scope="col">Établissement</th>
                                 <th scope="col">Nb élèves</th>
@@ -248,8 +247,7 @@ if (Auth::user()->is_admin != 1) {
                             <tr>
                                 <td class="text-success">{{$loop->index + 1}}</td>
                                 <td>{{$etablissement->id}}</td>
-                                <td>{{$etablissement->prenom}}</td>
-                                <td>{{$etablissement->nom}}</td>
+                                <td>{{$etablissement->prenom}} {{$etablissement->nom}}</td>
                                 <td>{{$etablissement->etablissement}}</td>
                                 <td>{{$etablissement->nb_participants}}</td>
                                 <td>{{$etablissement->ac_zone}}</td>
