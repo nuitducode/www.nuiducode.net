@@ -182,7 +182,7 @@ if (Auth::user()->is_admin != 1) {
                                     <td class="text-primary font-weight-bold" nowrap>{{substr($etablissement->ndc_date,5,5)}}</td>
                                     <td class="text-left">
                                         <?php
-                                        if ($etablissement->scratch_nb_equipes_c3 !== NULL AND $etablissement->scratch_nb_eleves_c3/$etablissement->scratch_nb_equipes_c3 > 3){
+                                        if ($etablissement->scratch_nb_equipes_c3 !== NULL AND $etablissement->scratch_nb_equipes_c3 !== 0 AND $etablissement->scratch_nb_eleves_c3/$etablissement->scratch_nb_equipes_c3 > 3){
                                             echo '<span style="color:red">';
                                         } else {
                                             echo '<span >';
