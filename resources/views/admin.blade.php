@@ -180,7 +180,17 @@ if (Auth::user()->is_admin != 1) {
                                     <td style="word-wrap:break-word;">{{$etablissement->email}}</td>
                                     <td>{{$etablissement->nb_participants}}</td>
                                     <td class="text-primary font-weight-bold" nowrap>{{substr($etablissement->ndc_date,5,5)}}</td>
-                                    <td class="text-left">{{$etablissement->scratch_nb_equipes_c3}}>{{$etablissement->scratch_nb_eleves_c3}}</td>
+                                    <td class="text-left">
+                                        <?php
+                                        if ($etablissement->scratch_nb_eleves_c3/$etablissement->scratch_nb_equipes_c3 > 3){
+                                            echo '<span style="color:red">';
+                                        } else {
+                                            echo '<span >';
+                                        }
+                                        echo $etablissement->scratch_nb_equipes_c3 .'>' . $etablissement->scratch_nb_equipes_c3;
+                                        echo '</span >';
+                                        ?>
+                                    </td>
                                     <td class="text-left">{{$etablissement->scratch_nb_equipes_c4}}>{{$etablissement->scratch_nb_eleves_c4}}</td>
                                     <td class="text-left">{{$etablissement->scratch_nb_equipes_lycee}}>{{$etablissement->scratch_nb_eleves_lycee}}</td>
                                     <td class="text-left">{{$etablissement->python_nb_equipes_pi}}>{{$etablissement->python_nb_eleves_pi}}</td>
