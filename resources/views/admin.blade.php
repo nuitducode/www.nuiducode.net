@@ -187,11 +187,21 @@ if (Auth::user()->is_admin != 1) {
                                         } else {
                                             echo '<span >';
                                         }
-                                        echo $etablissement->scratch_nb_equipes_c3 .'>' . $etablissement->scratch_nb_equipes_c3;
+                                        echo $etablissement->scratch_nb_equipes_c3 .'>' . $etablissement->scratch_nb_eleves_c3;
                                         echo '</span >';
                                         ?>
                                     </td>
-                                    <td class="text-left">{{$etablissement->scratch_nb_equipes_c4}}>{{$etablissement->scratch_nb_eleves_c4}}</td>
+                                    <td class="text-left">
+                                        <?php
+                                        if ($etablissement->scratch_nb_equipes_c4 !== NULL AND $etablissement->scratch_nb_equipes_c4 !== 0 AND $etablissement->scratch_nb_eleves_c4/$etablissement->scratch_nb_equipes_c4 > 3){
+                                            echo '<span style="color:red">';
+                                        } else {
+                                            echo '<span >';
+                                        }
+                                        echo $etablissement->scratch_nb_equipes_c4 .'>' . $etablissement->scratch_nb_eleves_c4;
+                                        echo '</span >';
+                                        ?>
+                                    </td>
                                     <td class="text-left">{{$etablissement->scratch_nb_equipes_lycee}}>{{$etablissement->scratch_nb_eleves_lycee}}</td>
                                     <td class="text-left">{{$etablissement->python_nb_equipes_pi}}>{{$etablissement->python_nb_eleves_pi}}</td>
                                     <td class="text-left">{{$etablissement->python_nb_equipes_poo}}>{{$etablissement->python_nb_eleves_poo}}</td>
