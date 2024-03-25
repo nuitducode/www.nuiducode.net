@@ -249,7 +249,7 @@ if (Auth::user()->is_admin != 1) {
                                     <td class="text-center">{{$etablissement->scratch_nb_eleves_c3 + $etablissement->scratch_nb_eleves_c4 + $etablissement->scratch_nb_eleves_lycee + $etablissement->python_nb_eleves_pi + $etablissement->python_nb_eleves_poo + $etablissement->python_nb_eleves_postbac }}</td>
                                     <td class="text-center">
                                         <?php
-                                        $diff = $etablissement->scratch_nb_eleves_c3 + $etablissement->scratch_nb_eleves_c4 + $etablissement->scratch_nb_eleves_lycee + $etablissement->python_nb_eleves_pi + $etablissement->python_nb_eleves_poo - $etablissement->nb_participants;
+                                        $diff = $etablissement->scratch_nb_eleves_c3 + $etablissement->scratch_nb_eleves_c4 + $etablissement->scratch_nb_eleves_lycee + $etablissement->python_nb_eleves_pi + $etablissement->python_nb_eleves_poo + $etablissement->nb_participants;
                                         if ($diff > 0) {
                                             echo '<span class="text-success">+'.$diff.'</span>';
                                         } elseif ($diff < 0) {
