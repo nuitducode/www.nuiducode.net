@@ -202,10 +202,50 @@ if (Auth::user()->is_admin != 1) {
                                         echo '</span >';
                                         ?>
                                     </td>
-                                    <td class="text-left">{{$etablissement->scratch_nb_equipes_lycee}}>{{$etablissement->scratch_nb_eleves_lycee}}</td>
-                                    <td class="text-left">{{$etablissement->python_nb_equipes_pi}}>{{$etablissement->python_nb_eleves_pi}}</td>
-                                    <td class="text-left">{{$etablissement->python_nb_equipes_poo}}>{{$etablissement->python_nb_eleves_poo}}</td>
-                                    <td class="text-left">{{$etablissement->python_nb_equipes_postbac}}>{{$etablissement->python_nb_eleves_postbac}}</td>
+                                    <td class="text-left">
+                                        <?php
+                                        if ($etablissement->scratch_nb_equipes_lycee !== NULL AND $etablissement->scratch_nb_equipes_lycee !== 0 AND $etablissement->scratch_nb_eleves_lycee/$etablissement->scratch_nb_equipes_lycee > 3){
+                                            echo '<span style="color:red">';
+                                        } else {
+                                            echo '<span >';
+                                        }
+                                        echo $etablissement->scratch_nb_equipes_lycee .'>' . $etablissement->scratch_nb_eleves_lycee;
+                                        echo '</span >';
+                                        ?>                                        
+                                    </td>
+                                    <td class="text-left">
+                                        <?php
+                                        if ($etablissement->python_nb_equipes_pi !== NULL AND $etablissement->python_nb_equipes_pi !== 0 AND $etablissement->python_nb_eleves_pi/$etablissement->python_nb_equipes_pi > 3){
+                                            echo '<span style="color:red">';
+                                        } else {
+                                            echo '<span >';
+                                        }
+                                        echo $etablissement->python_nb_equipes_pi .'>' . $etablissement->python_nb_eleves_pi;
+                                        echo '</span >';
+                                        ?>      
+                                    </td>
+                                    <td class="text-left">
+                                        <?php
+                                        if ($etablissement->python_nb_equipes_poo !== NULL AND $etablissement->python_nb_equipes_poo !== 0 AND $etablissement->python_nb_eleves_poo/$etablissement->python_nb_equipes_poo > 3){
+                                            echo '<span style="color:red">';
+                                        } else {
+                                            echo '<span >';
+                                        }
+                                        echo $etablissement->python_nb_equipes_poo .'>' . $etablissement->python_nb_eleves_poo;
+                                        echo '</span >';
+                                        ?>                                         
+                                    </td>
+                                    <td class="text-left">
+                                        <?php
+                                        if ($etablissement->python_nb_equipes_postbac !== NULL AND $etablissement->python_nb_equipes_postbac !== 0 AND $etablissement->python_nb_eleves_postbac/$etablissement->python_nb_equipes_postbac > 3){
+                                            echo '<span style="color:red">';
+                                        } else {
+                                            echo '<span >';
+                                        }
+                                        echo $etablissement->python_nb_equipes_postbac .'>' . $etablissement->python_nb_eleves_postbac;
+                                        echo '</span >';
+                                        ?>    
+                                    </td>
                                     <td class="text-center">{{$etablissement->scratch_nb_eleves_c3 + $etablissement->scratch_nb_eleves_c4 + $etablissement->scratch_nb_eleves_lycee + $etablissement->python_nb_eleves_pi + $etablissement->python_nb_eleves_poo + $etablissement->python_nb_eleves_postbac }}</td>
                                     <td class="text-center">
                                         <?php
