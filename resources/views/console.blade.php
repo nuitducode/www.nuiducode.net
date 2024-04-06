@@ -197,7 +197,7 @@
                 </form>
 
        
-                    <iframe src="https://turbowarp.org/embed/?project_url=www.nuitducode.net/01.sb3" width="482" height="412" allowtransparency="true" frameborder="0" scrolling="no" allowfullscreen></iframe>
+                
 
 
         
@@ -210,10 +210,10 @@
                                 <div class="text-monospace text-danger small" style="text-align:justify">
                                     <b>IMPORTANT</b><br />
                                     <ul>
-                                        <li class="mb-1">Les univers de jeu ainsi que les liens sont <b><u>confidentiels</u></b>. Ils ne doivent être partagés qu'avec les élèves qui participent à la NDC et qu'<u>au tout début des 6h</u> (pas plus tôt). Il est important de bien indiquer aux élèves qu'ils ne doivent s'en servir que pour créer leur jeu pendant la durée de la NDC et qu'ils ne doivent les partager avec personne d'autre, ni pendant, ni après la NDC.</li>
-                                        <li class="mb-1">Pour les élèves qui utiliseront Scratch: le titre du jeu créé par une équipe doit être le nom de l'équipe. De plus, les mots suivants ne doivent pas apparaître dans le titre ni dans les champs "Instructions" et "Notes et Crédits" du jeu (ou des différentes versions du jeu): "nuit", "code", "c0de", "2023", "NdC", "ndc".</li>
-                                        <li class="mb-1">Les élèves ne doivent utiliser que les ressources fournies. Ils ne peuvent pas importer de ressources extérieures, utiliser du code déjà prêt, consulter de la documentation ni utiliser des notes personnelles. Par contre, ils peuvent poser des questions aux enseignants et à leurs camarades des autres équipes.</li>
-                                        <li class="mb-1">Pour Scratch et Python, les élèves doivent écrire une courte documentation (ou mode d'emploi) du jeu.</li>
+                                        <li class="mb-1">Les univers de jeu ainsi que les liens sont <b><u>confidentiels</u></b>. Ils ne doivent être partagés qu'avec les élèves qui participent à la NDC et qu'<u>au tout début des 6h</u> (pas plus tôt). Il est important de bien indiquer aux élèves qu'ils ne doivent s'en servir que pour créer leur jeu, qu'ils ne doivent pas partager les univers de jeu avec d'autres personnes et qu'ils ne doivent pas utiliser les univers de jeu pour créer d'autres jeux pendant toute la période de la NDC (mai - juin).</li>
+                                        <li class="mb-1">Pour les élèves qui utiliseront Scratch: <b>NE PAS PARTAGER LE JEU SUR LE SITE DE SCRATCH</b>. Si une équipe a cliqué sur « Share » par mégarde, il faut aller dans « My Stuff » et cliquer sur « Unshare ».</li>
+                                        <li class="mb-1">Les élèves ne doivent utiliser que les ressources fournies. Ils ne peuvent pas importer de ressources extérieures, utiliser du code déjà prêt, consulter de la documentation (autre que celle fournie) ni utiliser des notes personnelles. Par contre, ils peuvent poser des questions aux enseignants et à leurs camarades des autres équipes.</li>
+                                        <li class="mb-1">Pour Scratch et Python, les élèves doivent écrire une courte présentation et un mode d'emploi du jeu.</li>
                                         <li>Pour plus de détails, voir <a href="https://nuit-du-code.forge.apps.education.fr/DOCUMENTATION/04-regles-conseils/" target="_blank">"Règles et Conseils"</a> Scratch ou Python.</li>
                                     </ul>
                                 </div>
@@ -223,23 +223,23 @@
                             <h3 id="s01" class="m-0 mb-2"><span class="badge badge-pill badge-primary pt-1">1</span> Documents pour les équipes <sup><i class="fas fa-question-circle text-muted" data-boundary="window" data-toggle="tooltip" data-placement="auto" title="Documents à distribuer aux équipes le jour de la NDC ou quelques jours avant."></i></sup></h3>
                             <div class="row ml-2">
                                 <div class="col">
-                                    <a class=" btn btn-light btn-block btn-sm" href="https://github.com/nuitducode/ORGANISATION-2023/raw/main/documents-a-distribuer/regles-et-conseils-scratch-2023.pdf" role="button">Règles et Conseils<br /><span style="font-size:80%;color:gray">Scratch</span></a>
+                                    <a class=" btn btn-light btn-block btn-sm" href="https://forge.apps.education.fr/nuit-du-code/DOCUMENTATION/-/raw/main/docs/assets/documents/regles-et-conseils-scratch.pdf" role="button">Règles et Conseils<br /><span style="font-size:80%;color:gray">Scratch</span></a>
                                     <div class="text-center text-monospace mt-1" style="color:silver;font-size:70%">à distribuer (format papier ou numérique)</div>
                                 </div>
                                 <div class="col">
-                                    <a class=" btn btn-light btn-block btn-sm" href="https://github.com/nuitducode/ORGANISATION-2023/raw/main/documents-a-distribuer/regles-et-conseils-python-2023.pdf" role="button">Règles et Conseils<br /><span style="font-size:80%;color:gray">Python</span></a>
+                                    <a class=" btn btn-light btn-block btn-sm" href="https://forge.apps.education.fr/nuit-du-code/DOCUMENTATION/-/raw/main/docs/assets/documents/regles-et-conseils-python.pdf" role="button">Règles et Conseils<br /><span style="font-size:80%;color:gray">Python</span></a>
                                     <div class="text-center text-monospace mt-1" style="color:silver;font-size:70%">à distribuer (format papier ou numérique)</div>
                                 </div>
                                 <div class="col">
-                                    <a class=" btn btn-light btn-block btn-sm" href="https://github.com/nuitducode/ORGANISATION-2023/raw/main/documents-a-distribuer/documentation-pyxel-2023.pdf" role="button">Documentation Pyxel<br /><span style="font-size:80%;color:gray">Python</span></a>
+                                    <a class=" btn btn-light btn-block btn-sm" href="https://forge.apps.education.fr/nuit-du-code/DOCUMENTATION/-/raw/main/docs/assets/documents/documentation-pyxel.pdf" role="button">Documentation Pyxel<br /><span style="font-size:80%;color:gray">Python</span></a>
                                     <div class="text-center text-monospace mt-1" style="color:silver;font-size:70%">à distribuer (format papier ou numérique)</div>
                                 </div>                                
                                 <div class="col">
-                                    <a class=" btn btn-light btn-block btn-sm" href="https://github.com/nuitducode/ORGANISATION-2023/raw/main/documents-a-distribuer/carnet-de-bord-scratch-2023.pdf" role="button">Carnet de bord<br /><span style="font-size:80%;color:gray">Scratch</span></a>
+                                    <a class=" btn btn-light btn-block btn-sm" href="https://forge.apps.education.fr/nuit-du-code/DOCUMENTATION/-/raw/main/docs/assets/documents/carnet-de-bord-scratch.pdf" role="button">Carnet de bord<br /><span style="font-size:80%;color:gray">Scratch</span></a>
                                     <div class="text-center text-monospace mt-1" style="color:silver;font-size:70%">optionnel: à imprimer et distribuer</div>
                                 </div>
                                 <div class="col">
-                                    <a class=" btn btn-light btn-block btn-sm" href="https://github.com/nuitducode/ORGANISATION-2023/raw/main/documents-a-distribuer/carnet-de-bord-python-2023.pdf" role="button">Carnet de bord<br /><span style="font-size:80%;color:gray">Python</span></a>
+                                    <a class=" btn btn-light btn-block btn-sm" href="https://forge.apps.education.fr/nuit-du-code/DOCUMENTATION/-/raw/main/docs/assets/documents/carnet-de-bord-python.pdf" role="button">Carnet de bord<br /><span style="font-size:80%;color:gray">Python</span></a>
                                     <div class="text-center text-monospace mt-1" style="color:silver;font-size:70%">optionnel: à imprimer et distribuer</div>
                                 </div>
                             </div>
@@ -249,6 +249,22 @@
                                 
                             <?php
                             /*
+
+
+                            <iframe src="https://turbowarp.org/embed/?project_url=www.nuitducode.net/01.sb3" width="482" height="412" allowtransparency="true" frameborder="0" scrolling="no" allowfullscreen></iframe>
+
+
+
+
+
+
+
+
+
+
+
+
+
                             <div class="mt-1 ml-4">    
                                 Quels univers de jeu souhaitez-vous recevoir pour votre Nuit du code ? <sup><i class="fas fa-question-circle text-muted" data-boundary="window" data-toggle="tooltip" data-placement="auto" title="Les univers de jeu seront publiés dans la console 48h avant la date indiquée. En cas de problème, écrire à contact@nuitducode.net"></i></sup>
                                 <form method="POST" action="{{ route('fiche-inscription-details_post') }}" style="border:1px solid #dfdfdf;border-radius:4px;padding:10px;background-color:#f3f5f7;">
@@ -286,9 +302,9 @@
                             ?>
 
                             <div class="ml-4 mt-1 text-monospace text-danger small" style="text-align:justify">
-                                Rappel: les univers de jeu ainsi que les liens sont <b><u>confidentiels</u></b>. Ils ne doivent être partagés qu'avec les élèves qui participent à la NDC. Les élèves ne doivent les partager avec personne d'autre, ni pendant, ni après la NDC.
+                                Rappel: les univers de jeu ainsi que les liens sont <b><u>confidentiels</u></b>. Ils ne doivent être partagés qu'avec les élèves qui participent à la NDC. Les élèves ne doivent les partager avec personne d'autre et ils ne doivent pas utiliser les univers de jeu pour créer d'autres jeux pendant toute la période de la NDC (mai - juin).
                             </div>
-                            <div class="ml-4" style="border:1px solid #e35551;border-radius:4px;padding:20px 20px 20px 20px;background-color:white;">
+                            <div class="ml-4 mt-1" style="border:1px solid #e35551;border-radius:4px;padding:20px 20px 20px 20px;background-color:white;">
                                 <div class="text-center mb-4">Lien(s) à ne fournir aux équipes qu'<u>au tout début des 6h</u></div>
                                 <div>
                                     <div>
@@ -303,7 +319,8 @@
                             </div>
 
                             
-                            
+                            <?php
+                            /*
                             <!-- == 3 == -->
                             <h3 id="s03" class="mt-5"><span class="badge badge-pill badge-primary pt-1">3</span> Dépôt & évaluation des jeux</h3>
                             <div class="mb-1 ml-3">
@@ -442,7 +459,8 @@
                                 ?>
                                 Partagez cette page sur <a href="https://mastodonshare.com/?text={{$mastodon_text}}" target="_blank">Mastodon</a> et/ou <a href="https://twitter.com/intent/tweet?text={{$twitter_text}}" target="_blank">Twitter</a>.
                             </div>
-                            
+                            */
+                            ?>
                              
 
                         </div>
