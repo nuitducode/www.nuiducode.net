@@ -63,6 +63,9 @@
                     <div class="overflow-auto table-responsive" style="border:1px solid #f1f1f1;background-color:#f1f1f1;border-radius:4px;padding:10px 10px 10px 14px;height:140px">
                         <table class="table table-borderless table-sm text-secondary">
 
+                            <tr><td><b>06/04</b></td><td style="width:100%">Mise à jour de la console: publication des documents à distribuer aux équipes</td></tr>
+                            <tr><td><b>25/03</b></td><td style="width:100%">Bulletin <a href="https://github.com/nuitducode/ORGANISATION-2024/discussions/21" target="_blank">#02</a></td></tr>
+                            <tr><td><b>15/01</b></td><td style="width:100%">Bulletin <a href="https://github.com/nuitducode/ORGANISATION-2024/discussions/7" target="_blank">#01</a></td></tr>
                             <tr><td><b>03/10</b></td><td style="width:100%">Ajout de la catégorie "Post-bac"</td></tr>
                             <tr><td><b>08/08</b></td><td style="width:100%">Ouverture des inscriptions  pour la NDC 2024</td></tr>
                             
