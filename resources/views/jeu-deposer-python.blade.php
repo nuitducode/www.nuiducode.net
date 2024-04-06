@@ -14,7 +14,7 @@
 	<div class="container mb-5">
 		<div class="row">
 
-			<div class="col-md-6 offset-md-3">
+			<div class="col-md-8 offset-md-2">
 
                 @if (session('message'))
                     <div class="text-success text-monospace text-center mt-5 pb-4" role="alert">
@@ -27,14 +27,14 @@
                     @endphp
                 @endif
 
-                <div class="text-center mb-4"><img src="{{ url('/')}}/img/ndc2023.png" width="280" /></div>
+                <div class="text-center mb-4"><img src="{{ url('/')}}/img/ndc2024.png" width="280" /></div>
 
                 <form id="python_submit" method="POST" action="{{ route(request()->segment(1).'-jeu-deposer_post') }}" enctype="multipart/form-data">
 
 					@csrf
 
                     <div class="form-group">
-						<div for="nom_equipe" class="text-info">NOM DE L'ÉQUIPE <sup class="text-danger">*</sup></div>
+						<div for="nom_equipe" class="text-info mt-5">NOM DE L'ÉQUIPE <sup class="text-danger">*</sup></div>
                         <div class="text-monospace text-muted small mb-1">Choisir un nom d'équipe de 20 caractères maximum et sans caractères spéciaux.</div>
 						<input id="nom_equipe" name="nom_equipe" type="text" class="form-control @error('nom_equipe') is-invalid @enderror" value="{{ old('nom_equipe') }}" autofocus required>
 						@error('nom_equipe')
@@ -45,7 +45,7 @@
 					</div>
 
                     <div class="form-group">
-                        <div for="categorie" class="text-info">CATÉGORIE <sup class="text-danger">*</sup></div>
+                        <div for="categorie" class="text-info mt-5">CATÉGORIE <sup class="text-danger">*</sup></div>
                         <select id="categorie" name="categorie" class="custom-select @error('categorie') is-invalid @enderror" required>
                             <option selected disabled value="">choisir...</option>
                             <option value="PI" @if(old('categorie') == 'PI') selected @endif>Première</option>
@@ -54,15 +54,15 @@
 					</div>
 
                     <!-- dropzone field -->
-                    <div class="text-info">FICHIERS PYXEL <sup class="text-danger">*</sup></div>
+                    <div class="text-info mt-5">FICHIERS PYXEL <sup class="text-danger">*</sup></div>
                     <div class="text-monospace text-muted small mb-1">Déposer ci-dessous le fichier <kbd>.py</kbd> du jeu et, s'il existe, le fichier <kbd>.pyxres</kbd>.</div>
                     <div id="formdropzone" class="dropzone"></div>
                     <div id="alert_two_files" class="mt-2 text-danger text-monospace small"></div>
 
-                    <div class="text-info mt-3">DOCUMENTATION / MODE D'EMPLOI <sup class="text-danger">*</sup></div>
-                    <textarea class="form-control" id="documentation" name="documentation" rows="4" required></textarea>
+                    <div class="text-info mt-5">PRÉSENTATION / MODE D'EMPLOI DU JEU <sup class="text-danger">*</sup></div>
+                    <textarea class="form-control" id="documentation" name="documentation" rows="8" required></textarea>
 
-					<button type="submit" id="submit_request" class="btn btn-primary mt-3"><i class="fas fa-check"></i></button>
+					<button type="submit" id="submit_request" class="btn btn-primary mt-4 pl-4 pr-4"><i class="fas fa-check"></i></button>
 
 				</form>
 

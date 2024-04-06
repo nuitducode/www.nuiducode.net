@@ -196,9 +196,11 @@
 
                 </form>
 
+       
+                    <iframe src="https://turbowarp.org/embed/?project_url=www.nuitducode.net/01.sb3" width="482" height="412" allowtransparency="true" frameborder="0" scrolling="no" allowfullscreen></iframe>
 
-            {{-- EN COMMENTAIRES
 
+        
                 <h2>JEUX & ÉVALUATIONS</h2>
                 <div style="border:1px solid #dfdfdf;border-radius:4px;padding:20px;">
                     <div class="row">
@@ -217,6 +219,7 @@
                                 </div>
                             </div>
 
+                            <!-- == 1 == -->
                             <h3 id="s01" class="m-0 mb-2"><span class="badge badge-pill badge-primary pt-1">1</span> Documents pour les équipes <sup><i class="fas fa-question-circle text-muted" data-boundary="window" data-toggle="tooltip" data-placement="auto" title="Documents à distribuer aux équipes le jour de la NDC ou quelques jours avant."></i></sup></h3>
                             <div class="row ml-2">
                                 <div class="col">
@@ -241,6 +244,7 @@
                                 </div>
                             </div>
 
+                            <!-- == 2 == -->
                             <h3 id="s02" class="mt-5"><span class="badge badge-pill badge-primary pt-1">2</span> Univers de jeu</h3>
                                 
                             <?php
@@ -298,12 +302,15 @@
                                 </div>
                             </div>
 
-                            <h3 id="s03" class="mt-5"><span class="badge badge-pill badge-primary pt-1">3</span> Enregistrement & Évaluation des Jeux</h3>
+                            
+                            
+                            <!-- == 3 == -->
+                            <h3 id="s03" class="mt-5"><span class="badge badge-pill badge-primary pt-1">3</span> Dépôt & évaluation des jeux</h3>
                             <div class="mb-1 ml-3">
                                 <table style="border-collapse:separate;border-spacing:5px;">
                                     <tr>
                                         <td>
-                                            <a class="btn btn-info btn-block" href="/console/ndc?p=enregistrement" role="button">enregistrement</a>
+                                            <a class="btn btn-info btn-block" href="/console/ndc?p=enregistrement" role="button">dépôt</a>
                                         </td>
                                         <td>
                                             <a class=" btn btn-info btn-block" href="/console/ndc?p=evaluation" role="button">évaluation</a>
@@ -311,7 +318,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <a class="btn btn-light btn-sm btn-block pl-3 pr-3" href="/console/ndc/liste-jeux" role="button">liste des jeux enregistrés</a>
+                                            <a class="btn btn-light btn-sm btn-block pl-3 pr-3" href="/console/ndc/liste-jeux" role="button">liste des jeux déposés</a>
                                         </td>
                                         <td>
                                             <a class="btn btn-light btn-sm btn-block pl-4 pr-4" href="/console/ndc/liste-evaluations" role="button">liste des évaluations</a>
@@ -321,12 +328,13 @@
                                 
                             </div>
 
+                            <!-- == 4 == -->
                             <h3 id="s04" class="mt-5"><span class="badge badge-pill badge-primary pt-1">4</span> Bilan des évaluations & Sélection</h3>
                             <div class="mb-1 ml-4">
                                 <a class=" btn btn-info" href="/console/ndc/jeux-evaluations" role="button"><i class="fas fa-trophy"></i></a>
                             </div>
 
-                           
+                            <!-- == 5 == -->
                             <h3 id="finalistes" class="mt-5"><span class="badge badge-pill badge-primary pt-1">5</span> Jeux proposés pour la sélection internationale</h3>
                             <div class="ml-2 mb-1 ml-4 pl-4 pr-4 pb-3 pt-3" style="border-radius:4px;border:1px solid #dfdfdf;background-color:#f3f5f7">
                             
@@ -400,11 +408,13 @@
 
                             </div>
 
+                            <!-- == 6 == -->
                             <h3 id="s06" class="mt-5"><span class="badge badge-pill badge-primary pt-1">6</span> Sélection internationale</h3>
                             <div class="mb-1 ml-4">
                                 <a class="btn btn-info" href="/console/evaluation-finalistes-categories" role="button">évaluation</a>
                             </div>
- 
+
+                            <!-- == 7 == -->
                             <h3 id="s07" class="mt-5"><span class="badge badge-pill badge-primary pt-1">7</span> Page des jeux de l'établissement</h3>
                             <div class="mb-2 ml-4">
                                 Vous pouvez sélectionner les jeux qui apparaitront sur la page <a href="/console/jeux-publics-selection">ici</a>.
@@ -420,6 +430,7 @@
                                 Partagez cette page sur <a href="https://mastodonshare.com/?text={{$mastodon_text}}" target="_blank">Mastodon</a> et/ou <a href="https://twitter.com/intent/tweet?text={{$twitter_text}}" target="_blank">Twitter</a>.
                             </div>                                                     
 
+                            <!-- == 8 == -->
                             <h3 id="s08" class="mt-5"><span class="badge badge-pill badge-primary pt-1">8</span> Sélection internationale 2023</h3>
                             <div class="mb-2 ml-4 text-monospace">
                                 <i class="fa-solid fa-share-nodes mr-1"></i> <a href="/ndc2023" target="_blank">www.nuitducode.net/ndc2023</a>
@@ -430,13 +441,15 @@
                                 $mastodon_text = urlencode("Nuit du Code 2023: la sélection internationale \n https://www.nuitducode.net/ndc2023/ \n\n #NDC2023 #Scratch #Python #NSI \n @nuitducode@mastodon.social");
                                 ?>
                                 Partagez cette page sur <a href="https://mastodonshare.com/?text={{$mastodon_text}}" target="_blank">Mastodon</a> et/ou <a href="https://twitter.com/intent/tweet?text={{$twitter_text}}" target="_blank">Twitter</a>.
-                            </div>  
+                            </div>
+                            
+                             
 
                         </div>
                     </div>
                 </div>
 
-            --}}
+  
 
 
                 <h2>FEUILLE DE ROUTE</h2>
