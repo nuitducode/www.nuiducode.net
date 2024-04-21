@@ -41,7 +41,7 @@
                     @endphp
                 @endif
 
-                <div class="text-center mb-1"><img src="{{ url('/')}}/img/ndc2023.png" width="250" /></div>
+                <div class="text-center mb-1"><img src="{{ url('/')}}/img/ndc.png" width="250" /></div>
 
 				<form method="POST" action="{{ route(request()->segment(1).'-evaluation-etape-1_post') }}">
 					@csrf
@@ -81,6 +81,7 @@
                             <option value="LY">SCRATCH - Lycée</option>
                             <option value="PI">PYTHON - Première</option>
                             <option value="POO">PYTHON - Terminale</option>
+                            <option value="PB">PYTHON - Post-bac</option>
                         </select>
 					</div>
 

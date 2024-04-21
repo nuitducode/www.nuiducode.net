@@ -147,7 +147,7 @@
                 
                 <div style="border:1px silver solid;border-radius:5px;padding:20px;background-color:white;">
                     <?php
-                    $categories = ['PI' => 'Première', 'POO' => 'Terminale'];
+                    $categories = ['PI' => 'Première', 'POO' => 'Terminale', 'PB' => 'Post-bac'];
                     foreach ($categories AS $categorie_code => $categorie){
                         $jeux = App\Models\Game::where([['etablissement_id', $etablissement_id], ['type', request()->segment(2)], ['categorie', $categorie_code]])->get();
                         ?>

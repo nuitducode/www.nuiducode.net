@@ -49,12 +49,14 @@
                     // SCRATCH
                     $critere1_scratch_titre = "Jouabilité";
                     $critere1_scratch_description = "Facilité de prise en main, absence de bogues, clarté des objectifs, environnement intuitif, plaisir...";
-                    $critere2_scratch_titre = "Richesse / Complexité";
-                    $critere2_scratch_description = "Nombre de lutins et décors, niveaux / scènes multiples, variété des actions, défilements, effets...";
-                    $critere3_scratch_titre = "Originalité / Créativité";
-                    $critere3_scratch_description = "Utilisation originale des lutins et des décors, orginalité du scénario, lutins à contre emploi...";
-                    $critere4_scratch_titre = "Respect des consignes / Documentation";
-                    $critere4_scratch_description = "Absence d'éléments extérieurs, intégrité des lutins, documentation claire et complète...";
+                    //$critere2_scratch_titre = "Richesse / Complexité";
+                    //$critere2_scratch_description = "Nombre de lutins et décors, niveaux / scènes multiples, variété des actions, défilements, effets...";
+                    $critere2_scratch_titre = "Originalité / Créativité";
+                    $critere2_scratch_description = "Utilisation originale des lutins et des décors, orginalité du scénario, lutins à contre emploi...";
+                    $critere3_scratch_titre = "Respect des consignes";
+                    $critere3_scratch_description = "Absence d'éléments extérieurs, intégrité des lutins...";
+                    $critere4_scratch_titre = "Présentation / mode d'emploi";
+                    $critere4_scratch_description = "";
 
                     if (in_array($categorie, ['C3', 'C4', 'LY'])) {
                         ?>
@@ -65,111 +67,82 @@
                             <?php
                             foreach ($jeux AS $jeu) {
                                 ?>
-                                <!--
                                 <div class="row">
-                                    <div class="col-md-12">
-                                        <h2 class="mb-1" style="color:#4cbf56">{{$jeu->nom_equipe}}</h2>
-                                    </div>
-                                </div>
-                                -->
-                                <?php
-                                $json = @file_get_contents("https://api.scratch.mit.edu/projects/".$jeu->scratch_id);
-                                if ($json !== FALSE) {
-                                    $jeu_scratch = json_decode($json);
-                                    ?>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            @if($jury_type != 'eleve')
-                                            <!--<h3 class="mb-1 mt-1">[NdC 2023 - C3] {{$jeu_scratch->title}}</h3>-->
-                                            <div class="text-monospace small text-muted">Création : {{$jeu_scratch->history->created}}</div>
-                                            <div class="text-monospace small text-muted">Derniere modification : {{$jeu_scratch->history->modified}}</div>
-                                            @endif
+
+                                    <div class="col-md-7 text-center">
+                                        <div>
+                                            <img src="" class="img-fluid" style="border-radius:4px;" width="100%" />
+                                        </div>
+                                        <button type="button" class="btn btn-success btn-sm mt-3" onClick="this.previousElementSibling.innerHTML='<iframe src=\'https://turbowarp.org/embed?project_url=www.nuitducode.net/storage/depot-jeux/scratch/{{strtolower($etablissement_jeton)}}/{{$jeu->scratch_id}}.sb3\' width=\'100%\' height=\'402\' allowtransparency=\'true\' frameborder=\'0\' scrolling=\'no\'></iframe>'">lancer / recharger le jeu</button>
+
+                                        <div class="mt-4 mb-2 text-monospace small" style="color:silver">Si le jeu ne s'affiche pas correctement, vous pouvez l'ouvrir dans un autre onglet en cliquant <a href="https://turbowarp.org/embed?project_url=www.nuitducode.net/storage/depot-jeux/scratch/{{strtolower($etablissement_jeton)}}/{{$jeu->scratch_id}}.sb3" target="_blank">ici</a>.</div>
+
+                                        <div class="mt-4 small text-monospace text-left" style="border:1px solid silver; padding:10px;border-radius:4px; background-color:white;">
+                                        {{$jeu->documentation}}
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-7 text-center">
 
-                                            <div>
-                                                <img src="https://uploads.scratch.mit.edu/get_image/project/{{$jeu->scratch_id}}_282x218.png" class="img-fluid" style="border-radius:4px;" width="100%" />
-                                            </div>
+                                    <div class="col-md-5">
 
-                                            <button type="button" class="btn btn-success btn-sm mt-3" onClick="this.previousElementSibling.innerHTML='<iframe src=\'https://scratch.mit.edu/projects/{{$jeu->scratch_id}}/embed\' width=\'100%\' height=\'402\' frameborder=\'0\' scrolling=\'no\'></iframe>'">lancer / recharger le jeu</button>
-
-                                            <div class="mt-4 mb-2 text-monospace small" style="color:silver">Si le jeu ne s'affiche pas correctement, vous pouvez l'ouvrir dans un autre onglet en cliquant <a href="https://scratch.mit.edu/projects/{{$jeu_scratch->id}}" target="_blank">ici</a>.</div>
-
-                                            <div class="mt-4 small text-monospace text-left" style="border:1px solid silver; padding:10px;border-radius:4px; background-color:white;">
-                                                @if ($jeu_scratch->instructions != NULL)
-                                                    {{$jeu_scratch->instructions}}
-                                                @else
-                                                    <span class="text-danger">pas d'instructions</span>
-                                                @endif
-                                            </div>
-                                            @if($jury_type != 'eleve')
-                                            <div class="text-monospace small text-muted pt-1 pl-1">
-                                                <i class="fas fa-gamepad" style="font-size:140%;vertical-align:-1px;"></i> <a href="https://scratch.mit.edu/projects/{{$jeu_scratch->id}}" target="_blank">{{$jeu_scratch->id}}</a> ~
-                                                <i class="fas fa-user-circle"></i> <a href="https://scratch.mit.edu/users/{{$jeu_scratch->author->username}}" target="_blank">{{$jeu_scratch->author->username}}</a>
-                                            </div>
-                                            @endif
-                                        </div>
-                                        <div class="col-md-5">
-
-                                            <div class="text-uppercase" style="color:#cf63cf">{{$critere1_scratch_titre}}</div>
-                                            <div class="text-monospace" style="color:silver;font-size:70%;">{{$critere1_scratch_description}}</div>
-                                            <div class="row mb-2">
+                                        <div style="background-color:white;margin-bottom:2px;padding:4px 8px 0px 8px;border:solid silver 1px;border-radius:4px">
+                                            <div class="text-uppercase" style="color:#cf63cf">{{$critere1_scratch_titre}} <sup><i class="fas fa-question-circle text-muted" data-boundary="window" data-toggle="tooltip" data-html="true" data-placement="auto" title="{{$critere1_scratch_description}}"></i></sup></div>
+                                            <div class="row">
                                                 <div class="col">
-                                                    <input type="range" id="{{$jeu->scratch_id}}_critere1" name="evaluation[{{$jeu->scratch_id}}]['critere1']" class="custom-range" value="-1" min="-1" max="5" step="1" oninput="curseur(this.id, this.value);">
+                                                    <div id="{{$jeu->scratch_id}}_critere1_description" class="text-monospace text-muted small">&nbsp;</div>
+                                                    <input type="range" id="{{$jeu->scratch_id}}_critere1" name="evaluation[{{$jeu->scratch_id}}]['critere1']" class="custom-range" value="-1" min="-1" max="3" step="1" oninput="curseur(this.id, this.value);">
+                                                    
                                                 </div>
                                                 <div class="col-auto text-secondary text-center font-weight-bold" id="{{$jeu->scratch_id}}_critere1_note" style="width:40px;">
                                                     <i class="fas fa-times text-danger"></i>
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            <div class="text-uppercase" style="color:#cf63cf">{{$critere2_scratch_titre}}</div>
-                                            <div class="text-monospace" style="color:silver;font-size:70%;">{{$critere2_scratch_description}}</div>
-                                            <div class="row mb-2">
+                                        <div style="background-color:white;margin-bottom:2px;padding:4px 8px 0px 8px;border:solid silver 1px;border-radius:4px">
+                                            <div class="text-uppercase" style="color:#cf63cf">{{$critere2_scratch_titre}} <sup><i class="fas fa-question-circle text-muted" data-boundary="window" data-toggle="tooltip" data-html="true" data-placement="auto" title="{{$critere2_scratch_description}}"></i></sup></div>
+                                            <div class="row">
                                                 <div class="col">
-                                                    <input type="range" id="{{$jeu->scratch_id}}_critere2" name="evaluation[{{$jeu->scratch_id}}]['critere2']" class="custom-range" value="-1" min="-1" max="5" step="1" oninput="curseur(this.id, this.value);">
+                                                    <div id="{{$jeu->scratch_id}}_critere2_description" class="text-monospace text-muted small">&nbsp;</div>
+                                                    <input type="range" id="{{$jeu->scratch_id}}_critere2" name="evaluation[{{$jeu->scratch_id}}]['critere2']" class="custom-range" value="-1" min="-1" max="3" step="1" oninput="curseur(this.id, this.value);">
                                                 </div>
                                                 <div class="col-auto text-secondary text-center font-weight-bold" id="{{$jeu->scratch_id}}_critere2_note" style="width:40px;">
                                                     <i class="fas fa-times text-danger"></i>
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            <div class="text-uppercase" style="color:#cf63cf">{{$critere3_scratch_titre}}</div>
-                                            <div class="text-monospace" style="color:silver;font-size:70%;">{{$critere3_scratch_description}}</div>
-                                            <div class="row mb-2">
+                                        <div style="background-color:white;margin-bottom:2px;padding:4px 8px 0px 8px;border:solid silver 1px;border-radius:4px">
+                                            <div class="text-uppercase" style="color:#cf63cf">{{$critere3_scratch_titre}} <sup><i class="fas fa-question-circle text-muted" data-boundary="window" data-toggle="tooltip" data-html="true" data-placement="auto" title="{{$critere3_scratch_description}}"></i></sup></div>
+                                            <div class="row">
                                                 <div class="col">
-                                                    <input type="range" id="{{$jeu->scratch_id}}_critere3" name="evaluation[{{$jeu->scratch_id}}]['critere3']" class="custom-range" value="-1" min="-1" max="5" step="1" oninput="curseur(this.id, this.value);">
+                                                    <div id="{{$jeu->scratch_id}}_critere3_description" class="text-monospace text-muted small">&nbsp;</div>
+                                                    <input type="range" id="{{$jeu->scratch_id}}_critere3" name="evaluation[{{$jeu->scratch_id}}]['critere3']" class="custom-range" value="-1" min="-1" max="2" step="1" oninput="curseur(this.id, this.value);">
                                                 </div>
                                                 <div class="col-auto text-secondary text-center font-weight-bold" id="{{$jeu->scratch_id}}_critere3_note" style="width:40px;">
                                                     <i class="fas fa-times text-danger"></i>
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            <div class="text-uppercase" style="color:#cf63cf">{{$critere4_scratch_titre}}</div>
-                                            <div class="text-monospace" style="color:silver;font-size:70%;">{{$critere4_scratch_description}}</div>
-                                            <div class="row mb-2">
+                                        <div style="background-color:white;margin-bottom:2px;padding:4px 8px 0px 8px;border:solid silver 1px;border-radius:4px">
+                                            <div class="text-uppercase" style="color:#cf63cf">{{$critere4_scratch_titre}} <sup><i class="fas fa-question-circle text-muted" data-boundary="window" data-toggle="tooltip" data-html="true" data-placement="auto" title="{{$critere4_scratch_description}}"></i></sup></div>
+                                            <div class="row">
                                                 <div class="col">
-                                                    <input type="range" id="{{$jeu->scratch_id}}_critere4" name="evaluation[{{$jeu->scratch_id}}]['critere4']" class="custom-range" value="-1" min="-1" max="5" step="1" oninput="curseur(this.id, this.value);">
+                                                    <div id="{{$jeu->scratch_id}}_critere4_description" class="text-monospace text-muted small">&nbsp;</div>
+                                                    <input type="range" id="{{$jeu->scratch_id}}_critere4" name="evaluation[{{$jeu->scratch_id}}]['critere4']" class="custom-range" value="-1" min="-1" max="2" step="1" oninput="curseur(this.id, this.value);">
+                                                    
                                                 </div>
                                                 <div class="col-auto text-secondary text-center font-weight-bold" id="{{$jeu->scratch_id}}_critere4_note" style="width:40px;">
                                                     <i class="fas fa-times text-danger"></i>
                                                 </div>
                                             </div>
-
                                         </div>
+
                                     </div>
-                                    <br />
-                                    <br />
+                                </div>
+                                <br />
+                                <br />
                                 <?php
-                                } else {
-                                    ?>
-                                    <div class="text-monospace small text-danger">Cet identifiant Scratch n'existe pas! [{{$jeu->scratch_id}}]</div>
-                                    <div class="text-monospace small text-danger">Vérifier que le jeu a bien été partagé (bouton orange "Partager", ou "Share" en anglais).</div>
-                                    <br />
-                                    <br />
-                                    <?php
-                                }
                             }
                             ?>
                             <input id="etablissement_jeton" name="etablissement_jeton" type="hidden" value="{{$etablissement_jeton}}" />
@@ -382,11 +355,22 @@ os.system(<span style="color:rgb(163, 190, 140); font-weight:400;">'pyxel run "{
 
     <script>
         function curseur(id, note) {
+
+            let critere_1 = ['injouable', 'bonne mais quelques bogues non bloquants', 'bonne et sans bogues', 'grande et sans bogues'];
+            let critere_2 = ['très classique', 'classique', 'original', 'très original'];
+            let critere_3 = ['plusieurs consignes ne sont pas respectées', 'une consigne n\'est pas respectée', 'toutes les consignes sont respectées'];
+            let critere_4 = ['insuffisant', 'minimal', 'complet'];
+
             if (note == "-1") {
                 document.getElementById(id+"_note").innerHTML = '<i class="fas fa-times text-danger">';
-            }else {
+            } else {
+                if (id.includes('critere1')) document.getElementById(id+'_description').innerHTML = critere_1[note];
+                if (id.includes('critere2')) document.getElementById(id+'_description').innerHTML = critere_2[note];
+                if (id.includes('critere3')) document.getElementById(id+'_description').innerHTML = critere_3[note];
+                if (id.includes('critere4')) document.getElementById(id+'_description').innerHTML = critere_4[note];
                 document.getElementById(id+"_note").innerHTML = note;
             }
+            
             var inputs, index, values;
             values = []
             inputs = document.getElementsByTagName('input');

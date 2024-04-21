@@ -12,7 +12,7 @@
 	<div class="container mt-4 mb-5">
         <div class="row">
 
-            <div class="col-md-2 mt-4">
+            <div class="col-md-2">
                 <a class="btn btn-light btn-sm mb-4" href="/console" role="button"><i class="fas fa-arrow-left"></i></a>
             </div>
 
@@ -28,8 +28,8 @@
                     $display_enregistrement = "none";
                 }
 
-                if(request()->segment(2) == 'ndc') $type='Nuit du Code 2023';
-                if(request()->segment(2) == 'sltn') $type='Sélections 2023';
+                if(request()->segment(2) == 'ndc') $type='Nuit du Code';
+                if(request()->segment(2) == 'sltn') $type='Sélections';
                 if(request()->segment(2) == 'bas') $type='Bas à sable';
 
                 $jeton = Auth::user()->jeton;
@@ -50,132 +50,21 @@
                 <div class="text-danger text-monospace small">Cette section peut être utilisée pour se familiariser avec les outils ou faire des tests.</div>
                 @endif
 
-                @if (request()->get('p') == 'enregistrement')
-                    {{--
-                    <div class="mt-4 mb-1">
-                        <a class="btn btn-primary" href="/console/{{request()->segment(2)}}/liste-jeux" role="button">LISTE DES JEUX</a>
-                    </div>
-                    --}}
-                @elseif (request()->get('p') == 'evaluation')
-                    {{--
-                    <div class="mt-4 mb-1">
-                        <a class="btn btn-primary" href="/console/{{request()->segment(2)}}/liste-evaluations" role="button">LISTE DES ÉVALUATIONS</a>
-                    </div>
-                    --}}
-                @else
-                    <div class="mt-4 mb-1">
-                        <a class="btn btn-info mr-1" href="/console/{{request()->segment(2)}}/jeux-evaluations" role="button" data-boundary="window" data-toggle="tooltip" data-placement="top" title="Bilan des évaluations"><i class="fas fa-trophy"></i></a>
-                        <a class="btn btn-primary ml-1" href="/console/{{request()->segment(2)}}/liste-jeux" role="button">LISTE DES JEUX</a>
-                        <a class="btn btn-primary ml-1" href="/console/{{request()->segment(2)}}/liste-evaluations" role="button">LISTE DES ÉVALUATIONS</a>
-                    </div>
-                @endif
-
+                <!-- ============ -->
+                <!-- LIENS DEPOTS -->
+                <!-- ============ -->
                 <div id="enregistrement" style="display:{{$display_enregistrement}}">
                     <h2>Enregistrement des jeux</h2>
                     Lien à fournir aux équipes pour qu'elles enregistrent leurs jeux sur le site:
                     <div class="mt-1 p-2 text-center">
                         <a href="/{{request()->segment(2)}}/{{strtoupper(Auth::user()->jeton)}}" class="text-monospace text-success" target="_blank">https://www.nuitducode.net/{{request()->segment(2)}}/{{strtoupper(Auth::user()->jeton)}}</a>
                     </div>
-                    <ul class="text-justify mt-4">
-                        <li>
-                            <u>Pour Scratch</u><br />
-                            A la fin des 6h, chaque équipe enregistre son jeu en utilisant le lien ci-dessus.<br />
-
-                            <u>Pour Python / Pyxel</u><br />
-                            A la fin des 6h, chaque dépose son fichier <code>.py</code> et, s'il existe, son fichier <code>.pyxres</code> en utilisant le lien ci-dessus.
-                        </li>
-                        <li class="mt-3">
-                            Les organisateurs peuvent enregistrer eux-mêmes des jeux Scratch par lots en cliquant sur le bouton ci-dessous.
-                            <div class="mt-2 text-center">
-                                <a class="btn btn-light btn-sm text-monospace" data-toggle="collapse" href="#collapse" role="button" aria-expanded="false" aria-controls="collapse">Enregistrer manuellement des jeux Scratch</a>
-                            </div>
-                            @if (session('message'))
-                                <div class="text-success text-monospace text-center pb-4" role="alert">
-                                    {{ session('message') }}
-                                </div>
-                            @endif
-
-                            <div class="mt-3 collapse @if($errors->any()) show @endif" id="collapse">
-                                <div class="card card-body">
-                                    <form method="POST" action="{{ route('jeux-lot-ajouter_post') }}">
-                                        @csrf
-
-                                        <div class="table-responsive">
-                                            <table class="table table-borderless">
-                                                <tr>
-                                                    <td class="text-left">
-                                                        <div for="categorie" class="text-info mb-1">CATÉGORIE <sup class="text-danger">*</sup></div>
-                                                        <div class="form-group">
-                                                            <select id="categorie" name="categorie" class="custom-select @error('categorie') is-invalid @enderror" required>
-                                                                <option selected disabled value="">choisir...</option>
-                                                                <option value="C3" @if(old('categorie') == 'C3') selected @endif>Cycle 3 : CM1 > 6e</option>
-                                                                <option value="C4" @if(old('categorie') == 'C4') selected @endif>Cycle 4 : 5e > 3e</option>
-                                                                <option value="LY" @if(old('categorie') == 'LY') selected @endif>Lycée</option>
-                                                            </select>
-                                                        </div>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div for="nom_equipe" class="text-info">NOM DE L'ÉQUIPE <sup class="text-danger">*</sup></div>
-                                                        <div class="text-monospace text-muted small text-justify">
-                                                            Choisir un nom d'équipe de 20 caractères maximum et sans caractères spéciaux.
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div for="scratch_id" class="text-info">IDENTIFIANT DU PROJET <sup class="text-danger">*</sup></div>
-                                                        <div class="text-monospace text-muted small text-justify">
-                                                            L'identifiant du projet est le la suite de chiffres présente dans son adresse. Exemple: si l'adresse est "scratch.mit.edu/projects/651245835/", l'identifiant est "651245835"
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-left">
-                                                        <input id="nom_equipe" name="nom_equipe[]" type="text" class="form-control @error('nom_equipe.0') is-invalid d-block @enderror" value="{{ old('nom_equipe.0') }}" />
-                                                        @error('nom_equipe.0')
-                                                            <span class="invalid-feedback" role="alert">
-                                                                <strong>{{ $message }}</strong>
-                                                            </span>
-                                                        @enderror
-                                                    </td>
-                                                    <td class="text-left">
-                                                        <input id="scratch_id" name="scratch_id[]" type="text" class="form-control @error('scratch_id.0') is-invalid d-block @enderror" value="{{ old('scratch_id.0') }}" />
-                                                        @error('scratch_id.0')
-                                                            <span class="invalid-feedback" role="alert">
-                                                                <strong>{{ $message }}</strong>
-                                                            </span>
-                                                        @enderror
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td><input id="nom_equipe" name="nom_equipe[]" type="text" class="form-control" value="{{ old('nom_equipe.1') }}"></td>
-                                                    <td><input id="scratch_id" name="scratch_id[]" type="text" class="form-control" value="{{ old('scratch_id.1') }}"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><input id="nom_equipe" name="nom_equipe[]" type="text" class="form-control" value="{{ old('nom_equipe.2') }}"></td>
-                                                    <td><input id="scratch_id" name="scratch_id[]" type="text" class="form-control" value="{{ old('scratch_id.2') }}"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><input id="nom_equipe" name="nom_equipe[]" type="text" class="form-control" value="{{ old('nom_equipe.3') }}"></td>
-                                                    <td><input id="scratch_id" name="scratch_id[]" type="text" class="form-control" value="{{ old('scratch_id.3') }}"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><input id="nom_equipe" name="nom_equipe[]" type="text" class="form-control" value="{{ old('nom_equipe.4') }}"></td>
-                                                    <td><input id="scratch_id" name="scratch_id[]" type="text" class="form-control" value="{{ old('scratch_id.4') }}"></td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <input id="type" name="type" type="hidden" value="{{request()->segment(2)}}" />
-                                        <div class="text-center"><button type="submit" class="btn btn-primary btn-sm mb-2 pl-5 pr-5"><i class="fas fa-check"></i></button></div>
-                                    </form>
-                                </div>
-                            </div>
-
-                        </li>
-                    </ul>
                 </div>
 
+
+                <!-- ================= -->
+                <!-- LIENS EVALUATIONS -->
+                <!-- ================= -->
                 <div id="evaluation" style="display:{{$display_evaluation}}">
                     <h2>Évaluation par les élèves</h2>
                     Lien à fournir aux élèves pour l'évaluation des jeux:
@@ -185,8 +74,6 @@
                     <div  class="text-justify mt-2">
                         Par équipe, les élèves évaluent les jeux des équipes appartenant à une catégorie différente de la leur. Le croisement des catégories sera défini par les organisateurs et communiqué aux élèves. Il est préférable que cette évaluation soit faite sous la surveillance des organisateurs pour éviter toute erreur de manipulation (évaluations multiples, équipes qui évaluent leurs propres jeux...). Les évaluations peuvent être organisées juste après la fin de l'événement ou un autre jour.
                     </div>
-
-
 
                     <h2 class="mt-4">Évaluation par les enseignants</h2>
                     Lien à fournir aux enseignants pour l'évaluation des jeux:

@@ -13,7 +13,7 @@
 		<div class="row">
 
             <div class="col-md-2 mt-4">
-                <a class="btn btn-light btn-sm mb-4" href="{{ url()->previous() }}" role="button"><i class="fas fa-arrow-left"></i></a>
+                <a class="btn btn-light btn-sm mb-4" href="/console" role="button"><i class="fas fa-arrow-left"></i></a>
             </div>
 
 			<div class="col-md-10">
@@ -26,8 +26,8 @@
 
                 <h1 class="mb-0">JEUX</h1>
                 <div class="text-monospace text-muted small">
-                    @if(request()->segment(2) == 'ndc') Nuit du Code 2023 @endif
-                    @if(request()->segment(2) == 'sltn') Sélections 2023 @endif
+                    @if(request()->segment(2) == 'ndc') Nuit du Code @endif
+                    @if(request()->segment(2) == 'sltn') Sélections @endif
                     @if(request()->segment(2) == 'demo') Démo @endif
                 </div>
                 <h2>SCRATCH</h2>
@@ -50,7 +50,7 @@
                                         @foreach($jeux AS $jeu)
                                         <tr>
                                             <td class="align-middle">{{$jeu->nom_equipe}}</td>
-                                            <td class="align-middle"><a href="https://scratch.mit.edu/projects/{{$jeu->scratch_id}}" target="_blank">{{$jeu->scratch_id}}</a></td>
+                                            <td class="align-middle"><a href="/console/jouer-jeu-scratch/{{Auth::user()->jeton.'-'.$jeu->python_id}}" target="_blank">{{$jeu->scratch_id}}</a></td>
                                             <td class="text-right">
                                                 <a tabindex='0' class='btn btn-danger btn-sm text-light' role='button'  style="cursor:pointer;outline:none;" data-toggle="popover" data-trigger="focus" data-placement="left" data-html="true" data-content="<a href='/console/supprimer-jeu/{{ Crypt::encryptString($jeu->id) }}' class='btn btn-danger btn-sm text-light' role='button'>confirmer</a><a class='btn btn-light btn-sm ml-2' href='#' role='button'>annuler</a>"><i class='fas fa-trash fa-sm'></i></a>
                                             </td>
@@ -70,7 +70,7 @@
                 <h2 class="mt-3">PYTHON</h2>
                 <div style="border:1px silver solid;border-radius:5px;padding:20px;background-color:white;">
                     <?php
-                    $categories = ['PI' => 'Première', 'POO' => 'Terminale'];
+                    $categories = ['PI' => 'Première', 'POO' => 'Terminale', 'PB' => 'Post-bac'];
                     foreach ($categories AS $categorie_code => $categorie){
                         $jeux = App\Models\Game::where([['etablissement_id', Auth::user()->id], ['type', request()->segment(2)], ['categorie', $categorie_code]])->get();
                         ?>
@@ -96,7 +96,7 @@
                                                 <td class="align-middle">{{$jeu->nom_equipe}}</td>
                                                 <td class="align-middle">
                                                     <?php
-                                                    $files = File::files(storage_path("app/public/fichiers_pyxel/".$jeu->etablissement_jeton.'-'.$jeu->python_id));
+                                                    $files = File::files(storage_path("app/public/depot-jeux/python/".$jeu->etablissement_jeton.'/'.$jeu->python_id));
                                                     foreach($files AS $file) {
                                                         echo '<kbd>'.basename($file).'</kbd> ';
                                                     }

@@ -63,6 +63,7 @@
                     <div class="overflow-auto table-responsive" style="border:1px solid #f1f1f1;background-color:#f1f1f1;border-radius:4px;padding:10px 10px 10px 14px;height:140px">
                         <table class="table table-borderless table-sm text-secondary">
 
+                            <tr><td><b>06/04</b></td><td style="width:100%">Bulletin <a href="https://github.com/nuitducode/ORGANISATION-2024/discussions/25" target="_blank">#03</a></td></tr>
                             <tr><td><b>06/04</b></td><td style="width:100%">Mise à jour de la console: publication des documents à distribuer aux équipes</td></tr>
                             <tr><td><b>25/03</b></td><td style="width:100%">Bulletin <a href="https://github.com/nuitducode/ORGANISATION-2024/discussions/21" target="_blank">#02</a></td></tr>
                             <tr><td><b>15/01</b></td><td style="width:100%">Bulletin <a href="https://github.com/nuitducode/ORGANISATION-2024/discussions/7" target="_blank">#01</a></td></tr>
@@ -199,11 +200,6 @@
 
                 </form>
 
-       
-                
-
-
-        
                 <h2>JEUX & ÉVALUATIONS</h2>
                 <div style="border:1px solid #dfdfdf;border-radius:4px;padding:20px;">
                     <div class="row">
@@ -252,55 +248,7 @@
                                 
                             <?php
                             /*
-
-
                             <iframe src="https://turbowarp.org/embed/?project_url=www.nuitducode.net/01.sb3" width="482" height="412" allowtransparency="true" frameborder="0" scrolling="no" allowfullscreen></iframe>
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            <div class="mt-1 ml-4">    
-                                Quels univers de jeu souhaitez-vous recevoir pour votre Nuit du code ? <sup><i class="fas fa-question-circle text-muted" data-boundary="window" data-toggle="tooltip" data-placement="auto" title="Les univers de jeu seront publiés dans la console 48h avant la date indiquée. En cas de problème, écrire à contact@nuitducode.net"></i></sup>
-                                <form method="POST" action="{{ route('fiche-inscription-details_post') }}" style="border:1px solid #dfdfdf;border-radius:4px;padding:10px;background-color:#f3f5f7;">
-                                    <table>
-                                        <tr>
-                                            <td>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="univers_scratch">
-                                                    <label class="custom-control-label" for="univers_scratch">Scratch</label>
-                                                </div>
-                                            </td>
-                                            <td class="pl-3">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="univers_python">
-                                                    <label class="custom-control-label" for="univers_python">Python</label>
-                                                </div>
-                                            </td>
-                                            <td class="pl-3">
-                                                <u>Date</u><br />{{$jour}}/{{$mois}}
-                                            </td>
-                                            <td class="pl-3">   
-                                                <button type="submit" class="btn btn-primary btn-sm text-left btn-block pl-3 pr-3">
-                                                    <i class="fas fa-check pt-1" style="float:left"></i>
-                                                    <div class="ml-4">valider la date et les univers de jeu</div>
-                                                </button>     
-                                            </td>  
-                                            <td class="text-monospace text-muted small pl-3">   
-                                                Vous pouvez changer la date dans la section "DONNÉES". 
-                                            </td>                 
-                                        </tr>
-                                    </table>
-                                </form>
-                            </div>
                             */
                             ?>
 
@@ -322,8 +270,7 @@
                             </div>
 
                             
-                            <?php
-                            /*
+                            @if (Auth::user()->is_admin == 1)
                             <!-- == 3 == -->
                             <h3 id="s03" class="mt-5"><span class="badge badge-pill badge-primary pt-1">3</span> Dépôt & évaluation des jeux</h3>
                             <div class="mb-1 ml-3">
@@ -358,7 +305,7 @@
                             <h3 id="finalistes" class="mt-5"><span class="badge badge-pill badge-primary pt-1">5</span> Jeux proposés pour la sélection internationale</h3>
                             <div class="ml-2 mb-1 ml-4 pl-4 pr-4 pb-3 pt-3" style="border-radius:4px;border:1px solid #dfdfdf;background-color:#f3f5f7">
                             
-                                @if (Auth::user()->fin_evaluations == 0 AND date("Y-m-d") > "2023-06-04")
+                                @if (Auth::user()->fin_evaluations == 0 AND date("Y-m-d") > "2024-06-04")
 
                                     <div class="text-monospace small text-secondary">
                                         Vous n'avez pas proposé de jeux. Fin des propositions de listes.
@@ -428,6 +375,9 @@
 
                             </div>
 
+
+                            <?php
+                            /*
                             <!-- == 6 == -->
                             <h3 id="s06" class="mt-5"><span class="badge badge-pill badge-primary pt-1">6</span> Sélection internationale</h3>
                             <div class="mb-1 ml-4">
@@ -462,10 +412,11 @@
                                 ?>
                                 Partagez cette page sur <a href="https://mastodonshare.com/?text={{$mastodon_text}}" target="_blank">Mastodon</a> et/ou <a href="https://twitter.com/intent/tweet?text={{$twitter_text}}" target="_blank">Twitter</a>.
                             </div>
+                            
                             */
                             ?>
+                            @endif
                              
-
                         </div>
                     </div>
                 </div>

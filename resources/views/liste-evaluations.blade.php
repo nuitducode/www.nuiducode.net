@@ -26,8 +26,8 @@
 
                 <h1 class="mb-0">ÉVALUATIONS</h1>
                 <div class="text-monospace text-muted small">
-                    @if(request()->segment(2) == 'ndc') Nuit du Code 2023 @endif
-                    @if(request()->segment(2) == 'sltn') Sélections 2023 @endif
+                    @if(request()->segment(2) == 'ndc') Nuit du Code @endif
+                    @if(request()->segment(2) == 'sltn') Sélections @endif
                     @if(request()->segment(2) == 'demo') Démo @endif
                 </div>
                 <h2>SCRATCH</h2>
@@ -73,7 +73,7 @@
                 <h2>PYTHON</h2>
                 <div style="border:1px silver solid;border-radius:5px;padding:20px;background-color:white;">
                 <?php
-                $categories = ['PI' => 'Première', 'POO' => 'Terminale'];
+                $categories = ['PI' => 'Première', 'POO' => 'Terminale', 'PB' => 'Post-bac'];
                 foreach ($categories AS $categorie_code => $categorie){
                     $evaluations = App\Models\Evaluation::where([['etablissement_id', Auth::user()->id], ['type', request()->segment(2)], ['categorie', $categorie_code]])->get();
                     ?>
