@@ -10,8 +10,8 @@
 
         <div class="row mb-5 mt-4">
 			<div class="col-md-8 offset-md-2 text-center">
-                <div class=""><img src="{{ asset('img/ndc2023.png') }}" width="280" /></div>
-                <div class="font-weight-bold text-monospace" style="font-size:24px;color:#261b0c;">UNIVERS DE JEU</div>
+                <div class=""><img src="{{ asset('img/ndc.png') }}" width="280" /></div>
+                <div class="font-weight-bold text-monospace" style="font-size:21px;color:#261b0c;">UNIVERS DE JEU 2024</div>
                 <div class="text-monospace text-danger font-weight-bold" style="font-size:18px">
                     SCRATCH<br /><img src="{{ asset('img/affiche/scratch.png') }}" width="35" />
                 </div>
@@ -21,9 +21,14 @@
         <div class="row mb-4">
             <div class="col-12 text-monospace text-danger" style="text-align:justify;border:1px solid #e35551;border-radius:4px;padding:15px 15px 0px 0px;">
                 <ul>
-                    <li class="mb-1">Les univers de jeu ainsi que les liens sont <b><u>confidentiels</u></b>. Ils ne doivent être partagés avec personne d'autre, ni pendant, ni après la NDC.</li>
-                    <li class="mb-1">Le titre du jeu créé par une équipe doit être le nom de l'équipe. De plus, les mots suivants ne doivent pas apparaître dans le titre ni dans les champs "Instructions" et "Notes et Crédits" du jeu (ou des différentes versions du jeu): "nuit", "code", "c0de", "2023", "NdC", "ndc".</li>
+                    <li class="mb-1">Les univers de jeu ainsi que les liens sont <b><u>confidentiels</u></b>. Pendant la période de la NDC (mai - juin):</li>
+                    <ul>
+                        <li>Les univers de jeu et les liens fournis ne doivent être partagés avec personne d'autre.</li>
+                        <li>Les univers de jeu ne doivent pas être utilisés pour créer d'autres jeux.</li>
+                    </ul>
+                    <li class="mb-1"><b>NE PAS PARTAGER VOTRE JEU SUR LE SITE DE SCRATCH</b>. Si vous avez cliqué sur «Share» par mégarde, allez dans «My Stuff» et cliquez sur «Unshare». Un contrôle automatique est fait régulièrement. Les jeux partagés sur le site de Scratch ne seront pas évalués.</li>
                     <li class="mb-1">Vous ne devez utiliser que les ressources fournies. Vous ne pouvez pas importer de ressources extérieures, utiliser du code déjà prêt, consulter de la documentation ni utiliser des notes personnelles. Par contre, vous pouvez poser des questions aux enseignants et à vos camarades des autres équipes.</li>
+                    <li>Le respect des consignes fait partie de l’évaluation du jeu.</li>
                 </ul>
             </div>
         </div>
@@ -52,56 +57,62 @@
 
             <div class="row row-cols-1 row-cols-md-3">
 
+                <?php
+                // =============
+                $edition = 2024;
+                // =============
+                ?>
+
                 <div class="col mb-4">
                     <div class="card h-100">
-                        <img src="{{ asset('univers_scratch/2023/1.png') }}"  />
+                        <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/scratch/1.png') }}"  />
                         <div class="card-body text-center p-2" style="background-color:#f8fafc">
-                            Fichier <a href="{{ asset('univers_scratch/2023/1.sb3') }}" download>1.sb3</a>
+                            Fichier <a href="{{ asset('storage/univers/'.$edition.'/scratch/1.sb3') }}" download>1.sb3</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="col mb-4">
                     <div class="card h-100">
-                        <img src="{{ asset('univers_scratch/2023/2.png') }}"  />
+                        <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/scratch/2.png') }}"  />
                         <div class="card-body text-center p-2" style="background-color:#f8fafc">
-                            Fichier <a href="{{ asset('univers_scratch/2023/2.sb3') }}" download>2.sb3</a>
+                            Fichier <a href="{{ asset('storage/univers/'.$edition.'/scratch/2.sb3') }}" download>2.sb3</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="col mb-4">
                     <div class="card h-100">
-                        <img src="{{ asset('univers_scratch/2023/3.png') }}"  />
+                        <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/scratch/3.png') }}"  />
                         <div class="card-body text-center p-2" style="background-color:#f8fafc">
-                            Fichier <a href="{{ asset('univers_scratch/2023/3.sb3') }}" download>3.sb3</a>
+                            Fichier <a href="{{ asset('storage/univers/'.$edition.'/scratch/3.sb3') }}" download>3.sb3</a>
                         </div>
                     </div>
                 </div>
                 
                 <div class="col mb-4">
                     <div class="card h-100">
-                        <img src="{{ asset('univers_scratch/2023/4.png') }}"  />
+                        <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/scratch/4.png') }}"  />
                         <div class="card-body text-center p-2" style="background-color:#f8fafc">
-                            Fichier <a href="{{ asset('univers_scratch/2023/4.sb3') }}" download>4.sb3</a>
+                            Fichier <a href="{{ asset('storage/univers/'.$edition.'/scratch/4.sb3') }}" download>4.sb3</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="col mb-4">
                     <div class="card h-100">
-                        <img src="{{ asset('univers_scratch/2023/5.png') }}"  />
+                        <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/scratch/5.png') }}"  />
                         <div class="card-body text-center p-2" style="background-color:#f8fafc">
-                            Fichier <a href="{{ asset('univers_scratch/2023/5.sb3') }}" download>5.sb3</a>
+                            Fichier <a href="{{ asset('storage/univers/'.$edition.'/scratch/5.sb3') }}" download>5.sb3</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="col mb-4">
                     <div class="card h-100">
-                        <img src="{{ asset('univers_scratch/2023/6.png') }}"  />
+                        <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/scratch/6.png') }}"  />
                         <div class="card-body text-center p-2" style="background-color:#f8fafc">
-                            Fichier <a href="{{ asset('univers_scratch/2023/6.sb3') }}" download>6.sb3</a>
+                            Fichier <a href="{{ asset('storage/univers/'.$edition.'/scratch/6.sb3') }}" download>6.sb3</a>
                         </div>
                     </div>
                 </div>

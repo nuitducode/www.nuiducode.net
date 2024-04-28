@@ -10,8 +10,8 @@
 
         <div class="row mb-5 mt-4">
 			<div class="col-md-8 offset-md-2 text-center">
-                <div class=""><img src="{{ asset('img/ndc2023.png') }}" width="280" /></div>
-                <div class="font-weight-bold text-monospace" style="font-size:24px;color:#261b0c;">UNIVERS DE JEU</div>
+                <div class=""><img src="{{ asset('img/ndc.png') }}" width="280" /></div>
+                <div class="font-weight-bold text-monospace" style="font-size:21px;color:#261b0c;">UNIVERS DE JEU 2024</div>
                 <div class="text-monospace text-danger font-weight-bold" style="font-size:18px">
                     PYTHON<br /><img src="{{ asset('img/affiche/python.png') }}" width="35" />
                 </div>
@@ -20,8 +20,12 @@
 
         <div class="row mb-4">
             <div class="col-12 text-monospace text-danger" style="text-align:justify;border:1px solid #e35551;border-radius:4px;padding:15px 15px 0px 0px;">
-                <ul>
-                    <li class="mb-1">Les univers de jeu, les thèmes ainsi que les liens sont <b><u>confidentiels</u></b>. Ils ne doivent être partagés avec personne d'autre, ni pendant, ni après la NDC.</li>
+                    <ul>
+                    <li class="mb-1">Les univers de jeu ainsi que les liens sont <b><u>confidentiels</u></b>. Pendant la période de la NDC (mai - juin):</li>
+                        <ul>
+                            <li>Les univers de jeu et les liens fournis ne doivent être partagés avec personne d'autre.</li>
+                            <li>Les univers de jeu ne doivent pas être utilisés pour créer d'autres jeux.</li>
+                        </ul>
                     <li class="mb-1">Vous ne devez utiliser que les ressources fournies. Vous ne pouvez pas importer de ressources extérieures, utiliser du code déjà prêt, consulter de la documentation ni utiliser des notes personnelles. Par contre, vous pouvez poser des questions aux enseignants et à vos camarades des autres équipes.</li>
                 </ul>
             </div>
@@ -46,25 +50,22 @@
 
         <div id="udj" class="mt-5" style="display:none">
 
-            <div class="row mb-4">
-                <div class="col-12 text-success text-monospace">
-                    Le développement du jeu peut se faire en ligne avec <a href="https://www.nuitducode.net/pyxel" target="_blank">www.nuitducode.net/pyxel</a> (version de Pyxel Studio faite pour la NDC) ou avec l'environnement de développement de votre choix.
-                    <br />
-                    <i class="fas fa-exclamation-circle text-danger"></i>  N'utilisez pas www.pyxelstudio.net pour la NDC!
-                </div>
-            </div>
+            <div class="row mb-2">
 
-            <div class="row mb-4">
+                <?php
+                // =============
+                $edition = 2024;
+                // =============
+                ?>
                 
                 <div class="col-12">
-                    <div class="">Vous pouvez choisir un thème ou un des cinq univers ci-dessous.</div>
+                    <div class="">Vous pouvez choisir un thème ou un des quatre univers ci-dessous.</div>
 
                     <div class="font-weight-bold mt-4">THÈMES</div>
                     <ul>
-                        <li class="mb-1">Thème 1 : "le plus gros gagne"</li>
-                        <li class="mb-1">Thème 2 : "le dernier à l'écran gagne"</li>
+                        <li class="mb-1">Thème 1 : "JO-métriques: les Jeux Olympiques avec des formes géométriques"<br />Pour ce thème vous ne pouvez utiliser de fichier <samp>.pyxres</samp>. Tout doit être fait avec des formes géométriques.</li>
+                        <li class="mb-1">Thème 2 : "Chasse au trésor sous terre"<br />Pour ce thème, vous devez utiliser ce fichier vide <a href="{{ asset('storage/univers/'.$edition.'/python/theme2.pyxres') }}" download>theme2.pyxres</a> ou utiliser seulement des formes géométriques.</li>
                     </ul>
-                    <div>Si vous choissiez un des deux thèmes, utilisez ce fichier vide <a href="{{ asset('univers_python/2023/theme.pyxres') }}" download>theme.pyxres</a>.</div>
 
                     <div class="font-weight-bold mt-5">UNIVERS</div>
                 </div>
@@ -74,45 +75,36 @@
 
                 <div class="col mb-4">
                     <div class="card h-100">
-                        <img src="{{ asset('univers_python/2023/1.png') }}"  />
+                        <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/python/1.png') }}"  />
                         <div class="card-body text-center p-2" style="background-color:#f8fafc">
-                            Fichier <a href="{{ asset('univers_python/2023/1.pyxres') }}" download>1.pyxres</a>
+                            Fichier <a href="{{ asset('storage/univers/'.$edition.'/python/1.pyxres') }}" download>1.pyxres</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="col mb-4">
                     <div class="card h-100">
-                        <img src="{{ asset('univers_python/2023/2.png') }}"  />
+                        <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/python/2.png') }}"  />
                         <div class="card-body text-center p-2" style="background-color:#f8fafc">
-                            Fichier <a href="{{ asset('univers_python/2023/2.pyxres') }}" download>2.pyxres</a>
+                            Fichier <a href="{{ asset('storage/univers/'.$edition.'/python/2.pyxres') }}" download>2.pyxres</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="col mb-4">
                     <div class="card h-100">
-                        <img src="{{ asset('univers_python/2023/3.png') }}"  />
+                        <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/python/3.png') }}"  />
                         <div class="card-body text-center p-2" style="background-color:#f8fafc">
-                            Fichier <a href="{{ asset('univers_python/2023/3.pyxres') }}" download>3.pyxres</a>
+                            Fichier <a href="{{ asset('storage/univers/'.$edition.'/python/3.pyxres') }}" download>3.pyxres</a>
                         </div>
                     </div>
                 </div>
                 
                 <div class="col mb-4">
                     <div class="card h-100">
-                        <img src="{{ asset('univers_python/2023/4.png') }}"  />
+                        <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/python/4.png') }}"  />
                         <div class="card-body text-center p-2" style="background-color:#f8fafc">
-                            Fichier <a href="{{ asset('univers_python/2023/4.pyxres') }}" download>4.pyxres</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col mb-4">
-                    <div class="card h-100">
-                        <img src="{{ asset('univers_python/2023/5.png') }}"  />
-                        <div class="card-body text-center p-2" style="background-color:#f8fafc">
-                            Fichier <a href="{{ asset('univers_python/2023/5.pyxres') }}" download>5.pyxres</a>
+                            Fichier <a href="{{ asset('storage/univers/'.$edition.'/python/4.pyxres') }}" download>4.pyxres</a>
                         </div>
                     </div>
                 </div>
