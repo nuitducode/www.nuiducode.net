@@ -61,11 +61,26 @@
                 <div class="col-12">
                     <div class="">Vous pouvez choisir un thème ou un des quatre univers ci-dessous.</div>
 
-                    <div class="font-weight-bold mt-4">THÈMES</div>
+                    <div class="font-weight-bold mt-4 mb-2">THÈMES</div>
                     <ul>
-                        <li class="mb-1">Thème 1 : "JO-métriques: les Jeux Olympiques avec des formes géométriques"<br />Pour ce thème vous ne pouvez utiliser de fichier <samp>.pyxres</samp>. Tout doit être fait avec des formes géométriques.</li>
-                        <li class="mb-1">Thème 2 : "Chasse au trésor sous terre"<br />Pour ce thème, vous devez utiliser ce fichier vide <a href="{{ asset('storage/univers/'.$edition.'/python/theme2.pyxres') }}" download>theme2.pyxres</a> ou utiliser seulement des formes géométriques.</li>
+                        <li class="mb-1">
+                            <b>Thème 1</b>: "JO-métriques: les Jeux Olympiques avec des formes géométriques"<br />Pour ce thème vous ne pouvez pas utiliser de fichier <samp>.pyxres</samp>. Tout doit être fait avec des formes géométriques.
+                        </li>
+                        <li class="mb-1">
+                            <b>Thème 2</b>: "Chasse au trésor sous terre ou sous l'eau"<br />Pour ce thème, vous devez utiliser ce fichier vide
+                            <form method="POST" action="{{ route('telecharger-univers') }}" class="pl-1 pr-1" style="display:inline">
+                                    @csrf
+                                    <input type="hidden" name="fichier" value="theme2.pyxres">
+                                    <input type="hidden" name="langage" value="python">
+                                    <input type="hidden" name="edition" value="{{$edition}}">
+                                    <button type="submit" class="btn btn-sm btn-primary">
+                                        <i class="fas fa-arrow-down"></i><span class="pl-2 text-monospace">theme2.pyxres</span>
+                                    </button>
+                            </form>
+                            ou utiliser seulement des formes géométriques.
+                        </li>
                     </ul>
+                    <div class="ml-4 text-monospace small text-danger">Si vous choisissez un thème, indiquez clairement le thème choisi dans la présentation de votre jeu.</div>
 
                     <div class="font-weight-bold mt-5">UNIVERS</div>
                 </div>
@@ -77,7 +92,15 @@
                     <div class="card h-100">
                         <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/python/1.png') }}"  />
                         <div class="card-body text-center p-2" style="background-color:#f8fafc">
-                            Fichier <a href="{{ asset('storage/univers/'.$edition.'/python/1.pyxres') }}" download>1.pyxres</a>
+                            <form method="POST" action="{{ route('telecharger-univers') }}">
+                                @csrf
+                                <input type="hidden" name="fichier" value="1.pyxres">
+                                <input type="hidden" name="langage" value="python">
+                                <input type="hidden" name="edition" value="{{$edition}}">
+                                <button type="submit" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-arrow-down"></i><span class="pl-2 text-monospace">1.pyxres</span>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -86,7 +109,15 @@
                     <div class="card h-100">
                         <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/python/2.png') }}"  />
                         <div class="card-body text-center p-2" style="background-color:#f8fafc">
-                            Fichier <a href="{{ asset('storage/univers/'.$edition.'/python/2.pyxres') }}" download>2.pyxres</a>
+                            <form method="POST" action="{{ route('telecharger-univers') }}">
+                                @csrf
+                                <input type="hidden" name="fichier" value="2.pyxres">
+                                <input type="hidden" name="langage" value="python">
+                                <input type="hidden" name="edition" value="{{$edition}}">
+                                <button type="submit" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-arrow-down"></i><span class="pl-2 text-monospace">2.pyxres</span>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -95,7 +126,15 @@
                     <div class="card h-100">
                         <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/python/3.png') }}"  />
                         <div class="card-body text-center p-2" style="background-color:#f8fafc">
-                            Fichier <a href="{{ asset('storage/univers/'.$edition.'/python/3.pyxres') }}" download>3.pyxres</a>
+                            <form method="POST" action="{{ route('telecharger-univers') }}">
+                                @csrf
+                                <input type="hidden" name="fichier" value="3.pyxres">
+                                <input type="hidden" name="langage" value="python">
+                                <input type="hidden" name="edition" value="{{$edition}}">
+                                <button type="submit" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-arrow-down"></i><span class="pl-2 text-monospace">3.pyxres</span>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -104,7 +143,15 @@
                     <div class="card h-100">
                         <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/python/4.png') }}"  />
                         <div class="card-body text-center p-2" style="background-color:#f8fafc">
-                            Fichier <a href="{{ asset('storage/univers/'.$edition.'/python/4.pyxres') }}" download>4.pyxres</a>
+                            <form method="POST" action="{{ route('telecharger-univers') }}">
+                                @csrf
+                                <input type="hidden" name="fichier" value="4.pyxres">
+                                <input type="hidden" name="langage" value="python">
+                                <input type="hidden" name="edition" value="{{$edition}}">
+                                <button type="submit" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-arrow-down"></i><span class="pl-2 text-monospace">4.pyxres</span>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>

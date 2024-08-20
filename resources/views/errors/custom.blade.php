@@ -17,7 +17,7 @@
                 <div class="col text-center text-monospace small" style="color:silver">vous pouvez signaler ce problème en écrivant à : contact@nuitducode.net</div>
             </div>
             <div class="row mt-4">
-                <div class="col text-center small" style="opacity:0.6"><a class="btn btn-outline-secondary btn-sm" href="/" role="button">retour sur le page d'accueil</a></div>
+                <div class="col text-center small" style="opacity:0.6"><a class="btn btn-outline-secondary btn-sm" href="/" role="button">retour sur la page d'accueil</a></div>
             </div>
         </div>
     </body>

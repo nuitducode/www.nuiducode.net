@@ -3,8 +3,6 @@
 <html lang="fr">
 <head>
     @include('inc-meta')
-    <link href="{{ asset('css/dropzone-basic.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/dropzone.css') }}" rel="stylesheet">
     <title>Nuit du Code | Dépôt jeu SCRATCH ou PYTHON</title>
 </head>
 <body>
@@ -19,8 +17,8 @@
                 <div class="text-center mb-4"><img src="{{ url('/')}}/img/ndc.png" width="280" /></div>
 
                 <div class="mt-5 text-center">
-                    <a class="btn btn-primary mr-2" href="/{{request()->segment(1)}}/scratch/{{$etablissement_jeton}}" role="button">Déposer un jeu<br />SCRATCH</a>
-                    <a class="btn btn-primary mr-2" href="/{{request()->segment(1)}}/python/{{$etablissement_jeton}}" role="button">Déposer un jeu<br />PYTHON</a>
+                    <a class="btn btn-primary mr-2" href="/{{request()->segment(1)}}/scratch/{{$etablissement_jeton}}/{{$version}}" role="button">Déposer un jeu<br />SCRATCH</a>
+                    <a class="btn btn-primary mr-2" href="/{{request()->segment(1)}}/python/{{$etablissement_jeton}}/{{$version}}" role="button">Déposer un jeu<br />PYTHON</a>
                 </div>
 
 			</div>

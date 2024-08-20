@@ -48,13 +48,13 @@
 
                     <div class="form-group">
 						@if (strtolower($token[1].$token[3].$token[5]) == 'hez')
-                            <div class="text-center mb-3 text-monospace">~ évaluation des jeux ~</div>
-                            <div class="text-center mb-4 font-weight-bold">ÉQUIPE D'ÉLÈVES</div>
+                            <div class="text-center mb-2 text-monospace">~ évaluation des jeux ~</div>
+                            <div class="text-monospace text-center mb-4 font-weight-bold">ÉQUIPE D'ÉLÈVES</div>
                             <div for="jury_nom" class="text-info">NOM DE L'ÉQUIPE <sup class="text-danger">*</sup></div>
                             <div class="text-monospace text-muted small mb-1">Saisir le nom de votre équipe</div>
                         @elseif (strtolower($token[1].$token[3].$token[5]) == 'jwa')
-                            <div class="text-center mb-3 text-monospace">~ évaluation des jeux ~</div>
-                            <div class="text-center mb-4 font-weight-bold">ENSEIGNANT</div>
+                            <div class="text-center mb-2 text-monospace">~ évaluation des jeux ~</div>
+                            <div class="text-monospace text-center mb-4 font-weight-bold">ENSEIGNANT</div>
                             <div for="jury_nom" class="text-info">IDENTIFIANT <sup class="text-danger">*</sup></div>
                             <div class="text-monospace text-muted small mb-1">Prénom, nom ou les deux</div>
                         @else

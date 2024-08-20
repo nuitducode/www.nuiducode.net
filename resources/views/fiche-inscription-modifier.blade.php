@@ -16,7 +16,7 @@
                 <a class="btn btn-light btn-sm" href="/console" role="button"><i class="fas fa-arrow-left"></i></a>
 			</div>
 
-			<div class="col-md-10">
+			<div class="col-md-8">
 
 				@if (session('status'))
 					<div class="alert alert-success" role="alert">
@@ -32,8 +32,9 @@
 							@csrf
 
 							<div class="form-group row">
-								<label for="prenom" class="col-md-2 col-form-label text-md-right text-info">prénom <sup class="text-danger">*</sup></label>
-
+								<label for="prenom" class="col-md-6 col-form-label text-md-right text-info">
+									<div class="text-uppercase">prénom <sup class="text-danger">*</sup></div>
+								</label>
 								<div class="col-md-6">
 									<input id="prenom" type="text" class="form-control @error('prenom') is-invalid @enderror" name="prenom" value="{{ old('prenom', Auth::user()->prenom) }}" autofocus>
 									@error('prenom')
@@ -45,8 +46,9 @@
 							</div>
 
 							<div class="form-group row">
-								<label for="nom" class="col-md-2 col-form-label text-md-right text-info">nom <sup class="text-danger">*</sup></label>
-
+								<label for="nom" class="col-md-6 col-form-label text-md-right text-info">
+									<div class="text-uppercase">nom <sup class="text-danger">*</sup></div>
+								</label>
 								<div class="col-md-6">
 									<input id="nom" type="text" class="form-control @error('nom') is-invalid @enderror" name="nom" value="{{ old('nom', Auth::user()->nom)}}" />
 									@error('nom')
@@ -58,7 +60,10 @@
 							</div>
 
 							<div class="form-group row">
-								<label for="titre" class="col-md-2 col-form-label text-md-right text-info" style="line-height:1">titre <sup class="text-danger">*</sup><br /><span class="small font-italic" style="opacity:0.5">ex.: enseignante de mathématiques, enseignant de SNT, proviseure, proviseur-adjoint, CPE...</span></label>
+								<label for="titre" class="col-md-6 col-form-label text-md-right text-info" style="line-height:1">
+									<div class="text-uppercase">titre <sup class="text-danger">*</sup><br /></div>
+									<div class="text-dark small font-italic pr-2 pt-1" style="opacity:0.5">ex.: enseignante de mathématiques, enseignant de SNT, proviseure, proviseur-adjoint, CPE...</div>
+								</label>
 								<div class="col-md-6">
 									<input id="titre" type="text" class="form-control @error('titre') is-invalid @enderror" name="titre" value="{{ old('titre', Auth::user()->titre) }}" />
 									@error('titre')
@@ -70,7 +75,9 @@
 							</div>
 
 							<div class="form-group row">
-								<label for="etablissement" class="col-md-2 col-form-label text-md-right  text-info">établissement <sup class="text-danger">*</sup></label>
+								<label for="etablissement" class="col-md-6 col-form-label text-md-right  text-info">
+									<div class="text-uppercase">établissement <sup class="text-danger">*</sup></div>
+								</label>
 								<div class="col-md-6">
 									<input id="etablissement" type="text" class="form-control @error('etablissement') is-invalid @enderror" name="etablissement" value="{{ old('etablissement', Auth::user()->etablissement) }}" />
 									@error('etablissement')
@@ -82,9 +89,10 @@
 							</div>
 
                             <div class="form-group row">
-								<label for="ac_zone" class="col-md-2 col-form-label text-md-right text-info">académie / zone <sup class="text-danger">*</sup></label>
+								<label for="ac_zone" class="col-md-6 col-form-label text-md-right text-info">
+									<div class="text-uppercase">académie / zone <sup class="text-danger">*</sup></div>
+								</label>
 								<div class="col-md-6">
-
 									<?php
 									$academies = ["Aix-Marseille", "Amiens", "Besançon", "Bordeaux", "Clermont-Ferrand", "Corse", "Créteil", "Dijon", "Grenoble", "Guadeloupe", "Guyane", "La Réunion", "Lille", "Limoges", "Lyon", "Martinique", "Mayotte", "Montpellier", "Nancy-Metz", "Nantes", "Nice", "Normandie", "Orléans-Tours", "Paris", "Poitiers", "Reims", "Rennes", "Strasbourg", "Toulouse", "Versailles", "Wallis-et-Futuna", "Nouvelle-Calédonie", "Saint-Pierre-et-Miquelon", "Polynésie française"];
 									$zones = ["AEFE - Afrique Australe et Orientale", "AEFE - Afrique Centrale", "AEFE - Afrique Occidentale", "AEFE - Amérique du Nord", "AEFE - Amérique Latine Rythme Nord", "AEFE - Amérique Latine Rythme Sud", "AEFE - Asie-Pacifique", "AEFE - Europe Centrale et Orientale", "AEFE - Europe du Nord-Ouest et Scandinave", "AEFE - Europe du Sud-Est", "AEFE - Europe Ibérique", "AEFE - Maghreb Est", "AEFE - Maroc", "AEFE - Proche-Orient", "AEFE - Moyen-Orient", "AEFE - Océan Indien"];
@@ -108,7 +116,9 @@
 							</div>
 
 							<div class="form-group row">
-								<label for="ville" class="col-md-2 col-form-label text-md-right text-info">ville <sup class="text-danger">*</sup></label>
+								<label for="ville" class="col-md-6 col-form-label text-md-right text-info">
+									<div class="text-uppercase">ville <sup class="text-danger">*</sup></div>
+								</label>
 								<div class="col-md-6">
 									<input id="ville" type="text" class="form-control @error('ville') is-invalid @enderror" name="ville" value="{{ old('ville', Auth::user()->ville) }}" />
 									@error('ville')
@@ -120,7 +130,9 @@
 							</div>
 
                             <div class="form-group row">
-								<label for="pays" class="col-md-2 col-form-label text-md-right text-info">pays <sup class="text-danger">*</sup></label>
+								<label for="pays" class="col-md-6 col-form-label text-md-right text-info">
+									<div class="text-uppercase">pays <sup class="text-danger">*</sup></div>
+								</label>
 								<div class="col-md-6">
 									<input id="pays" type="text" class="form-control @error('pays') is-invalid @enderror" name="pays" value="{{ old('pays', Auth::user()->pays) }}" />
 									@error('pays')
@@ -132,7 +144,9 @@
 							</div>
 
                             <div class="form-group row">
-								<label for="nb_participants" class="col-md-2 col-form-label text-md-right text-info" style=";line-height:1">nombre d'élèves <sup class="text-danger">*</sup></label>
+								<label for="nb_participants" class="col-md-6 col-form-label text-md-right text-info">
+									<div class="text-uppercase">nombre d'élèves <sup class="text-danger">*</sup></div>
+								</label>
 								<div class="col-md-6">
 									<input id="nb_participants" type="text" class="form-control @error('nb_participants') is-invalid @enderror" name="nb_participants" value="{{ old('nb_participants', Auth::user()->nb_participants) }}" />
 									@error('nb_participants')
@@ -143,10 +157,73 @@
 								</div>
 							</div>
 
-							<div class="form-group row mb-0 pt-2">
-								<div class="col-md-6 offset-md-2">
-									<button type="submit" id="inscription" class="btn btn-primary"><i class="fas fa-check"></i></button>
+
+
+							<div class="rounded p-3 mb-4 small" style="border:1px solid #ced4da">
+								
+								<div class="text-dark font-italic" style="opacity:0.5">optionnel</div>
+
+								<div class="form-group row">
+									<label for="twitter_orga" class="col-md-6 col-form-label text-md-right text-info" style=";line-height:1">
+										<div class="text-uppercase pr-2">compte 𝕏</div>
+									</label>
+									<div class="col-md-6">
+										<input id="twitter_orga" type="text" class="form-control form-control-sm" name="twitter_orga" value="{{ old('twitter_orga', Auth::user()->twitter_orga) }}" placeholder="https://x.com/pierredupont" />
+									</div>
 								</div>
+
+								<div class="form-group row">
+									<label for="mastodon_orga" class="col-md-6 col-form-label text-md-right text-info" style=";line-height:1">
+										<div class="text-uppercase pr-2">compte Mastodon</div>
+									</label>
+									<div class="col-md-6">
+										<input id="mastodon_orga" type="text" class="form-control form-control-sm" name="mastodon_orga" value="{{ old('mastodon_orga', Auth::user()->mastodon_orga) }}"  placeholder="https://mastodon.social/@pierredupont" />
+									</div>
+								</div>							
+
+								<div class="form-group row">
+									<label for="linkedin_orga" class="col-md-6 col-form-label text-md-right text-info" style=";line-height:1">
+										<div class="text-uppercase pr-2">compte LinkedIn</div>
+									</label>
+									<div class="col-md-6">
+										<input id="linkedin_orga" type="text" class="form-control form-control-sm" name="linkedin_orga" value="{{ old('linkedin_orga', Auth::user()->linkedin_orga) }}"  placeholder="https://www.linkedin.com/in/pierredupont/" />
+									</div>
+								</div>	
+
+								<div class="form-group row">
+									<label for="twitter_etab" class="col-md-6 col-form-label text-md-right text-info" style=";line-height:1">
+										<div class="text-uppercase pr-2">compte 𝕏 de l'établissement</div>
+									</label>
+									<div class="col-md-6">
+										<input id="twitter_etab" type="text" class="form-control form-control-sm" name="twitter_etab" value="{{ old('twitter_etab', Auth::user()->twitter_etab) }}" placeholder="https://x.com/lfitokyo" />
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label for="mastodon_etab" class="col-md-6 col-form-label text-md-right text-info" style=";line-height:1">
+										<div class="text-uppercase pr-2">compte Mastodon de l'établissement</div>
+									</label>
+									<div class="col-md-6">
+										<input id="mastodon_etab" type="text" class="form-control form-control-sm" name="mastodon_etab" value="{{ old('mastodon_etab', Auth::user()->mastodon_etab) }}" placeholder="https://mastodon.social/@lfitokyo" />
+									</div>
+								</div>							
+
+								<div class="form-group row mb-0">
+									<label for="linkedin_etab" class="col-md-6 col-form-label text-md-right text-info" style=";line-height:1">
+										<div class="text-uppercase pr-2">compte LinkedIn de l'établissement</div>
+									</label>
+									<div class="col-md-6">
+										<input id="linkedin_etab" type="text" class="form-control form-control-sm" name="linkedin_etab" value="{{ old('linkedin_etab', Auth::user()->linkedin_etab) }}" placeholder="https://www.linkedin.com/company/international-french-school-in-tokyo/" />
+									</div>
+								</div>	
+							
+							</div>
+
+
+							<div class="text-center mb-0 pt-2">
+					
+									<button type="submit" id="inscription" class="btn btn-primary pl-5 pr-5"><i class="fas fa-check"></i></button>
+							
 							</div>
 
 						</form>

@@ -76,7 +76,7 @@ if (Auth::user()->is_admin != 1) {
                 <h2>PYTHON</h2>
                 <div style="border:1px silver solid;border-radius:5px;padding:20px;background-color:white;">
                 <?php
-                $categories = ['PI' => 'Première', 'POO' => 'Terminale'];
+                $categories = ['PI' => 'Première', 'POO' => 'Terminale', 'PB' => 'Postbac'];
                 foreach ($categories AS $categorie_code => $categorie){
                     $evaluations = App\Models\Evaluation::where([['etablissement_id', request()->get('id')], ['type', 'ndc'], ['categorie', $categorie_code]])->get();
                     ?>

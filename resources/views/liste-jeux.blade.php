@@ -50,9 +50,15 @@
                                         @foreach($jeux AS $jeu)
                                         <tr>
                                             <td class="align-middle">{{$jeu->nom_equipe}}</td>
-                                            <td class="align-middle"><a href="/console/jouer-jeu-scratch/{{Auth::user()->jeton.'-'.$jeu->python_id}}" target="_blank">{{$jeu->scratch_id}}</a></td>
-                                            <td class="text-right">
-                                                <a tabindex='0' class='btn btn-danger btn-sm text-light' role='button'  style="cursor:pointer;outline:none;" data-toggle="popover" data-trigger="focus" data-placement="left" data-html="true" data-content="<a href='/console/supprimer-jeu/{{ Crypt::encryptString($jeu->id) }}' class='btn btn-danger btn-sm text-light' role='button'>confirmer</a><a class='btn btn-light btn-sm ml-2' href='#' role='button'>annuler</a>"><i class='fas fa-trash fa-sm'></i></a>
+                                            <td class="align-middle"><a href="https://turbowarp.org/embed/?project_url=www.nuitducode.net/storage/depot-jeux/scratch/{{Auth::user()->jeton}}/{{$jeu->scratch_id}}.sb3" target="_blank">{{$jeu->scratch_id}}</a></td>
+                                            <td class="text-right" style="width:160px;">
+                                                <button class="btn btn-dark btn-sm text-light" type="button" data-toggle="collapse" data-target="#collapse_{{$jeu->id}}" aria-expanded="false" aria-controls="collapse_{{$jeu->id}}">
+                                                    <i class='fas fa-trash fa-sm'></i>
+                                                </button>
+                                                <div class="collapse" id="collapse_{{$jeu->id}}">
+                                                    <a href='/console/supprimer-jeu/{{ Crypt::encryptString($jeu->id) }}' class='mt-2 btn btn-danger btn-sm text-white' role='button'>confirmer</a>
+                                                    <a class="mt-2 btn btn-light btn-sm text-dark" data-toggle="collapse" href="#collapse_{{$jeu->id}}" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fa-solid fa-xmark"></i></a>
+                                                </div>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -103,8 +109,14 @@
                                                     ?>
                                                 </td>
                                                 <td class="align-middle"><a href="/console/jouer-jeu-pyxel/{{Auth::user()->jeton.'-'.$jeu->python_id}}" target="_blank">{{$jeu->python_id}}</a></td>
-                                                <td class="text-right">
-                                                    <a tabindex='0' class='btn btn-danger btn-sm text-light' role='button'  style="cursor:pointer;outline:none;" data-toggle="popover" data-trigger="focus" data-placement="left" data-html="true" data-content="<a href='/console/supprimer-jeu/{{ Crypt::encryptString($jeu->id) }}' class='btn btn-danger btn-sm text-light' role='button'>confirmer</a><a class='btn btn-light btn-sm ml-2' href='#' role='button'>annuler</a>"><i class='fas fa-trash fa-sm'></i></a>
+                                                <td class="text-right" style="width:160px;">
+                                                    <button class="btn btn-dark btn-sm text-light" type="button" data-toggle="collapse" data-target="#collapse_{{$jeu->id}}" aria-expanded="false" aria-controls="collapse_{{$jeu->id}}">
+                                                        <i class='fas fa-trash fa-sm'></i>
+                                                    </button>
+                                                    <div class="collapse" id="collapse_{{$jeu->id}}">
+                                                        <a href='/console/supprimer-jeu/{{ Crypt::encryptString($jeu->id) }}' class='mt-2 btn btn-danger btn-sm text-white' role='button'>confirmer</a>
+                                                        <a class="mt-2 btn btn-light btn-sm text-dark" data-toggle="collapse" href="#collapse_{{$jeu->id}}" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fa-solid fa-xmark"></i></a>
+                                                    </div>
                                                 </td>
                                             </tr>
                                             @endforeach

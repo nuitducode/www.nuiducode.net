@@ -18,10 +18,10 @@
 
 
                 <?php
-                if(File::exists(storage_path("app/public/fichiers_pyxel/".$jeu_id))) {
-                    $files = File::files(storage_path("app/public/fichiers_pyxel/".$jeu_id));
+                if(File::exists(storage_path("app/public/depot-jeux/python/".str_replace("-", "/", $jeu_id)))) {
+                    $files = File::files(storage_path("app/public/depot-jeux/python/".str_replace("-", "/", $jeu_id)));
                     $etablissement_jeton = substr($jeu_id,0,4);
-                    $python_id = substr($jeu_id,5,4);
+                    $python_id = substr($jeu_id,5,5);
                     $jeu = App\Models\Game::where([['etablissement_jeton', $etablissement_jeton], ['python_id', $python_id]])->first();
                     ?>
                 
@@ -48,9 +48,9 @@
                         <div class="collapse mb-4" id="code_run">
 
 <pre class="m-0 text-left"><code id="htmlViewer" style="color:rgb(216, 222, 233); font-weight:400;background-color:rgb(46, 52, 64);background:rgb(46, 52, 64);display:block;padding: 1.5em;border-radius:5px;"><span style="color:rgb(129, 161, 193); font-weight:400;">import</span> requests, os
-code = <span style="color:rgb(163, 190, 140); font-weight:400;">'{{$jeu_id}}'</span>
+code = <span style="color:rgb(163, 190, 140); font-weight:400;">'{{str_replace("-", "/", $jeu_id)}}'</span>
 site = <span style="color:rgb(163, 190, 140); font-weight:400;">'https://www.nuitducode.net'</span>
-url = site + <span style="color:rgb(163, 190, 140); font-weight:400;">'/storage/fichiers_pyxel/'</span> + code
+url = site + <span style="color:rgb(163, 190, 140); font-weight:400;">'/storage/depot-jeux/python/'</span> + code
 @foreach($files as $file)
 <span style="color:rgb(129, 161, 193); font-weight:400;">{{pathinfo($file, PATHINFO_EXTENSION)}}</span> = requests.<span style="color:rgb(129, 161, 193); font-weight:400;">get</span>(url + <span style="color:rgb(163, 190, 140); font-weight:400;">'/{{basename($file)}}'</span>)
 with <span style="color:rgb(129, 161, 193); font-weight:400;">open</span>(<span style="color:rgb(163, 190, 140); font-weight:400;">'{{basename($file)}}'</span>, <span style="color:rgb(163, 190, 140); font-weight:400;">'wb'</span>) <span style="color:rgb(129, 161, 193); font-weight:400;">as</span> file:
@@ -83,7 +83,7 @@ os.system(<span style="color:rgb(163, 190, 140); font-weight:400;">'pyxel run "{
                                 ?>
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-2 pl-3 pr-3">
                                     {{basename($file)}}
-                                    <a href="/storage/fichiers_pyxel/{{$jeu_id}}/{{basename($file)}}" class="text-secondary" download><i class="fa-solid fa-circle-arrow-down"></i></a>
+                                    <a href="/storage/depot-jeux/python/{{str_replace("-", "/", $jeu_id)}}/{{basename($file)}}" class="text-secondary" download><i class="fa-solid fa-circle-arrow-down"></i></a>
                                 </li>
                             @endforeach
                             </ul>
@@ -91,12 +91,12 @@ os.system(<span style="color:rgb(163, 190, 140); font-weight:400;">'pyxel run "{
                             @if($fichier_py)
                             <div class="text-monospace text-left mt-3 ml-1">{{basename($fichier_py)}}</div>
                             <div style="width:100%;margin:0px auto 0px auto;">
-                                <div id="editor_code" style="border-radius:5px;">{{ Storage::disk('local')->get('/public/fichiers_pyxel/'.$jeu_id.'/'.basename($fichier_py)) }}</div>
+                                <div id="editor_code" style="border-radius:5px;">{{ Storage::disk('local')->get('/public/depot-jeux/python/'.str_replace("-", "/", $jeu_id).'/'.basename($fichier_py)) }}</div>
                             </div>
                             @endif
                         </div>
 
-                        <div class="mt-4 small text-monospace text-left mb-2" style="border:1px solid silver; padding:10px;border-radius:4px; background-color:white;">
+                        <div class="mt-2 small text-monospace text-left mb-2" style="border:1px solid silver; padding:10px;border-radius:4px; background-color:white;">
                             @if ($jeu->documentation != NULL)
                                 {!! nl2br($jeu->documentation) !!}
                             @else

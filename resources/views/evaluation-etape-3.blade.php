@@ -21,12 +21,6 @@
         </div><!-- /row -->
 	</div><!-- /container -->
 
-    <script>
-    if ( window.history.replaceState ) {
-      window.history.replaceState( null, null, window.location.href );
-    }
-    </script>
-
 	@include('inc-bottom-js')
 
 </body>

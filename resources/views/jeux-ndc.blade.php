@@ -33,7 +33,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:description" content="Marathon de programmation Scratch / Python - 6h pour créer un jeu. CM / Collège / Lycée." />
     <meta property="og:url" content="https://www.nuitducode.net/ndc2023" />
-    <meta property="og:image" content="{{ asset('img/open-graph-selection.png') }}" />
+    <meta property="og:image" content="{{ asset('img/open-graph-selection-2024.png') }}" />
     <meta property="og:image:alt" content="Nuit du Code" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
@@ -45,7 +45,7 @@
     <meta name="twitter:creator" content="@nuitducode">
     <meta name="twitter:title" content="Nuit du Code 2023 - Sélection internationale">
     <meta name="twitter:description" content="Marathon de programmation Scratch / Python - 6h pour créer un jeu. CM / Collège / Lycée.">
-    <meta name="twitter:image" content="{{ asset('img/open-graph-selection.png') }}">
+    <meta name="twitter:image" content="{{ asset('img/open-graph-selection-2024.png') }}">
 
     <!-- Matomo - données anonymisées - pas de cookies - RGPD -->
     <script>
@@ -83,6 +83,8 @@
             </div>
             
             <p class="text-center">
+				<a class="btn btn-success text-monospace m-2" href="/jeux-ndc2024" role="button">sélection internationale 2024</a>
+                <br />
                 <a class="btn btn-success text-monospace m-2" href="/jeux-ndc2023" role="button">sélection internationale 2023</a>
                 <br />
                 <a class="btn btn-success text-monospace m-2" href="/jeux-ndc2022" role="button">sélection internationale 2022</a>

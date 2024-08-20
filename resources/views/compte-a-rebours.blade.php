@@ -20,7 +20,7 @@
     <div class="text-center text-monospace" style="position:relative;height:100%">
 
         <div style="position:absolute;top:40px;left:0;right:0;height:30%">
-            <img src="{{ asset('img/ndc2023.png') }}" style="height:100%" />
+            <img src="{{ asset('img/ndc2024.png') }}" style="height:100%" />
         </div>
 
         <div style="position:absolute;bottom:0;left:0;right:0;height:65%">
@@ -49,9 +49,9 @@
 
                             <select class="form-control form-control-lg" id="month" name="month">
                                 <script>
-                                    var mois_noms =  {5:'mai', 6:'juin'};
+                                    var mois_noms =  {4:'avril', 5:'mai', 6:'juin'};
                                     var mois = init.getMonth();
-                                    for (var i = 5; i <= 6; i++) {
+                                    for (var i = 4; i <= 6; i++) {
                                         mois_selected = (i == mois) ? "selected":"";
                                         document.write('<option value="' + i.toString().padStart(2, '0') + '"'+mois_selected+'>' + mois_noms[i] + '</option>');
                                     }
@@ -117,7 +117,7 @@
                 var month = document.getElementById("month").value
                 var hour = document.getElementById("hour").value
                 var minute = document.getElementById("minute").value
-                var date = "2023-"+month+"-"+day+"T"+hour+":"+minute+":00";
+                var date = "2024-"+month+"-"+day+"T"+hour+":"+minute+":00";
                 var targetTime = new Date(date).getTime();
                 var difference = targetTime - now;
                 console.log(difference);

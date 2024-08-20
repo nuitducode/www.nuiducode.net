@@ -264,7 +264,7 @@ exit;
                                         </ul>
                                     </div>
                                     <div class="mb-2">
-                                        <button type="button" class="btn btn-info mt-2" onClick="document.getElementById('player_{{$balise}}-{{$i}}').innerHTML='<iframe src=\'/ndc/evaluation-pyxel-player/{{ Crypt::encryptString($jeu[0]) }}\' width=\'100%\' height=\'100%\' frameborder=\'0\' scrolling=\'no\'></iframe>';document.getElementById('warning_{{$balise}}-{{$i}}').style.display='block';">lancer / recharger le jeu</button>  
+                                        <button type="button" class="btn btn-info mt-2" onClick="document.getElementById('player_{{$balise}}-{{$i}}').innerHTML='<iframe src=\'/ndc/pyxel-player-2023/{{ Crypt::encryptString($jeu[0]) }}\' width=\'100%\' height=\'100%\' frameborder=\'0\' scrolling=\'no\'></iframe>';document.getElementById('warning_{{$balise}}-{{$i}}').style.display='block';">lancer / recharger le jeu</button>  
                                         <button type="button" class="mt-2 btn btn-light ml-3 pl-3 pr-3" onclick="fullscreen('player_{{$balise}}-{{$i}}')" data-toggle="tooltip" data-placement="top" data-title="mode plein écran"><i class="fas fa-expand"></i></i></button> 
                                     </div>
 

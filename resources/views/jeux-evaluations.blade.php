@@ -32,8 +32,8 @@
                 <h1 class="m-0 p-0">JEUX</h1>
 
                 <div class="text-monospace text-muted small">
-                    @if(request()->segment(2) == 'ndc') Nuit du Code 2023 @endif
-                    @if(request()->segment(2) == 'sltn') Sélections 2023 @endif
+                    @if(request()->segment(2) == 'ndc') Nuit du Code @endif
+                    @if(request()->segment(2) == 'sltn') Sélections @endif
                     @if(request()->segment(2) == 'demo') Démo @endif
                 </div>
 
@@ -64,8 +64,7 @@
                                     $note_eleves = App\Models\Evaluation::where([['etablissement_id', $etablissement_id], ['game_id', $jeu->id], ['jury_type', 'eleve']])->avg('note');
                                     $note_enseignants = App\Models\Evaluation::where([['etablissement_id', $etablissement_id], ['game_id', $jeu->id], ['jury_type', 'enseignant']])->avg('note');
                                     $note = App\Models\Evaluation::where([['etablissement_id', $etablissement_id], ['game_id', $jeu->id]])->avg('note');
-                                    $json = @file_get_contents("https://api.scratch.mit.edu/projects/".$jeu->scratch_id);
-                                    $evaluations[$jeu->id] = ["nom_equipe"=>$jeu->nom_equipe, "finaliste"=>$jeu->finaliste, "scratch_id"=>$jeu->scratch_id, "json"=>$json, "nb_eval_eleves"=>$nb_eval_eleves, "nb_eval_enseignants"=>$nb_eval_enseignants, "note_eleves"=>$note_eleves, "note_enseignants"=>$note_enseignants, "note"=>$note];
+                                    $evaluations[$jeu->id] = ["nom_equipe"=>$jeu->nom_equipe, "finaliste"=>$jeu->finaliste, "scratch_id"=>$jeu->scratch_id, "nb_eval_eleves"=>$nb_eval_eleves, "nb_eval_enseignants"=>$nb_eval_enseignants, "note_eleves"=>$note_eleves, "note_enseignants"=>$note_enseignants, "note"=>$note];
                                 }
                                 uasort($evaluations, fn($a, $b) => $a['note'] <=> $b['note']);
                                 $evaluations = array_reverse($evaluations, TRUE);
@@ -104,30 +103,20 @@
                                             </div>
 
                                             <div class="card-footer">
-                                                @if ($evaluation['json'] !== FALSE)
+											
+                                                <div class="text-center">
+                                                    <a href="https://turbowarp.org/embed/?project_url=www.nuitducode.net/storage/depot-jeux/scratch/{{$etablissement_jeton}}/{{$evaluation['scratch_id']}}.sb3" class="btn btn-success btn-sm" target="_blank" role="button"><i class="fas fa-gamepad fa-2x"></i></a>
+                                                </div>
 
-                                                    <div style="position:relative">
-                                                        <div style="position:absolute;top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                                                            <a href="https://scratch.mit.edu/projects/{{$evaluation['scratch_id']}}" class="btn btn-success btn-sm" target="_blank" role="button"><i class="fas fa-gamepad fa-2x"></i></a>
-                                                        </div>
-                                                        <img src="https://uploads.scratch.mit.edu/get_image/project/{{$evaluation['scratch_id']}}_282x218.png" class="img-fluid" style="border-radius:4px;" width="100%" />
-                                                    </div>
+												<div class="mt-2 text-monospace small">
+													<div>Nb d'éval. élèves: <span class="text-primary font-weight-bold">{{ $evaluation['nb_eval_eleves'] }}</span></div>
+													<div>Nb d'éval. ens.: <span class="text-primary font-weight-bold">{{ $evaluation['nb_eval_enseignants'] }}</span></div>
+													<div>Note élèves: <span class="text-primary font-weight-bold">@if($evaluation['note_eleves'] != 0){{ round($evaluation['note_eleves'], 1) }} @else - @endif</span></div>
+													<div>Note enseignants: <span class="text-primary font-weight-bold">@if($evaluation['note_enseignants'] != 0) {{ round($evaluation['note_enseignants'],1) }} @else - @endif</span></div>
+												</div>
 
-                                                    <div class="mt-2 text-monospace small">
-                                                        <div>Nb d'éval. élèves: <span class="text-primary font-weight-bold">{{ $evaluation['nb_eval_eleves'] }}</span></div>
-                                                        <div>Nb d'éval. ens.: <span class="text-primary font-weight-bold">{{ $evaluation['nb_eval_enseignants'] }}</span></div>
-                                                        <div>Note élèves: <span class="text-primary font-weight-bold">@if($evaluation['note_eleves'] != 0){{ round($evaluation['note_eleves'], 1) }} @else - @endif</span></div>
-                                                        <div>Note enseignants: <span class="text-primary font-weight-bold">@if($evaluation['note_enseignants'] != 0) {{ round($evaluation['note_enseignants'],1) }} @else - @endif</span></div>
-                                                    </div>
+												<kbd class="mt-2 text-center d-block">Note globale:<span class="text-primary font-weight-bold">@if($evaluation['note'] != 0) {{ round($evaluation['note'],1) }} @else - @endif</span></kbd>
 
-                                                    <kbd class="mt-2 text-center d-block">Note globale:<span class="text-primary font-weight-bold">@if($evaluation['note'] != 0) {{ round($evaluation['note'],1) }} @else - @endif</span></kbd>
-
-                                                @else
-
-                                                    <div class="text-monospace small text-danger">Cet identifiant Scratch n'existe pas! [{{$jeu->scratch_id}}]</div>
-                                                    <div class="text-monospace small text-danger">Vérifier que le jeu a bien été partagé (bouton orange "Partager", ou "Share" en anglais).</div>
-
-                                                @endif
                                             </div>
 
                                         </div>
@@ -198,7 +187,6 @@
                                                     <input type="checkbox" class="checkbox_{{$categorie_code}}" name="game_id" value="{{$game_id}}" onclick="update_finaliste(this)" @if ($evaluation['finaliste'] == 1) checked @endif>
                                                 </div>
                                                 @endif
-
 
                                                 <h3 class="mt-0" style="color:#4cbf56">
                                                     <span id="{{$game_id}}_h3">@if($evaluation['finaliste'] == 1)<i class="fas fa-crown mr-1" style="color:#f39c12"></i>@endif</span> {{ $evaluation['nom_equipe'] }}

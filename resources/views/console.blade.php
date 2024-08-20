@@ -17,21 +17,28 @@
 
             <div class="col-md-2 mt-5 mb-5">
 
-            <a class=" btn btn-warning btn-sm btn-block text-left mt-4" href="https://github.com/nuitducode/ORGANISATION-2024/discussions" target="_blank" role="button"><i class="far fa-comment-alt pr-2"></i> discussions</a>
+				<a class=" btn btn-warning btn-sm btn-block text-left mt-4" href="https://github.com/nuitducode/ORGANISATION-2025/discussions" target="_blank" role="button"><i class="far fa-comment-alt pr-2"></i> discussions</a>
 
-            <a class=" btn btn-info btn-sm btn-block text-left mt-4" href="https://nuit-du-code.forge.apps.education.fr/DOCUMENTATION/01-presentation/" role="button" target="_blank">présentation</a>
-            <a class=" btn btn-info btn-sm btn-block text-left" href="https://nuit-du-code.forge.apps.education.fr/DOCUMENTATION/02-organisation/" role="button" target="_blank">organisation</a>
-            <a class=" btn btn-info btn-sm btn-block text-left" href="https://nuit-du-code.forge.apps.education.fr/DOCUMENTATION/04-regles-conseils/" role="button" target="_blank">règles & conseils</a>
-            <a class=" btn btn-info btn-sm btn-block text-left" href="https://nuit-du-code.forge.apps.education.fr/DOCUMENTATION/03-communication-et-goodies/" role="button" target="_blank">communication & "goodies"</a>
+				<a class=" btn btn-info btn-sm btn-block text-left mt-4" href="https://nuit-du-code.forge.apps.education.fr/DOCUMENTATION/01-presentation/" role="button" target="_blank">présentation</a>
+				<a class=" btn btn-info btn-sm btn-block text-left" href="https://nuit-du-code.forge.apps.education.fr/DOCUMENTATION/02-organisation/" role="button" target="_blank">organisation</a>
+				<a class=" btn btn-info btn-sm btn-block text-left" href="https://nuit-du-code.forge.apps.education.fr/DOCUMENTATION/04-regles-conseils/" role="button" target="_blank">règles & conseils</a>
+				<a class=" btn btn-info btn-sm btn-block text-left" href="https://nuit-du-code.forge.apps.education.fr/DOCUMENTATION/03-communication-et-goodies/" role="button" target="_blank">communication & "goodies"</a>
 
-            <a class=" btn btn-secondary btn-sm btn-block text-left mt-4" href="https://nuit-du-code.forge.apps.education.fr/DOCUMENTATION/SCRATCH/01-introduction/" role="button" target="_blank">entrainement scratch</a>
-            <a class=" btn btn-secondary btn-sm btn-block text-left" href="https://nuit-du-code.forge.apps.education.fr/DOCUMENTATION/PYTHON/01-presentation/" role="button" target="_blank">entrainement python</a>
+				<a class=" btn btn-secondary btn-sm btn-block text-left mt-4" href="https://nuit-du-code.forge.apps.education.fr/DOCUMENTATION/SCRATCH/01-introduction/" role="button" target="_blank">entrainement scratch</a>
+				<a class=" btn btn-secondary btn-sm btn-block text-left" href="https://nuit-du-code.forge.apps.education.fr/DOCUMENTATION/PYTHON/01-presentation/" role="button" target="_blank">entrainement python</a>
 
-            <a class=" btn btn-light btn-sm btn-block text-left mt-4" href="/console/fiche-inscription" role="button"><i class="far fa-address-card pr-2"></i> fiche d'inscription</a>
+				<a class=" btn btn-light btn-sm btn-block text-left mt-4" href="/console/fiche-inscription" role="button"><i class="far fa-address-card pr-2"></i> fiche d'inscription</a>
 
-            @if (Auth::user()->is_admin == 1)
-                <a class=" btn btn-danger btn-sm text-left mt-3" href="/console/admin" role="button"><i class="fas fa-shield-alt"></i></a>
-            @endif
+				@if (Auth::user()->is_admin == 1)
+					<div class="mt-3 text-center">
+						<a class=" btn btn-danger btn-sm text-left mt-1" href="/console/admin" role="button"><i class="fa-solid fa-list"></i></a>
+						<a class=" btn btn-danger btn-sm text-left mt-1" href="/console/admin_finalistes" role="button"><i class="fa-solid fa-chart-simple"></i></a>
+						<a class=" btn btn-danger btn-sm text-left mt-1" href="/console/admin_finalistes_par_territoire" role="button"><i class="fa-solid fa-earth-americas"></i></a>
+						<br />
+						<a class=" btn btn-danger btn-sm text-left mt-1 font-weight-bold text-monospace" href="/console/admin-liste-jeux-v1" role="button">v1</a>
+						<a class=" btn btn-danger btn-sm text-left mt-1 font-weight-bold text-monospace" href="/console/admin-liste-jeux-v2" role="button">v2</a>
+					</div>
+				@endif
 
             </div>
 
@@ -52,23 +59,18 @@
                 }
                 ?>                
 
-                <h1 class="m-0 p-0">NUIT DU CODE 2024</h1>
+                <h1 class="m-0 p-0">NUIT DU CODE 2025</h1>
 
                 <div class="mt-2 mb-3">
                     Vous avez prévu d'organiser la NDC le : <kbd><b>@php if (Auth::user()->ndc_date){echo sprintf('%02d', $jour)."/".$mois;}else{echo "?";}@endphp</b></kbd>
                 </div>
 
                 <div class="text-monospace text-secondary mb-3 small">
-                    <div>Journal de la NDC 2024</div>
+                    <div>Journal de la NDC</div>
                     <div class="overflow-auto table-responsive" style="border:1px solid #f1f1f1;background-color:#f1f1f1;border-radius:4px;padding:10px 10px 10px 14px;height:140px">
                         <table class="table table-borderless table-sm text-secondary">
 
-                            <tr><td><b>06/04</b></td><td style="width:100%">Bulletin <a href="https://github.com/nuitducode/ORGANISATION-2024/discussions/25" target="_blank">#03</a></td></tr>
-                            <tr><td><b>06/04</b></td><td style="width:100%">Mise à jour de la console: publication des documents à distribuer aux équipes</td></tr>
-                            <tr><td><b>25/03</b></td><td style="width:100%">Bulletin <a href="https://github.com/nuitducode/ORGANISATION-2024/discussions/21" target="_blank">#02</a></td></tr>
-                            <tr><td><b>15/01</b></td><td style="width:100%">Bulletin <a href="https://github.com/nuitducode/ORGANISATION-2024/discussions/7" target="_blank">#01</a></td></tr>
-                            <tr><td><b>03/10</b></td><td style="width:100%">Ajout de la catégorie "Post-bac"</td></tr>
-                            <tr><td><b>08/08</b></td><td style="width:100%">Ouverture des inscriptions  pour la NDC 2024</td></tr>
+                            <tr><td><b>08/19</b></td><td style="width:100%">Ouverture des inscriptions  pour la NDC 2025</td></tr>
                             
                         </table>
                     </div>
@@ -200,26 +202,16 @@
 
                 </form>
 
-                <h2>JEUX & ÉVALUATIONS</h2>
-                <div style="border:1px solid #dfdfdf;border-radius:4px;padding:20px;">
+                <div class="mt-3" style="border:1px solid #dfdfdf;border-radius:4px;padding:20px;">
                     <div class="row">
                         <div class="col-12">
 
-                            <div class="mt-0 mb-5" style="border:1px solid #e35551;border-radius:4px;padding:20px 20px 0px 20px;">
-                                <div class="text-monospace text-danger small" style="text-align:justify">
-                                    <b>IMPORTANT</b><br />
-                                    <ul>
-                                        <li class="mb-1">Les univers de jeu ainsi que les liens sont <b><u>confidentiels</u></b>. Ils ne doivent être partagés qu'avec les élèves qui participent à la NDC et qu'<u>au tout début des 6h</u> (pas plus tôt). Il est important de bien indiquer aux élèves qu'ils ne doivent s'en servir que pour créer leur jeu, qu'ils ne doivent pas partager les univers de jeu avec d'autres personnes et qu'ils ne doivent pas utiliser les univers de jeu pour créer d'autres jeux pendant toute la période de la NDC (mai - juin).</li>
-                                        <li class="mb-1">Pour les élèves qui utiliseront Scratch: <b>NE PAS PARTAGER LE JEU SUR LE SITE DE SCRATCH</b>. Si une équipe a cliqué sur « Share » par mégarde, il faut aller dans « My Stuff » et cliquer sur « Unshare ».</li>
-                                        <li class="mb-1">Les élèves ne doivent utiliser que les ressources fournies. Ils ne peuvent pas importer de ressources extérieures, utiliser du code déjà prêt, consulter de la documentation (autre que celle fournie) ni utiliser des notes personnelles. Par contre, ils peuvent poser des questions aux enseignants et à leurs camarades des autres équipes.</li>
-                                        <li class="mb-1">Pour Scratch et Python, les élèves doivent écrire une courte présentation et un mode d'emploi du jeu.</li>
-                                        <li>Pour plus de détails, voir <a href="https://nuit-du-code.forge.apps.education.fr/DOCUMENTATION/04-regles-conseils/" target="_blank">"Règles et Conseils"</a> Scratch ou Python.</li>
-                                    </ul>
-                                </div>
-                            </div>
-
+        
                             <!-- == 1 == -->
-                            <h3 id="s01" class="m-0 mb-2"><span class="badge badge-pill badge-primary pt-1">1</span> Documents pour les équipes <sup><i class="fas fa-question-circle text-muted" data-boundary="window" data-toggle="tooltip" data-placement="auto" title="Documents à distribuer aux équipes le jour de la NDC ou quelques jours avant."></i></sup></h3>
+                            <h3 id="s01" class="m-0 mb-2"><span class="badge badge-pill badge-primary pt-1">1</span> Documents pour les équipes</h3>
+
+                            <div class="text-danger text-monospace small ml-4 mb-2">Attention: ces documents vont être mis à jour bientôt pour l'édition 2025.</div>
+
                             <div class="row ml-2">
                                 <div class="col">
                                     <a class=" btn btn-light btn-block btn-sm" href="https://forge.apps.education.fr/nuit-du-code/DOCUMENTATION/-/raw/main/docs/assets/documents/regles-et-conseils-scratch.pdf" role="button">Règles et Conseils<br /><span style="font-size:80%;color:gray">Scratch</span></a>
@@ -243,19 +235,53 @@
                                 </div>
                             </div>
 
+                            <div class="ml-4 mt-3">Versions en ligne: <a href="https://nuit-du-code.forge.apps.education.fr/DOCUMENTATION/04-regles-conseils/#scratch" target="_blank">Scratch</a> - <a href="https://nuit-du-code.forge.apps.education.fr/DOCUMENTATION/04-regles-conseils/#python-pyxel" target="_blank">Python</a></div>
+
+
+                            <!-- == 2 == -->
+                            <h3 id="s02" class="mt-5"><span class="badge badge-pill badge-primary pt-1">2</span> Entraînement </h3>
+                            <div class="ml-4">
+                                Ressources pour préparer les élèves à la  Nuit du Code:
+                                <ul>
+                                    <li><a href="https://nuit-du-code.forge.apps.education.fr/DOCUMENTATION/PYTHON/01-presentation/" target="_blank">Scratch</a></li>
+                                    <li><a href="https://nuit-du-code.forge.apps.education.fr/DOCUMENTATION/SCRATCH/01-introduction/" target="_blank">Python</a></li>
+                                </ul>
+                                <div style="text-align:justify">Pour cette nouvelle édition, nous souhaitons étoffer les tutoriels Scratch et Python et proposer des séquences pédagogiques "Nuit du Code" Scratch ou Python à intégrer dans les programmes (technologie, mathématiques, SNT, NSI...). Si vous avez créé d'autres ressources ou si vous souhaitez contribuer à la création de nouvelles ressources, vous pouvez écrire à <a href="mailto:contact@nuitducode.net">contact@nuitducode.net</a>.</div>
+                            </div>
+
+
+
+                            @if (Auth::user()->is_admin == 1)
+							<div class="mt-5 text-danger text-monospace">--------------------------------- MODE ADMIN ---------------------------------</div>
+
+
+
+
+
                             <!-- == 2 == -->
                             <h3 id="s02" class="mt-5"><span class="badge badge-pill badge-primary pt-1">2</span> Univers de jeu</h3>
-                                
+
+
+
+
                             <?php
                             /*
                             <iframe src="https://turbowarp.org/embed/?project_url=www.nuitducode.net/01.sb3" width="482" height="412" allowtransparency="true" frameborder="0" scrolling="no" allowfullscreen></iframe>
                             */
                             ?>
-
-                            <div class="ml-4 mt-1 text-monospace text-danger small" style="text-align:justify">
-                                Rappel: les univers de jeu ainsi que les liens sont <b><u>confidentiels</u></b>. Ils ne doivent être partagés qu'avec les élèves qui participent à la NDC. Les élèves ne doivent les partager avec personne d'autre et ils ne doivent pas utiliser les univers de jeu pour créer d'autres jeux pendant toute la période de la NDC (mai - juin).
+                            <div class="ml-4 mt-0 mb-3" style="border:1px solid #e35551;border-radius:4px;padding:20px 20px 0px 20px;">
+                                <div class="text-monospace text-danger small" style="text-align:justify">
+                                    <b>IMPORTANT</b><br />
+                                    <ul>
+                                        <li class="mb-1">Les univers de jeu ainsi que les liens sont <b><u>confidentiels</u></b>. Ils ne doivent être partagés qu'avec les élèves qui participent à la NDC et qu'<u>au tout début des 6h</u> (pas plus tôt). Il est important de bien indiquer aux élèves qu'ils ne doivent s'en servir que pour créer leur jeu, qu'ils ne doivent pas partager les univers de jeu avec d'autres personnes et qu'ils ne doivent pas utiliser les univers de jeu pour créer d'autres jeux pendant toute la période de la NDC (mai - juin).</li>
+                                        <li class="mb-1">Pour les élèves qui utiliseront Scratch: <b>NE PAS PARTAGER LE JEU SUR LE SITE DE SCRATCH</b>. Si une équipe a cliqué sur « Share » par mégarde, il faut aller dans « My Stuff » et cliquer sur « Unshare ».</li>
+                                        <li class="mb-1">Les élèves ne doivent utiliser que les ressources fournies. Ils ne peuvent pas importer de ressources extérieures, utiliser du code déjà prêt, consulter de la documentation (autre que celle fournie) ni utiliser des notes personnelles. Par contre, ils peuvent poser des questions aux enseignants et à leurs camarades des autres équipes.</li>
+                                        <li class="mb-1">Pour Scratch et Python, les élèves doivent écrire une courte présentation et un mode d'emploi du jeu.</li>
+                                        <li>Pour plus de détails, voir <a href="https://nuit-du-code.forge.apps.education.fr/DOCUMENTATION/04-regles-conseils/" target="_blank">"Règles et Conseils"</a> Scratch ou Python.</li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="ml-4 mt-1" style="border:1px solid #e35551;border-radius:4px;padding:20px 20px 20px 20px;background-color:white;">
+                            <div class="ml-4 mt-1" style="border:1px solid silver;border-radius:4px;padding:20px 20px 20px 20px;background-color:white;">
                                 <div class="text-center mb-4">Lien(s) à ne fournir aux équipes qu'<u>au tout début des 6h</u></div>
                                 <div>
                                     <div>
@@ -269,8 +295,7 @@
                                 </div>
                             </div>
 
-                            
-                            @if (Auth::user()->is_admin == 1)
+
                             <!-- == 3 == -->
                             <h3 id="s03" class="mt-5"><span class="badge badge-pill badge-primary pt-1">3</span> Dépôt & évaluation des jeux</h3>
                             <div class="mb-1 ml-3">
@@ -295,17 +320,19 @@
                                 
                             </div>
 
+
                             <!-- == 4 == -->
                             <h3 id="s04" class="mt-5"><span class="badge badge-pill badge-primary pt-1">4</span> Bilan des évaluations & Sélection</h3>
                             <div class="mb-1 ml-4">
                                 <a class=" btn btn-info" href="/console/ndc/jeux-evaluations" role="button"><i class="fas fa-trophy"></i></a>
                             </div>
 
+
                             <!-- == 5 == -->
                             <h3 id="finalistes" class="mt-5"><span class="badge badge-pill badge-primary pt-1">5</span> Jeux proposés pour la sélection internationale</h3>
                             <div class="ml-2 mb-1 ml-4 pl-4 pr-4 pb-3 pt-3" style="border-radius:4px;border:1px solid #dfdfdf;background-color:#f3f5f7">
                             
-                                @if (Auth::user()->fin_evaluations == 0 AND date("Y-m-d") > "2024-06-04")
+                                @if (Auth::user()->fin_evaluations == 0 AND date("Y-m-d") > "2025-06-10")
 
                                     <div class="text-monospace small text-secondary">
                                         Vous n'avez pas proposé de jeux. Fin des propositions de listes.
@@ -325,7 +352,7 @@
 
                                         <div class="p-3 pl-4 mb-3" style="border-radius:4px;@if(Auth::user()->fin_evaluations == 0) background-color:#f3f5f7 @else  background-color:#ffc905;margin-top:10px; @endif">
                                             <?php
-                                            $categories = ['C3' => 'Scratch - Cycle 3', 'C4' => 'Scratch - Cycle 4', 'LY' => 'Scratch - Lycée', 'PI' => 'Python - Première', 'POO' => 'Python - Terminale'];
+                                            $categories = ['C3' => 'Scratch - Cycle 3', 'C4' => 'Scratch - Cycle 4', 'LY' => 'Scratch - Lycée', 'PI' => 'Python - Première', 'POO' => 'Python - Terminale', 'PB' => 'Python - Post-bac'];
                                             foreach ($categories AS $categorie_code => $categorie){
                                                 $jeux_finalistes = App\Models\Game::where([['etablissement_id', Auth::user()->id], ['type', 'ndc'], ['categorie', $categorie_code], ['finaliste', 1]])->get();
                                                 if($jeux_finalistes->count() != 0){
@@ -357,7 +384,13 @@
 
                                         @if(Auth::user()->fin_evaluations == 0)
                                             <div class="text-center">
-                                                <a tabindex='0' class='btn btn-primary btn-sm mt-2 pl-4 pr-4' role='button'  style="cursor:pointer;outline:none;" data-toggle="popover" data-trigger="focus" data-placement="top" data-html="true" data-content="<div class='text-center'><div class='pb-2'>Verrouiller cette liste et proposer ces jeux pour la sélection internationale.</div><a href='/console/valider-finalistes/{{ Crypt::encryptString(Auth::user()->id) }}' class='btn btn-danger btn-sm' style='color:white' role='button'>confirmer</a><a class='btn btn-light btn-sm ml-2' href='#' role='button'>annuler</a>"><i class="fas fa-unlock"></i></a>
+                                                <button class="btn btn-primary btn-sm mt-2 pl-4 pr-4" type="button" data-toggle="collapse" data-target="#collapseValiderFinalistes" aria-expanded="false" aria-controls="collapseValiderFinalistes">
+                                                    <i class="fas fa-unlock"></i>
+                                                </button>
+                                                <div class="collapse" id="collapseValiderFinalistes">
+                                                    <div class='pt-4 pb-2 text-monospace small'>Verrouiller cette liste et proposer ces jeux pour la sélection internationale</div>
+                                                    <a href='/console/valider-finalistes/{{ Crypt::encryptString(Auth::user()->id) }}' class='btn btn-danger btn-sm' style='color:white' role='button'>confirmer</a>
+                                                </div>
                                             </div>
                                         @else
                                             <div class="text-center text-monospace small">
@@ -375,48 +408,89 @@
 
                             </div>
 
-
-                            <?php
-                            /*
+						
                             <!-- == 6 == -->
                             <h3 id="s06" class="mt-5"><span class="badge badge-pill badge-primary pt-1">6</span> Sélection internationale</h3>
                             <div class="mb-1 ml-4">
                                 <a class="btn btn-info" href="/console/evaluation-finalistes-categories" role="button">évaluation</a>
                             </div>
 
+
+
+
                             <!-- == 7 == -->
                             <h3 id="s07" class="mt-5"><span class="badge badge-pill badge-primary pt-1">7</span> Page des jeux de l'établissement</h3>
                             <div class="mb-2 ml-4">
-                                Vous pouvez sélectionner les jeux qui apparaitront sur la page <a href="/console/jeux-publics-selection">ici</a>.
+                                En cliquand <a href="/console/jeux-etablissement-selection">ici</a>, vous pouvez sélectionner les jeux qui apparaitront sur la page de votre établissement.
                             </div>
                             <div class="mb-2 ml-4 text-monospace">
-                                <i class="fa-solid fa-share-nodes mr-1"></i> <a href="/ndc2023/{{Auth::user()->jeton}}" target="_blank">www.nuitducode.net/ndc2023/{{Auth::user()->jeton}}</a>
+                                <i class="fa-solid fa-share-nodes mr-1"></i> Page établissement: <a href="/ndc2025/{{Auth::user()->jeton}}" target="_blank">www.nuitducode.net/ndc2025/{{Auth::user()->jeton}}</a>
                             </div>   
                             <div class="mb-2 ml-4 text-monospace small" style="color:silver;">
                                 <?php
-                                $twitter_text = urlencode(Auth::user()->etablissement.": les jeux de la Nuit du Code 2023 \n https://www.nuitducode.net/ndc2023/".Auth::user()->jeton." \n\n #NDC2023 #Scratch #Python #NSI \n @nuitducode");
-                                $mastodon_text = urlencode(Auth::user()->etablissement.": les jeux de la Nuit du Code 2023 \n https://www.nuitducode.net/ndc2023/".Auth::user()->jeton." \n\n #NDC2023 #Scratch #Python #NSI \n @nuitducode@mastodon.social");
+                                $twitter_text = urlencode(Auth::user()->etablissement.": les jeux de la Nuit du Code 2025 \n ➡️ https://www.nuitducode.net/ndc2025/".Auth::user()->jeton." \n\n #NDC2025 #Scratch #Python #NSI \n @nuitducode");
+                                $mastodon_text = urlencode(Auth::user()->etablissement.": les jeux de la Nuit du Code 2025 \n ➡️ https://www.nuitducode.net/ndc2025/".Auth::user()->jeton." \n\n #NDC2025 #Scratch #Python #NSI \n @nuitducode@mastodon.social");
                                 ?>
                                 Partagez cette page sur <a href="https://mastodonshare.com/?text={{$mastodon_text}}" target="_blank">Mastodon</a> et/ou <a href="https://twitter.com/intent/tweet?text={{$twitter_text}}" target="_blank">Twitter</a>.
                             </div>                                                     
 
+						
                             <!-- == 8 == -->
-                            <h3 id="s08" class="mt-5"><span class="badge badge-pill badge-primary pt-1">8</span> Sélection internationale 2023</h3>
+                            <h3 id="s08" class="mt-5"><span class="badge badge-pill badge-primary pt-1">8</span> Dépôt - Jeux version 2</h3>
+                            <div class="mb-1 ml-4">
+								<div>Les équipes qui ont continué le developement de leur jeux après la Nuit du Code peuvent déposer ici la version finale.</div>
+								<div>Conditions:</div>
+								<ul class="m-0">
+									<li>le jeu doit être une <u>version améliorée</u> du jeu qui a été déposé lors de la Nuit du Code</li>
+									<li>le jeu <u>ne doit pas comporter de bogues</u></li>
+									<li>le jeu doit <u>respecter toutes les consignes</u> de la Nuit du code (voir "<a href="https://nuit-du-code.forge.apps.education.fr/DOCUMENTATION/04-regles-conseils/" target="_blank">Règles et Conseils</a>")</li>
+									<li>la <u>documentation</u> doit être <u>complète</u></li>
+								</ul>
+								
+								<div class="mt-1 mb-3">Date limite: 6 septembre 2025</div>
+								
+								<div>Lien à fournir aux équipes:</div>
+								<div style="display:inline-block;">
+									<div style="background-color:white;border:solid 1px #e2e6ea;border-radius:3px;padding:8px 16px 8px 16px;">
+										<span>
+											<a id='lien_depot_jeu' href="/ndc/{{strtoupper(Auth::user()->jeton)}}/v2" class="text-monospace text-success" target="_blank">https://www.nuitducode.net/ndc/{{strtoupper(Auth::user()->jeton)}}/v2</a>
+										</span>
+
+										<div id="lien_depot_jeu_fullscreen" class="bg-white pt-4 text-center" style="display:none">
+											<img src="{{ asset('img/ndc.png') }}" width="400" />
+											<div class="text-monospace text-success font-weight-bold mt-4" style="font-size:2vw;">Dépôt Jeux v2</div>
+											<div class="text-monospace text-dark font-weight-bold mt-5" style="font-size:5vw;">www.nuitducode.net/ndc/{{strtoupper(Auth::user()->jeton)}}/v2</div>
+										</div>
+
+										<span class="pl-3" onclick="fullscreen('lien_depot_jeu_fullscreen')" style="cursor:pointer;"><i class="fas fa-expand"></i></span>
+										<span class="pl-3" onclick="copier('lien_depot_jeu')" style="cursor:pointer;"><i class="fa-regular fa-copy"></i></span>
+									</div>
+									<div id="lien_depot_jeu_copie_confirmation" class="text-right small text-monospace text muted">&nbsp;</div>
+								</div>								
+								<div>                            
+                                    <a class="btn btn-light btn-sm pl-3 pr-3" href="/console/ndc/liste-jeux-v2" role="button">liste des jeux déposés</a>
+								</div>
+							</div>
+                					
+						
+                            <!-- == 9 == -->
+                            <h3 id="s09" class="mt-5"><span class="badge badge-pill badge-primary pt-1">9</span> Sélection internationale 2025</h3>
                             <div class="mb-2 ml-4 text-monospace">
-                                <i class="fa-solid fa-share-nodes mr-1"></i> <a href="/ndc2023" target="_blank">www.nuitducode.net/ndc2023</a>
+                                <i class="fa-solid fa-share-nodes mr-1"></i> <a href="/ndc2025" target="_blank">www.nuitducode.net/ndc2025</a>
                             </div>   
                             <div class="mb-2 ml-4 text-monospace small" style="color:silver;">
                                 <?php
-                                $twitter_text = urlencode("Nuit du Code 2023: la sélection internationale \n https://www.nuitducode.net/ndc2023 \n\n #NDC2023 #Scratch #Python #NSI \n @nuitducode");
-                                $mastodon_text = urlencode("Nuit du Code 2023: la sélection internationale \n https://www.nuitducode.net/ndc2023/ \n\n #NDC2023 #Scratch #Python #NSI \n @nuitducode@mastodon.social");
+                                $twitter_text = urlencode("Nuit du Code 2025: la sélection internationale \n ➡️ www.nuitducode.net/ndc2025 \n\n #NDC2025 #Scratch #Python #NSI #SNT \n @nuitducode");
+                                $mastodon_text = urlencode("Nuit du Code 2025: la sélection internationale \n ➡️ www.nuitducode.net/ndc2025/ \n\n #NDC2025 #Scratch #Python #NSI #SNT \n @nuitducode@mastodon.social");
                                 ?>
                                 Partagez cette page sur <a href="https://mastodonshare.com/?text={{$mastodon_text}}" target="_blank">Mastodon</a> et/ou <a href="https://twitter.com/intent/tweet?text={{$twitter_text}}" target="_blank">Twitter</a>.
                             </div>
-                            
-                            */
-                            ?>
+							
+							
+
+							<div class="mt-4 text-danger text-monospace">--------------------------------- FIN MODE ADMIN ---------------------------------</div>
                             @endif
-                             
+
                         </div>
                     </div>
                 </div>
@@ -453,6 +527,90 @@
 	</div><!-- /container -->
 
 	@include('inc-bottom-js')
+
+	<script>
+	function copier(id) {
+		var texte = document.getElementById(id).textContent;
+		if (!navigator.clipboard) {
+			// Alternative pour les navigateurs ne prenant pas en charge navigator.clipboard
+			var zoneDeCopie = document.createElement("textarea");
+			zoneDeCopie.value = texte;
+			document.body.appendChild(zoneDeCopie);
+			zoneDeCopie.select();
+			document.execCommand("copy");
+			document.body.removeChild(zoneDeCopie);
+			return;
+		}
+
+		navigator.clipboard.writeText(texte).then(function() {
+			//alert("Le texte a été copié dans le presse-papiers.");
+		}, function() {
+			// Gérer les erreurs éventuelles
+			//alert("Impossible de copier le texte dans le presse-papiers. Veuillez le faire manuellement.");
+		});
+		
+		var status = document.getElementById(id+'_copie_confirmation');
+        status.innerText = "copié";
+		
+		status.style.opacity = '1';
+		var fadeOutInterval = setInterval(function() {
+			var opacity = parseFloat(status.style.opacity);
+			if (opacity <= 0) {
+				clearInterval(fadeOutInterval);
+				status.innerHTML = "&nbsp;"; // Effacer le texte après l'animation
+			} else {
+				status.style.opacity = (opacity - 0.1).toString();
+			}
+		}, 150);
+	}
+	</script>
+
+    <script>
+        function fullscreen(id) {
+            var el = document.getElementById(id);
+            var isFullscreen = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement || document.mozFullScreenElement;
+
+            if (isFullscreen) {
+                // Quitter le plein écran
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) { /* Safari */
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { /* IE11 */
+                    document.msExitFullscreen();
+                } else if (document.mozCancelFullScreen) { /* Firefox */
+                    document.mozCancelFullScreen();
+                }
+            } else {
+                // Afficher l'élément et entrer en plein écran
+                el.style.display = 'block';
+                if (el.requestFullscreen) {
+                    el.requestFullscreen();
+                } else if (el.webkitRequestFullscreen) { /* Safari */
+                    el.webkitRequestFullscreen();
+                } else if (el.msRequestFullscreen) { /* IE11 */
+                    el.msRequestFullscreen();
+                } else if (el.mozRequestFullScreen) { /* Firefox */
+                    el.mozRequestFullScreen();
+                }
+            }
+        }
+
+        function updateFsButton() {
+            if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement && !document.mozFullScreenElement) {
+                // L'élément n'est plus en plein écran
+                document.getElementById('lien_depot_jeu_fullscreen').style.display = 'none';
+                document.getElementById('lien_evaluation_eleves_fullscreen').style.display = 'none';
+                document.getElementById('lien_evaluation_enseignants_fullscreen').style.display = 'none';
+            }
+            console.log("État du plein écran changé");
+        }
+
+        document.addEventListener("fullscreenchange", updateFsButton, false);
+        document.addEventListener("webkitfullscreenchange", updateFsButton, false);
+        document.addEventListener("mozfullscreenchange", updateFsButton, false);
+        document.addEventListener("MSFullscreenChange", updateFsButton, false);
+    </script>
 
 </body>
 </html>

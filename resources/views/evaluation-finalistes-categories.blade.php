@@ -52,6 +52,7 @@
                 <h2 class="">PYTHON</h2>
                 <a class="btn btn-success mr-1" href="/console/evaluation-finalistes/{{ Crypt::encryptString('PI') }}" role="button">Première</a>
                 <a class="btn btn-success" href="/console/evaluation-finalistes/{{ Crypt::encryptString('POO') }}" role="button">Terminale</a>
+                <a class="btn btn-success" href="/console/evaluation-finalistes/{{ Crypt::encryptString('PB') }}" role="button">Post-bac</a>
 
             </div>
         </div><!-- /row -->

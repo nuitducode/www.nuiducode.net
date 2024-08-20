@@ -12,19 +12,27 @@
 		<div class="row mb-4">
 
 			<div class="col-md-9 text-center">
-				<img src="{{ asset('img/ndc2024.png') }}" width="280" />
+				<img src="{{ asset('img/ndc2025.png') }}" width="280" />
 				<div class="font-weight-bold text-monospace" style="font-size:17px;color:#261b0c;">6h pour coder un jeu</div>
-				<div class="text-monospace font-weight-bold" style="font-size:12px;color:gray">~ 8<sup>e</sup> édition ~</div>
+				<div class="text-monospace font-weight-bold" style="font-size:12px;color:gray">~ 9<sup>e</sup> édition ~</div>
 				<div class="mt-2">
                     <div class="text-monospace text-danger font-weight-bold" style="font-size:18px">SCRATCH <span style="color:silver;">&#8231;</span> PYTHON</div>
                     <div class="text-center"><span style="margin-left:10px;"><img src="{{ asset('img/affiche/scratch.png') }}" width="35" /></span><span style="margin-left:60px;"><img src="{{ asset('img/affiche/python.png') }}" width="35" /></span></div>
                 </div>
-				<div class="mt-3 mb-3 text-monospace font-weight-bolder" style="color:#4cbf56">mai - juin 2024</div>
+				<div class="mt-3 mb-3 text-monospace font-weight-bolder" style="color:#4cbf56">mai - juin 2025</div>
 				
+				<?php
+				/*
+				<p class="text-center">
+					<a class="btn btn-success btn-lg text-monospace font-weight-bold" href="/ndc2024" role="button">JEUX 2024</a>
+				</p>
+				*/
+				?>
+
 				<p class="text-center">
 					<a class="btn btn-success" href="register" role="button"><img src="{{ asset('img/icon-green-flag.svg') }}" width="12" class="mr-2" /> inscrire un établissement</a>
 				</p>
-
+				
 				<p class="text-center mt-3 small">
 					<span style="font-weight:bold;color:#d35400">{{ App\Models\User::count(); }}</span>
 					<span class="text-monospace" style="color:silver"> établissements inscrits</span>
@@ -66,16 +74,16 @@
 				</p>
 
 				<p class="text-monospace text-justify">
-					L'an dernier, pour l'édition 2023, 371 établissements se sont inscrits. Soit plus de 8600 élèves de 307 villes et 49 pays.
+					L'an dernier, pour l'édition 2024, 464 établissements se sont inscrits. Soit plus de 11500 élèves de 346 villes et 49 pays.
 				</p>
 
 				<p class="text-monospace  text-justify mt-4">
-					<u>Organisation de l'édition 2024</u>
+					<u>Organisation de l'édition 2025</u>
 					<ul class="text-monospace text-justify">
-						<li class="mb-3"><span class="text-primary font-weight-bold">Septembre 2023 - fin avril 2024</span> : Inscriptions</li>
-						<li class="mb-3"><span class="text-primary font-weight-bold">Janvier - mai 2024</span> : Préparatifs / Entraînements / Sélections</li>
-						<li class="mb-3"><span class="text-primary font-weight-bold">Mai - juin 2024</span> : Chaque établissement organise sa <b style="color:#2c3e50">Nuit du Code</b> entre <b style="color:#4cbf56">le 29 avril et le 1<sup>er</sup> juin 2024</b> selon ses ressources et ses contraintes. Les établissements qui ne prévoient pas de proposer des jeux pour la sélection internationale peuvent organiser la <b style="color:#2c3e50">Nuit du Code</b> <b style="color:#4cbf56">jusqu'au 29 juin</b>.</li>
-						<li class="mb-3"><span class="text-primary font-weight-bold">Mi-juin 2024</span> : Annonce des jeux de la sélection "<b style="color:#2c3e50">Nuit du Code 2024</b>"</li>
+						<li class="mb-3"><span class="text-primary font-weight-bold">Septembre 2025 - fin avril 2025</span> : Inscriptions</li>
+						<li class="mb-3"><span class="text-primary font-weight-bold">Janvier - mai 2025</span> : Préparatifs / Entraînements / Sélections</li>
+						<li class="mb-3"><span class="text-primary font-weight-bold">Mai - juin 2025</span> : Chaque établissement organise sa <b style="color:#2c3e50">Nuit du Code</b> entre <b style="color:#4cbf56">le 29 avril et le 1<sup>er</sup> juin 2025</b> selon ses ressources et ses contraintes. Les établissements qui ne prévoient pas de proposer des jeux pour la sélection internationale peuvent organiser la <b style="color:#2c3e50">Nuit du Code</b> <b style="color:#4cbf56">jusqu'au 29 juin</b>.</li>
+						<li class="mb-3"><span class="text-primary font-weight-bold">Mi-juin 2025</span> : Annonce des jeux de la sélection "<b style="color:#2c3e50">Nuit du Code 2025</b>"</li>
 					</ul>
 				</p>
 				<div class="text-right">
@@ -222,7 +230,7 @@
 				</div>
 
 				<div class="bouton mt-3">
-					<a href="https://github.com/nuitducode/ORGANISATION-2024/discussions" target="_blank">
+					<a href="https://github.com/nuitducode/ORGANISATION-2025/discussions" target="_blank">
 						<svg xmlns="http://www.w3.org/2000/svg" width="150" viewBox="0 0 241 58">
 							<g aria-label="scratchbox" font-size="1.5em" color="#ffffff" fill="#ffffff" font-family="Nunito" font-weight="400" letter-spacing="0" style="line-height:1.25" word-spacing="0">
 						    	<path fill="#9966ff" stroke="#774dcb" d="M0.5 4.5a4 4 0 0 1 4-4h8c2 0 3 1 4 2l4 4c1 1 2 2 4 2h12c2 0 3-1 4-2l4-4c1-1 2-2 4-2h188a4 4 0 0 1 4 4v40a4 4 0 0 1-4 4h-188c-2 0-3 1-4 2l-4 4c-1 1-2 2-4 2h-12c-2 0-3-1-4-2l-4-4c-1-1-2-2-4-2h-8a4 4 0 0 1-4-4z"/>

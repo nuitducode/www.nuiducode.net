@@ -1,3 +1,8 @@
+<?php
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+?>
 @include('inc-top')
 <!doctype html>
 <html lang="fr">
@@ -15,7 +20,7 @@
 		<div class="row">
 
 			<div class="col-md-8 offset-md-2">
-
+			
                 @if (session('message'))
                     <div class="text-success text-monospace text-center mt-5 pb-4" role="alert">
                         {{ session('message') }}
@@ -29,6 +34,21 @@
 
                 <div class="text-center"><img src="{{ url('/')}}/img/ndc.png" width="280" /></div>
                 <div class="text-center text-monospace text-muted mt-1 mb-4"><b>~ SCRATCH ~</b></div>
+				
+				@if ($version == 'v2')
+					<div class="p-3 text-danger text-monospace small" style="border:solid 1px #e3342f;border-radius:4px; ">
+						<div class="font-weight-bold text-center"> JEU version 2</div>
+						<div>IMPORTANT</div>
+						<ul>
+							<li>le jeu doit être une <u>version améliorée</u> du jeu qui a été déposé lors de la Nuit du Code</li>
+							<li>le jeu <u>ne doit pas comporter de bogues</u></li>
+							<li>le jeu doit <u>respecter toutes les consignes</u> de la Nuit du code (voir "<a href="https://nuit-du-code.forge.apps.education.fr/DOCUMENTATION/04-regles-conseils/" target="_blank">Règles et Conseils</a>")</li>
+							<li>la <u>documentation</u> doit être <u>complète</u></li>
+						</ul>
+						<div>Si tous ces points ne sont pas validés, ne deposez pas de jeu.</div>
+						<div class="font-weight-bold mt-2">Date limite: 6 septembre 2024</div>
+					</div>
+				@endif
 
                 <form id="scratch_submit" method="POST" action="{{ route(request()->segment(1).'-jeu-deposer_post') }}" enctype="multipart/form-data">
 
@@ -36,7 +56,12 @@
 
                     <div class="form-group">
 						<div for="nom_equipe" class="text-info mt-5">NOM DE L'ÉQUIPE <sup class="text-danger">*</sup></div>
+						@if ($version == 'v1')
                         <div class="text-monospace text-muted small mb-1">Choisir un nom d'équipe de 20 caractères maximum et sans caractères spéciaux.</div>
+						@endif
+						@if ($version == 'v2')
+                        <div class="text-monospace text-danger small mb-1">Vous devez saisir le même nom que lors du premier dépôt. Si le nom est différent, le jeu ne sera pas sauvegardé.</div>
+						@endif
 						<input id="nom_equipe" name="nom_equipe" type="text" class="form-control" autofocus>
                         <div id="error_nom_equipe" class="mt-1 text-danger text-monospace small" role="alert">&nbsp;</div>
 					</div>
@@ -148,6 +173,7 @@
                     formData.append("categorie", jQuery("#categorie").val());
                     formData.append("etablissement_jeton", "{{$etablissement_jeton}}");
                     formData.append("langage", "scratch");
+                    formData.append("version", "{{$version}}");
                 });
                 this.on("successmultiple", function(files, response) {
                     console.log('success sending');

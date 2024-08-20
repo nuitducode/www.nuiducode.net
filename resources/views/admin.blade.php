@@ -32,16 +32,94 @@ if (Auth::user()->is_admin != 1) {
         $etablissements_sans_date = App\Models\User::where([['is_admin', 0], ['nb_participants', '>', 0], ['ndc_date', NULL], ['annulation', 0]])->get();
         $etablissements_avec_date = App\Models\User::where([['is_admin', 0], ['nb_participants', '>', 0], ['ndc_date', '!=', NULL], ['annulation', 0]])->orderby('ndc_date')->get();
         
+		// PYTHON
         $python_nb_eleves_pi = App\Models\User::sum('python_nb_eleves_pi');
         $python_nb_eleves_poo = App\Models\User::sum('python_nb_eleves_poo');
+        $python_nb_eleves_postbac = App\Models\User::sum('python_nb_eleves_postbac');
+		
         $python_nb_equipes_pi = App\Models\User::sum('python_nb_equipes_pi');
         $python_nb_equipes_poo = App\Models\User::sum('python_nb_equipes_poo');
-        $nb_jeux_pi = App\Models\Game::where([['categorie', 'PI']])->count();
-        $nb_jeux_poo = App\Models\Game::where([['categorie', 'POO']])->count();
-        echo $python_nb_eleves_pi + $python_nb_eleves_poo . '<br />';
-        echo $python_nb_equipes_pi + $python_nb_equipes_poo . '<br />';
-        echo $nb_jeux_pi + $nb_jeux_poo;
+        $python_nb_equipes_postbac = App\Models\User::sum('python_nb_equipes_postbac');
+		
+        $python_nb_jeux_pi = App\Models\Game::where([['categorie', 'PI']])->count();
+        $python_nb_jeux_poo = App\Models\Game::where([['categorie', 'POO']])->count();
+        $python_nb_jeux_postbac = App\Models\Game::where([['categorie', 'POSTBAC']])->count();
+		
+		// SCRATCH
+        $scratch_nb_eleves_c3 = App\Models\User::sum('scratch_nb_eleves_c3');
+        $scratch_nb_eleves_c4 = App\Models\User::sum('scratch_nb_eleves_c4');
+        $scratch_nb_eleves_lycee = App\Models\User::sum('scratch_nb_eleves_lycee');
+		
+        $scratch_nb_equipes_c3 = App\Models\User::sum('scratch_nb_equipes_c3');
+        $scratch_nb_equipes_c4 = App\Models\User::sum('scratch_nb_equipes_c4');
+        $scratch_nb_equipes_lycee = App\Models\User::sum('scratch_nb_equipes_lycee');
+		
+        $scratch_nb_jeux_c3 = App\Models\Game::where([['categorie', 'C3']])->count();
+        $scratch_nb_jeux_c4 = App\Models\Game::where([['categorie', 'C4']])->count();
+        $scratch_nb_jeux_lycee = App\Models\Game::where([['categorie', 'LY']])->count();		
         ?>
+		
+		
+		<table class="small text-monospace text-muted">
+			<tr>
+				<td>
+					<div class="p-3">
+						<div>Nb élèves Python Première: {{$python_nb_eleves_pi}}</div>
+						<div>Nb élèves Python Terminale: {{$python_nb_eleves_poo}}</div>
+						<div>Nb élèves Python Postbac: {{$python_nb_eleves_postbac}}</div>
+						<div>Nb élèves Python: {{$python_nb_eleves_pi + $python_nb_eleves_poo + $python_nb_eleves_postbac}}</div>
+					</div>
+				</td>
+				<td>
+					<div class="p-3">
+						<div>Nb équipes Python Première: {{$python_nb_equipes_pi}}</div>
+						<div>Nb équipes Python Terminale: {{$python_nb_equipes_poo}}</div>
+						<div>Nb équipes Python Postbac: {{$python_nb_equipes_postbac}}</div>
+						<div>Nb équipes Python: {{$python_nb_equipes_pi + $python_nb_equipes_poo + $python_nb_equipes_postbac}}</div>
+					</div>
+				</td>
+				<td>
+					<div class="p-3">
+						<div>Nb jeux Python Première: {{$python_nb_jeux_pi}}</div>
+						<div>Nb jeux Python Terminale: {{$python_nb_jeux_poo}}</div>
+						<div>Nb jeux Python Postbac: {{$python_nb_jeux_postbac}}</div>
+						<div>Nb jeux Python: {{$python_nb_jeux_pi + $python_nb_jeux_poo + $python_nb_jeux_postbac}}</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="p-3">
+						<div>Nb élèves Scratch C3: {{$scratch_nb_eleves_c3}}</div>
+						<div>Nb élèves Scratch C4: {{$scratch_nb_eleves_c4}}</div>
+						<div>Nb élèves Scratch Lycée: {{$scratch_nb_eleves_lycee}}</div>
+						<div>Nb élèves Scratch: {{$scratch_nb_eleves_c3 + $scratch_nb_eleves_c4 + $scratch_nb_eleves_lycee}}</div>
+					</div>
+				</td>
+				<td>
+					<div class="p-3">
+						<div>Nb équipes Scratch C3: {{$scratch_nb_equipes_c3}}</div>
+						<div>Nb équipes Scratch C4: {{$scratch_nb_equipes_c4}}</div>
+						<div>Nb équipes Scratch Lycée: {{$scratch_nb_equipes_lycee}}</div>
+						<div>Nb équipes Scratch: {{$scratch_nb_equipes_c3 + $scratch_nb_equipes_c4 + $scratch_nb_equipes_lycee}}</div>
+					</div>
+				</td>
+				<td>
+					<div class="p-3">
+						<div>Nb jeux Scratch C3: {{$scratch_nb_jeux_c3}}</div>
+						<div>Nb jeux Scratch C4: {{$scratch_nb_jeux_c4}}</div>
+						<div>Nb jeux Scratch Lycée: {{$scratch_nb_jeux_lycee}}</div>
+						<div>Nb jeux Scratch: {{$scratch_nb_jeux_c3 + $scratch_nb_jeux_c4 + $scratch_nb_jeux_lycee}}</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+
+		
+
+
+
+
 
         <div class="row p-3">
             <div class="col-md-12 text-center small">
@@ -129,7 +207,7 @@ if (Auth::user()->is_admin != 1) {
                                 <th scope="col">Nom</th>
                                 <th scope="col"></th>
                                 <th scope="col">Pays</th>
-                                <th scope="col">Courriel</th>
+                                <th scope="col">@</th>
                                 <th scope="col">Nb</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">S-C3</th>
@@ -141,10 +219,10 @@ if (Auth::user()->is_admin != 1) {
                                 <th scope="col">Tot.</th>
                                 <th scope="col">Diff.</th>
                                 <th scope="col">Modif.</th>
-                                <th scope="col">Eq. Scra.</th>
-                                <th scope="col">Eq. Pyth.</th>
-                                <th scope="col">UDJ Scra.</th>
-                                <th scope="col">UDJ Pyth.</th>                                
+                                <th scope="col">Eq. S</th>
+                                <th scope="col">Eq. P</th>
+                                <th scope="col">UDJ S</th>
+                                <th scope="col">UDJ P</th>                                
                                 <th scope="col">UDJ read</th>                                
                             </tr>
                         </thead>
@@ -152,13 +230,20 @@ if (Auth::user()->is_admin != 1) {
                             <?php
                             $date = '05-02';
                             $emails = [];
+							$semaine = 1;
                             ?>
                             @foreach($etablissements_avec_date AS $etablissement)
                                 <?php
-                                if ($date !== substr($etablissement->ndc_date,5,5)){
-                                    echo '<tr><td colspan="28" style="background-color:silver;color:white">' . trim(implode('; ',$emails),'; ') . '</td></tr>';
+                                if ($date !== substr($etablissement->ndc_date,5,5) AND $emails !== []){
+                                    echo '<tr class="p-0">';
+									echo '<td style="background-color:white;text-align:center;"><div onclick="copier_adresses('.$semaine.')" style="cursor:pointer;"><i class="fa-regular fa-copy"></i></div></td>';
+									echo '<td colspan="27" class="p-0" style="background-color:white;">';
+									echo '<div id="adresses_semaine_'.$semaine.'" contentEditable="true" class="text-monospace m-0 mt-1 mb-3 p-1 pl-2" style="border-radius:3px;background-color:silver;color:white">' . trim(implode('; ',$emails),'; ') . '</div>';
+									echo '</td>';
+									echo '</tr>';
                                     $date = substr($etablissement->ndc_date,5,5);
                                     $emails = [];
+									$semaine++;
                                 }
                                 $emails[] = $etablissement->email;
                                 $nb_jeux = App\Models\Game::where([['etablissement_id', $etablissement->id]])->count();
@@ -169,7 +254,7 @@ if (Auth::user()->is_admin != 1) {
                                     <td>{{$etablissement->jeton}}</td>
                                     <td>@if($etablissement->fin_evaluations == 1) <i class="fas fa-lock"></i> @endif</td>
                                     <td class="text-center"><a href="/console/admin_notes?id={{$etablissement->id}}"><i class="fas fa-trophy" data-toggle="tooltip" data-placement="top" title="notes"></i></a></td>
-                                    <td class="text-center" nowrap><a href="/console/admin_jeux?id={{$etablissement->id}}"><i class="fas fa-gamepad mr-1" data-toggle="tooltip" data-placement="top" title="liste des jeux"></i>{{$nb_jeux}}</a></td>
+                                    <td class="text-center" nowrap><a href="/console/admin-liste-jeux-par-id?id={{$etablissement->id}}"><i class="fas fa-gamepad mr-1" data-toggle="tooltip" data-placement="top" title="liste des jeux"></i>{{$nb_jeux}}</a></td>
                                     <td class="text-center"><a href="/console/admin_evaluations?id={{$etablissement->id}}"><i class="fas fa-check" data-toggle="tooltip" data-placement="top" title="liste des évaluations"></i></a></td>
                                     <td><a href="/ndc/{{$etablissement->jeton[3].'j'.$etablissement->jeton[2].'w'.$etablissement->jeton[1].'a'.$etablissement->jeton[0]}}"><i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="évaluation"></i></a></td>
                                     <td>{{$etablissement->prenom}} {{$etablissement->nom}}</td>
@@ -177,7 +262,9 @@ if (Auth::user()->is_admin != 1) {
                                         <i class="fas fa-question-circle text-muted" data-boundary="window" data-toggle="tooltip" data-placement="top" title="{{$etablissement->etablissement}} - {{$etablissement->ville}} - Ac./zone: {{$etablissement->ac_zone}} "></i>
                                     </td>
                                     <td>{{$etablissement->pays}}</td>
-                                    <td style="word-wrap:break-word;">{{$etablissement->email}}</td>
+                                    <td>
+										<div data-adresse="{{$etablissement->email}}" onclick="copier_adresse(this)" style="cursor:pointer;" data-boundary="window" data-toggle="tooltip" data-placement="top" title="{{$etablissement->email}}"><i class="fas fa-envelope"></i></div>
+									</td>
                                     <td>{{$etablissement->nb_participants}}</td>
                                     <td class="text-primary font-weight-bold" nowrap>{{substr($etablissement->ndc_date,5,5)}}</td>
                                     <td class="text-left">
@@ -333,31 +420,78 @@ if (Auth::user()->is_admin != 1) {
 	@include('inc-bottom-js')
 
     <script>
-        function update_udj(e) {
-            console.log(e.name);
-            console.log(e.value);
-            console.log(e.checked);
-			var json = JSON.stringify({language:e.name, user_id:e.value, state:e.checked});
-            fetch('/console/update_udj_publication', {
-				method: "POST",
-				mode: "cors",
-                headers: {"Content-Type": "application/json; charset=UTF-8", "X-CSRF-Token": "{{ csrf_token() }}"},
-                body: json
-            })
-            .then(function(response) {
-                if (response.ok) {
-                    console.log('Mise à jour de la base de données réussie.');
-                    return response.text().then(data =>{console.log(data)});
-                } else {
-                    console.log('Erreur lors de la mise à jour de la base de données.');
-                    return response.text().then(data =>{console.log(data)});
-                }
-            })
-            .catch(function(error) {
-                console.log('Erreur lors de la mise à jour de la base de données : ' + error.message);
-            });
-        }
+	function update_udj(e) {
+		console.log(e.name);
+		console.log(e.value);
+		console.log(e.checked);
+		var json = JSON.stringify({language:e.name, user_id:e.value, state:e.checked});
+		fetch('/console/update_udj_publication', {
+			method: "POST",
+			mode: "cors",
+			headers: {"Content-Type": "application/json; charset=UTF-8", "X-CSRF-Token": "{{ csrf_token() }}"},
+			body: json
+		})
+		.then(function(response) {
+			if (response.ok) {
+				console.log('Mise à jour de la base de données réussie.');
+				return response.text().then(data =>{console.log(data)});
+			} else {
+				console.log('Erreur lors de la mise à jour de la base de données.');
+				return response.text().then(data =>{console.log(data)});
+			}
+		})
+		.catch(function(error) {
+			console.log('Erreur lors de la mise à jour de la base de données : ' + error.message);
+		});
+	}
     </script>
+	
+	<script>
+	function copier_adresses(semaine) {
+		var texte = document.getElementById('adresses_semaine_'+semaine).textContent;
+		if (!navigator.clipboard) {
+			// Alternative pour les navigateurs ne prenant pas en charge navigator.clipboard
+			var zoneDeCopie = document.createElement("textarea");
+			zoneDeCopie.value = texte;
+			document.body.appendChild(zoneDeCopie);
+			zoneDeCopie.select();
+			document.execCommand("copy");
+			document.body.removeChild(zoneDeCopie);
+			return;
+		}
+		navigator.clipboard.writeText(texte).then(function() {
+			//alert("Le texte a été copié dans le presse-papiers.");
+		}, function() {
+			// Gérer les erreurs éventuelles
+			//alert("Impossible de copier le texte dans le presse-papiers. Veuillez le faire manuellement.");
+		});
+	}
+	</script>	
+
+
+	<script>
+	function copier_adresse(el) {
+		var texte = el.dataset.adresse;
+		if (!navigator.clipboard) {
+			// Alternative pour les navigateurs ne prenant pas en charge navigator.clipboard
+			var zoneDeCopie = document.createElement("textarea");
+			zoneDeCopie.value = texte;
+			document.body.appendChild(zoneDeCopie);
+			zoneDeCopie.select();
+			document.execCommand("copy");
+			document.body.removeChild(zoneDeCopie);
+			return;
+		}
+		navigator.clipboard.writeText(texte).then(function() {
+			//alert("Le texte a été copié dans le presse-papiers.");
+		}, function() {
+			// Gérer les erreurs éventuelles
+			//alert("Impossible de copier le texte dans le presse-papiers. Veuillez le faire manuellement.");
+		});
+	}
+	</script>	
+
+
 
 </body>
 </html>

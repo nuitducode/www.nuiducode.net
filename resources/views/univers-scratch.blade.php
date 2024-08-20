@@ -67,7 +67,15 @@
                     <div class="card h-100">
                         <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/scratch/1.png') }}"  />
                         <div class="card-body text-center p-2" style="background-color:#f8fafc">
-                            Fichier <a href="{{ asset('storage/univers/'.$edition.'/scratch/1.sb3') }}" download>1.sb3</a>
+                            <form method="POST" action="{{ route('telecharger-univers') }}">
+                                @csrf
+                                <input type="hidden" name="fichier" value="1.sb3">
+                                <input type="hidden" name="langage" value="scratch">
+                                <input type="hidden" name="edition" value="{{$edition}}">
+                                <button type="submit" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-arrow-down"></i><span class="pl-2 text-monospace">1.sb3</span>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -76,7 +84,15 @@
                     <div class="card h-100">
                         <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/scratch/2.png') }}"  />
                         <div class="card-body text-center p-2" style="background-color:#f8fafc">
-                            Fichier <a href="{{ asset('storage/univers/'.$edition.'/scratch/2.sb3') }}" download>2.sb3</a>
+                            <form method="POST" action="{{ route('telecharger-univers') }}">
+                                @csrf
+                                <input type="hidden" name="fichier" value="2.sb3">
+                                <input type="hidden" name="langage" value="scratch">
+                                <input type="hidden" name="edition" value="{{$edition}}">
+                                <button type="submit" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-arrow-down"></i><span class="pl-2 text-monospace">2.sb3</span>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -85,7 +101,15 @@
                     <div class="card h-100">
                         <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/scratch/3.png') }}"  />
                         <div class="card-body text-center p-2" style="background-color:#f8fafc">
-                            Fichier <a href="{{ asset('storage/univers/'.$edition.'/scratch/3.sb3') }}" download>3.sb3</a>
+                            <form method="POST" action="{{ route('telecharger-univers') }}">
+                                @csrf
+                                <input type="hidden" name="fichier" value="3.sb3">
+                                <input type="hidden" name="langage" value="scratch">
+                                <input type="hidden" name="edition" value="{{$edition}}">
+                                <button type="submit" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-arrow-down"></i><span class="pl-2 text-monospace">3.sb3</span>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -94,7 +118,15 @@
                     <div class="card h-100">
                         <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/scratch/4.png') }}"  />
                         <div class="card-body text-center p-2" style="background-color:#f8fafc">
-                            Fichier <a href="{{ asset('storage/univers/'.$edition.'/scratch/4.sb3') }}" download>4.sb3</a>
+                            <form method="POST" action="{{ route('telecharger-univers') }}">
+                                @csrf
+                                <input type="hidden" name="fichier" value="4.sb3">
+                                <input type="hidden" name="langage" value="scratch">
+                                <input type="hidden" name="edition" value="{{$edition}}">
+                                <button type="submit" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-arrow-down"></i><span class="pl-2 text-monospace">4.sb3</span>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -103,7 +135,15 @@
                     <div class="card h-100">
                         <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/scratch/5.png') }}"  />
                         <div class="card-body text-center p-2" style="background-color:#f8fafc">
-                            Fichier <a href="{{ asset('storage/univers/'.$edition.'/scratch/5.sb3') }}" download>5.sb3</a>
+                            <form method="POST" action="{{ route('telecharger-univers') }}">
+                                @csrf
+                                <input type="hidden" name="fichier" value="5.sb3">
+                                <input type="hidden" name="langage" value="scratch">
+                                <input type="hidden" name="edition" value="{{$edition}}">
+                                <button type="submit" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-arrow-down"></i><span class="pl-2 text-monospace">5.sb3</span>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -112,7 +152,15 @@
                     <div class="card h-100">
                         <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/scratch/6.png') }}"  />
                         <div class="card-body text-center p-2" style="background-color:#f8fafc">
-                            Fichier <a href="{{ asset('storage/univers/'.$edition.'/scratch/6.sb3') }}" download>6.sb3</a>
+                            <form method="POST" action="{{ route('telecharger-univers') }}">
+                                @csrf
+                                <input type="hidden" name="fichier" value="6.sb3">
+                                <input type="hidden" name="langage" value="scratch">
+                                <input type="hidden" name="edition" value="{{$edition}}">
+                                <button type="submit" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-arrow-down"></i><span class="pl-2 text-monospace">6.sb3</span>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>

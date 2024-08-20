@@ -13,7 +13,7 @@
 		<div class="row">
 
             <div class="col-md-2 mt-4">
-                <a class="btn btn-light btn-sm mb-4" href="{{ url()->previous() }}" role="button"><i class="fas fa-arrow-left"></i></a>
+                <a class="btn btn-light btn-sm mb-4" href="/console" role="button"><i class="fas fa-arrow-left"></i></a>
             </div>
 
 			<div class="col-md-10">
@@ -54,8 +54,14 @@
                                             <td class="align-middle">{{$evaluation->jury_type}}</td>
                                             <td class="align-middle"><a href="https://scratch.mit.edu/projects/{{$evaluation->scratch_id}}" target="_blank">{{$evaluation->scratch_id}}</a></td>
                                             <td class="align-middle">{{$evaluation->note}}</td>
-                                            <td class="text-right">
-                                                <a tabindex='0' class='btn btn-danger btn-sm text-light' role='button'  style="cursor:pointer;outline:none;" data-toggle="popover" data-trigger="focus" data-placement="left" data-html="true" data-content="<a href='/console/supprimer-evaluation/{{ Crypt::encryptString($evaluation->id) }}' class='btn btn-danger btn-sm text-light' role='button'>confirmer</a><a class='btn btn-light btn-sm ml-2' href='#' role='button'>annuler</a>"><i class='fas fa-trash fa-sm'></i></a>
+                                            <td class="text-right" style="width:160px;">
+                                                <button class="btn btn-dark btn-sm text-light" type="button" data-toggle="collapse" data-target="#collapse_{{$evaluation->id}}" aria-expanded="false" aria-controls="collapse_{{$evaluation->id}}">
+                                                    <i class='fas fa-trash fa-sm'></i>
+                                                </button>
+                                                <div class="collapse" id="collapse_{{$evaluation->id}}">
+                                                    <a href='/console/supprimer-evaluation/{{ Crypt::encryptString($evaluation->id) }}' class='mt-2 btn btn-danger btn-sm text-white' role='button'>confirmer</a>
+                                                    <a class="mt-2 btn btn-light btn-sm text-dark" data-toggle="collapse" href="#collapse_{{$evaluation->id}}" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fa-solid fa-xmark"></i></a>
+                                                </div>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -94,8 +100,14 @@
                                             <td class="align-middle">{{$evaluation->jury_type}}</td>
                                             <td class="align-middle"><a href="/console/jouer-jeu-pyxel/{{Auth::user()->jeton.'-'.$evaluation->python_id}}" target="_blank">{{$evaluation->python_id}}</a></td>
                                             <td class="align-middle">{{$evaluation->note}}</td>
-                                            <td class="text-right">
-                                                <a tabindex='0' class='btn btn-danger btn-sm text-light' role='button'  style="cursor:pointer;outline:none;" data-toggle="popover" data-trigger="focus" data-placement="left" data-html="true" data-content="<a href='/console/supprimer-evaluation/{{ Crypt::encryptString($evaluation->id) }}' class='btn btn-danger btn-sm text-light' role='button'>confirmer</a><a class='btn btn-light btn-sm ml-2' href='#' role='button'>annuler</a>"><i class='fas fa-trash fa-sm'></i></a>
+                                            <td class="text-right" style="width:160px;">
+                                                <button class="btn btn-dark btn-sm text-light" type="button" data-toggle="collapse" data-target="#collapse_{{$evaluation->id}}" aria-expanded="false" aria-controls="collapse_{{$evaluation->id}}">
+                                                    <i class='fas fa-trash fa-sm'></i>
+                                                </button>
+                                                <div class="collapse" id="collapse_{{$evaluation->id}}">
+                                                    <a href='/console/supprimer-evaluation/{{ Crypt::encryptString($evaluation->id) }}' class='mt-2 btn btn-danger btn-sm text-white' role='button'>confirmer</a>
+                                                    <a class="mt-2 btn btn-light btn-sm text-dark" data-toggle="collapse" href="#collapse_{{$evaluation->id}}" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fa-solid fa-xmark"></i></a>
+                                                </div>
                                             </td>
                                         </tr>
                                         @endforeach
