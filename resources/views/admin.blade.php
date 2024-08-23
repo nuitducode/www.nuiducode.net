@@ -115,12 +115,7 @@ if (Auth::user()->is_admin != 1) {
 			</tr>
 		</table>
 
-		
-
-
-
-
-
+	
         <div class="row p-3">
             <div class="col-md-12 text-center small">
                     <span style="font-weight:bold;color:#d35400">{{ App\Models\User::count(); }}</span>
@@ -414,6 +409,59 @@ if (Auth::user()->is_admin != 1) {
                 </div>
             </div>
         </div><!-- /row -->
+
+        <hr />
+
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-borderless table-hover table-striped table-sm text-monospace text-muted" style="font-size:75%">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Id</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Établissement</th>
+                                <th scope="col">Nb élèves</th>
+                                <th scope="col">Ac. / zone</th>
+                                <th scope="col">Pays</th>
+                                <th scope="col">Ville</th>
+                                <th scope="col">Courriel</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Twitter Orga</th>
+                                <th scope="col">Mastodon Orga</th>
+                                <th scope="col">LinkedIn Orga</th>
+                                <th scope="col">Twitter Etab</th>
+                                <th scope="col">Mastodon Etab</th>
+                                <th scope="col">LinkedIn Etab</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($etablissements AS $etablissement)
+                            <tr>
+                                <td class="text-success">{{$loop->index + 1}}</td>
+                                <td>{{$etablissement->id}}</td>
+                                <td>{{$etablissement->prenom}} {{$etablissement->nom}}</td>
+                                <td>{{$etablissement->etablissement}}</td>
+                                <td>{{$etablissement->nb_participants}}</td>
+                                <td>{{$etablissement->ac_zone}}</td>
+                                <td>{{$etablissement->pays}}</td>
+                                <td>{{$etablissement->ville}}</td>
+                                <td>{{$etablissement->email}}</td>
+                                <td>{{$etablissement->ndc_date}}</td>
+                                <td class="text-center">{{$etablissement->twitter_orga}}</td>
+                                <td class="text-center">{{$etablissement->mastodon_orga}}</td>
+                                <td class="text-center">{{$etablissement->linkedin_orga}}</td>
+                                <td class="text-center">{{$etablissement->twitter_etab}}</td>
+                                <td class="text-center">{{$etablissement->mastodon_etab}}</td>
+                                <td class="text-center">{{$etablissement->linkedin_etab}}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div><!-- /row -->        
 
 	</div><!-- /container -->
 
