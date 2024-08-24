@@ -435,7 +435,7 @@ if (Auth::user()->is_admin != 1) {
                                 <th scope="col">Mastodon Etab</th>
                                 <th scope="col">LinkedIn Etab</th>
                             </tr>
-                        </thead>
+                        </thead> 
                         <tbody>
                             @foreach($etablissements AS $etablissement)
                             <tr>
