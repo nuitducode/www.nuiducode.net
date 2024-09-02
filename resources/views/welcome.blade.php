@@ -80,9 +80,9 @@
 				<p class="text-monospace  text-justify mt-4">
 					<u>Organisation de l'édition 2025</u>
 					<ul class="text-monospace text-justify">
-						<li class="mb-3"><span class="text-primary font-weight-bold">Septembre 2025 - fin avril 2025</span> : Inscriptions</li>
+						<li class="mb-3"><span class="text-primary font-weight-bold">Septembre 2024 - fin avril 2025</span> : Inscriptions</li>
 						<li class="mb-3"><span class="text-primary font-weight-bold">Janvier - mai 2025</span> : Préparatifs / Entraînements / Sélections</li>
-						<li class="mb-3"><span class="text-primary font-weight-bold">Mai - juin 2025</span> : Chaque établissement organise sa <b style="color:#2c3e50">Nuit du Code</b> entre <b style="color:#4cbf56">le 29 avril et le 1<sup>er</sup> juin 2025</b> selon ses ressources et ses contraintes. Les établissements qui ne prévoient pas de proposer des jeux pour la sélection internationale peuvent organiser la <b style="color:#2c3e50">Nuit du Code</b> <b style="color:#4cbf56">jusqu'au 29 juin</b>.</li>
+						<li class="mb-3"><span class="text-primary font-weight-bold">Mai - juin 2025</span> : Chaque établissement organise sa <b style="color:#2c3e50">Nuit du Code</b> entre <b style="color:#4cbf56">le 28 avril et le 31 mai 2025</b> selon ses ressources et ses contraintes. Les établissements qui ne prévoient pas de proposer des jeux pour la sélection internationale peuvent organiser la <b style="color:#2c3e50">Nuit du Code</b> <b style="color:#4cbf56">jusqu'au 27 juin</b>.</li>
 						<li class="mb-3"><span class="text-primary font-weight-bold">Mi-juin 2025</span> : Annonce des jeux de la sélection "<b style="color:#2c3e50">Nuit du Code 2025</b>"</li>
 					</ul>
 				</p>
