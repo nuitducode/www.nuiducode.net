@@ -26,9 +26,9 @@
 
 
                 <?php
-                if(File::exists(storage_path("app/public/".$path)))) {
+                if(File::exists(storage_path("app/public/".$path))) {
                     $files = File::files(storage_path("app/public/".$path));
-                    $etablissement_jeton = basename(dirname(rtrim($path,'/')););
+                    $etablissement_jeton = basename(dirname(rtrim($path,'/')));
                     $python_id = basename($path);
                     $jeu = App\Models\Game::where([['etablissement_jeton', $etablissement_jeton], ['python_id', $python_id]])->first();
                     ?>

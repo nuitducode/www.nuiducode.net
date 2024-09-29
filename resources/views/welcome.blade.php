@@ -59,7 +59,7 @@
 					Peuvent participer: tous les établissements scolaires français situés en France ou à l'étranger ainsi que tous les établissements scolaires francophones où qu'ils soient. Les catégories vont du cours moyen au post-bac en passant par le collège et le lycée. Chaque établissement peut inscrire autant d'élèves qu'il le souhaite. Les inscriptions sont gratuites.
 				</p>
 
-				<iframe style="border-radius:5px" width="100%" height="250px" frameborder="0" allowfullscreen src="https://umap.openstreetmap.fr/en/map/nuit-du-code-2024_960982"></iframe>		
+				<iframe style="border-radius:5px" width="100%" height="250px" frameborder="0" allowfullscreen src="https://umap.openstreetmap.fr/en/map/nuit-du-code-2025_1111860"></iframe>		
 
 				<div class="text-monospace">
 					Six catégories :
