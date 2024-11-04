@@ -54,47 +54,30 @@
 
                 <div class="mt-4 font-weight-bold">Catégories</div>
                 <div class="text-muted small mb-1">Cliquer ci-dessous pour afficher/cacher les catégories.</div>
-                <div>
-                    <table>
-                        <tr>
-                            <td>
-                                <span style="display:inline-block;border-radius:2px;background-color:#2ca05a;padding:4px;">
-                                    <div class="text-center" style="width:25px">
-                                        <a href="#" data-toggle="tooltip" data-trigger="hover" datadata-placement="top" title="CM1 > 6e" data-categorie-id="c1" data-categorie-statut="on" onclick="categories(this)" style="color:white"><i class="fas fa-eye"></i></a>
-                                    </div>
-                                </span>
-                            </td>
-                            <td>
-                                <span style="display:inline-block;border-radius:2px;background-color:#2ca05a;padding:4px;">
-                                    <div class="text-center" style="width:25px">
-                                        <a href="#" data-toggle="tooltip" data-trigger="hover" data-placement="top" title="5e > 3e" data-categorie-id="c2" data-categorie-statut="on" onclick="categories(this)" style="color:white"><i class="fas fa-eye"></i></a>
-                                    </div>
-                                </span>
-                            </td>
-                            <td>
-                                <span style="display:inline-block;border-radius:2px;background-color:#2ca05a;padding:4px;">
-                                    <div class="text-center" style="width:25px">
-                                        <a href="#" data-toggle="tooltip" data-trigger="hover" data-placement="top" title="Lycée" data-categorie-id="c3" data-categorie-statut="on" onclick="categories(this)" style="color:white"><i class="fas fa-eye"></i></a>
-                                    </div>
-                                </span>
-                            </td>
-                            <td>
-                                <span style="display:inline-block;border-radius:2px;background-color:#2ca05a;padding:4px;">
-                                    <div class="text-center" style="width:25px">
-                                        <a href="#" data-toggle="tooltip" data-trigger="hover" data-placement="top" title="NSI 1re" data-categorie-id="c4" data-categorie-statut="on" onclick="categories(this)" style="color:white"><i class="fas fa-eye"></i></a>
-                                    </div>
-                                </span>
-                            </td>
-                            <td>
-                                <span style="display:inline-block;border-radius:2px;background-color:#2ca05a;padding:4px;">
-                                    <div class="text-center" style="width:25px">
-                                        <a href="#" data-toggle="tooltip" data-trigger="hover" data-placement="top" title="NSI Tle" data-categorie-id="c5" data-categorie-statut="on" onclick="categories(this)" style="color:white"><i class="fas fa-eye"></i></a>
-                                    </div>
-                                </span>
-                            </td>
-                        </tr>
-                     </table>
+                <div class="mb-1 small">
+                    <a href="#" data-categorie-id="c1" data-categorie-statut="on" onclick="categories(this)" style="display:inline-block;text-align:center;color:white;width:30px;border-radius:2px;background-color:#2ca05a;padding:2px;margin-right:6px;"><i class="fas fa-eye"></i></a>CM1 > 6<sup>e</sup>
                 </div>
+
+                <div class="mb-1 small">
+                    <a href="#" data-categorie-id="c2" data-categorie-statut="on" onclick="categories(this)" style="display:inline-block;text-align:center;color:white;width:30px;border-radius:2px;background-color:#2ca05a;padding:2px;margin-right:6px;"><i class="fas fa-eye"></i></a>5<sup>e</sup> > 6<sup>e</sup>
+                </div>
+
+                <div class="mb-1 small">
+                    <a href="#" data-categorie-id="c3" data-categorie-statut="on" onclick="categories(this)" style="display:inline-block;text-align:center;color:white;width:30px;border-radius:2px;background-color:#2ca05a;padding:2px;margin-right:6px;"><i class="fas fa-eye"></i></a>Lycée
+                </div> 
+
+                <div class="mb-1 small">
+                    <a href="#" data-categorie-id="c4" data-categorie-statut="on" onclick="categories(this)" style="display:inline-block;text-align:center;color:white;width:30px;border-radius:2px;background-color:#2ca05a;padding:2px;margin-right:6px;"><i class="fas fa-eye"></i></a>NSI 1<sup>re</sup>
+                </div>
+
+                <div class="mb-1 small">
+                    <a href="#" data-categorie-id="c5" data-categorie-statut="on" onclick="categories(this)" style="display:inline-block;text-align:center;color:white;width:30px;border-radius:2px;background-color:#2ca05a;padding:2px;margin-right:6px;"><i class="fas fa-eye"></i></a>NSI Tle
+                </div>
+                
+                <div class="mb-1 small">
+                    <a href="#" data-categorie-id="c6" data-categorie-statut="on" onclick="categories(this)" style="display:inline-block;text-align:center;color:white;width:30px;border-radius:2px;background-color:#2ca05a;padding:2px;margin-right:6px;"><i class="fas fa-eye"></i></a>Post-bac
+                </div>
+
 
                 <div class="mt-4 font-weight-bold">Langages</div>
                 <div class="form-check">
@@ -115,22 +98,24 @@
                 <div class="mt-4 font-weight-bold">Informations</div>
                 <div class="text-muted small mb-1">Cliquer ci-dessous pour afficher/cacher les sections.</div>
  
-                <div>
-                    <a href="#" data-information-id="info_3" data-information-statut="on" onclick="informations(this)" style="color:white;width:25px;border-radius:2px;background-color:#2c3e50;padding:4px;"><i class="fas fa-eye"></i></a> date
+                <div class="mb-1 small">
+                    <a href="#" data-information-id="info_3" data-information-statut="on" onclick="informations(this)" style="display:inline-block;text-align:center;color:white;width:30px;border-radius:2px;background-color:#2c3e50;padding:2px;margin-right:6px;"><i class="fas fa-eye"></i></a>date
                 </div>
 
-                <div>
-                    <a href="#" data-information-id="info_2" data-information-statut="on" onclick="informations(this)" style="color:white;width:25px;border-radius:2px;background-color:#2c3e50;padding:4px;"><i class="fas fa-eye"></i></a> équipes
+                <div class="mb-1 small">
+                    <a href="#" data-information-id="info_2" data-information-statut="on" onclick="informations(this)" style="display:inline-block;text-align:center;color:white;width:30px;border-radius:2px;background-color:#2c3e50;padding:2px;margin-right:6px;"><i class="fas fa-eye"></i></a>équipes
                 </div>
 
-                <div data-toggle="tooltip" data-trigger="hover" data-placement="right" title="lieu" class="text-center" style="width:25px;border-radius:2px;background-color:#2c3e50;padding:4px;margin-bottom:2px;">
-                    <a href="#" data-information-id="info_4" data-information-statut="on" onclick="informations(this)" style="color:white"><i class="fas fa-eye"></i></a>
-                </div>                 
-                <div data-toggle="tooltip" data-trigger="hover" data-placement="right" title="inscriptions" class="text-center" style="width:25px;border-radius:2px;background-color:#2c3e50;padding:4px;margin-bottom:2px;">
-                    <a href="#" data-information-id="info_5" data-information-statut="on" onclick="informations(this)" style="color:white"><i class="fas fa-eye"></i></a>
+                <div class="mb-1 small">
+                    <a href="#" data-information-id="info_4" data-information-statut="on" onclick="informations(this)" style="display:inline-block;text-align:center;color:white;width:30px;border-radius:2px;background-color:#2c3e50;padding:2px;margin-right:6px;"><i class="fas fa-eye"></i></a>lieu
+                </div> 
+
+                <div class="mb-1 small">
+                    <a href="#" data-information-id="info_5" data-information-statut="on" onclick="informations(this)" style="display:inline-block;text-align:center;color:white;width:30px;border-radius:2px;background-color:#2c3e50;padding:2px;margin-right:6px;"><i class="fas fa-eye"></i></a>inscriptions
                 </div>
-                <div data-toggle="tooltip" data-trigger="hover" data-placement="right" title="informations supplémentaires" class="text-center" style="width:25px;border-radius:2px;background-color:#2c3e50;padding:4px;margin-bottom:2px;">
-                    <a href="#" data-information-id="info_6" data-information-statut="on" onclick="informations(this)" style="color:white"><i class="fas fa-eye"></i></a>
+
+                <div class="mb-1 small">
+                    <a href="#" data-information-id="info_6" data-information-statut="on" onclick="informations(this)" style="display:inline-block;text-align:center;color:white;width:30px;border-radius:2px;background-color:#2c3e50;padding:2px;margin-right:6px;"><i class="fas fa-eye"></i></a>informations supplémentaires
                 </div>
 
                 <div class="mt-4 mb-1 font-weight-bold">Télécharger l'affiche</div>
@@ -156,6 +141,7 @@
                                 <span id="c3" class="categorie text-monospace">Lycée</span>
                                 <span id="c4" class="categorie text-monospace">NSI 1<sup>re</sup></span>
                                 <span id="c5" class="categorie text-monospace">NSI Tle</span>
+                                <span id="c6" class="categorie text-monospace">Post-bac</span>
                             </div>
                             <div class="pt-2">
                                 <div id="scratch" style="display:none">
@@ -233,10 +219,12 @@
             statut = element.getAttribute('data-categorie-statut');
             if (statut == "on") {
                 element.setAttribute('data-categorie-statut', 'off');
+                element.parentElement.style.textDecoration = "line-through";
                 document.getElementById(id).style.display = "none";
                 element.innerHTML = '<i class="fas fa-eye-slash"></i>';
             } else {
                 element.setAttribute('data-categorie-statut', 'on');
+                element.parentElement.style.textDecoration = "none";
                 document.getElementById(id).style.display = "inline"; 
                 element.innerHTML = '<i class="fas fa-eye"></i>';
             }
@@ -267,10 +255,12 @@
             statut = element.getAttribute('data-information-statut');
             if (statut == "on") {
                 element.setAttribute('data-information-statut', 'off');
+                element.parentElement.style.textDecoration = "line-through";
                 document.getElementById(id).style.display = "none";
                 element.innerHTML = '<i class="fas fa-eye-slash"></i>';
             } else {
                 element.setAttribute('data-information-statut', 'on');
+                element.parentElement.style.textDecoration = "none";
                 document.getElementById(id).style.display = "block"; 
                 element.innerHTML = '<i class="fas fa-eye"></i>';
             }
