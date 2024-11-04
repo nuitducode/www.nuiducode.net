@@ -6,7 +6,7 @@
     <title>Générateur d'affiches</title>
     <style>
         body {
-            line-height:1;
+            line-height:1.6;
         }
         .infos {
             font-size:18px;
@@ -43,16 +43,17 @@
 
             <div class="col-md-3">
 
-                <div class="mb-1 font-weight-bold">OPTIONS</div>
-                <div class="text-muted small mb-3" style="line-height:1.5;">Certaines zones de texte sont éditables. Cliquer pour éditer.</div>
-                <div class="mb-1 font-weight-bold">Fond</div>
+                <div class="font-weight-bold">OPTIONS</div>
+                <div class="text-muted small mb-3">Certaines zones de texte sont éditables. Cliquer pour éditer.</div>
+
+                <div class="font-weight-bold">Fond</div>
                 <div>
                     <a href="#" data-toggle="tooltip" data-trigger="hover" data-placement="top" title="gris clair" onclick="fond('#f8fafc')" style="display:inline-block;width:30px;height:30px;border-radius:2px;background-color:#f8fafc;color:#f8fafc;border:solid 4px #bdc3c7;">-</a>
                     <a href="#" data-toggle="tooltip" data-trigger="hover" data-placement="top" title="blanc" onclick="fond('#ffffff')" style="display:inline-block;width:30px;height:30px;border-radius:2px;background-color:#ffffff;color:#ffffff;border:solid 4px #bdc3c7;">-</a>
                 </div>
 
-                <div class="mt-4 mb-1 font-weight-bold">Catégories</div>
-                <div class="text-muted small mb-1" style="line-height:1.5;">Cliquer ci-dessous pour afficher/cacher les catégories.</div>
+                <div class="mt-4 font-weight-bold">Catégories</div>
+                <div class="text-muted small mb-1">Cliquer ci-dessous pour afficher/cacher les catégories.</div>
                 <div>
                     <table>
                         <tr>
@@ -95,31 +96,33 @@
                      </table>
                 </div>
 
-                <div class="mt-4 mb-1 font-weight-bold">Langages</div>
-                    <div class="form-check">
-                        <div>
-                            <input class="form-check-input" type="radio" name="langage" id="c_scratch" value="scratch" onchange="langages(this)">
-                            <label class="form-check-label text-monospace small" for="c_scratch" style="margin-top:6px">Scratch</label>  
-                        </div>
-                        <div>  
-                            <input class="form-check-input" type="radio" name="langage" id="c_python" value="python" onchange="langages(this)">
-                            <label class="form-check-label text-monospace small" for="c_python" style="margin-top:6px">Python</label>   
-                        </div>  
-                        <div>  
-                            <input class="form-check-input" type="radio" name="langage" id="c_scratchpython" value="scratchpython" onchange="langages(this)" checked>
-                            <label class="form-check-label text-monospace small" for="c_scratchpython" style="margin-top:6px">Scratch & Python</label>   
-                        </div>                      
-                    </div> 
+                <div class="mt-4 font-weight-bold">Langages</div>
+                <div class="form-check">
+                    <div>
+                        <input class="form-check-input" type="radio" name="langage" id="c_scratch" value="scratch" onchange="langages(this)">
+                        <label class="form-check-label text-monospace small" for="c_scratch" style="margin-top:6px">Scratch</label>  
+                    </div>
+                    <div>  
+                        <input class="form-check-input" type="radio" name="langage" id="c_python" value="python" onchange="langages(this)">
+                        <label class="form-check-label text-monospace small" for="c_python" style="margin-top:6px">Python</label>   
+                    </div>  
+                    <div>  
+                        <input class="form-check-input" type="radio" name="langage" id="c_scratchpython" value="scratchpython" onchange="langages(this)" checked>
+                        <label class="form-check-label text-monospace small" for="c_scratchpython" style="margin-top:6px">Scratch & Python</label>   
+                    </div>                      
+                </div> 
 
-                <div class="mt-4 mb-1 font-weight-bold">Informations</div>
-                <div class="text-muted small mb-1" style="line-height:1.5;">Cliquer ci-dessous pour afficher/cacher les sections.</div>
-                <div class="text-muted small mb-1" style="line-height:1.5;"></div>
-                <div data-toggle="tooltip" data-trigger="hover" data-placement="right" title="date" class="text-center" style="width:25px;border-radius:2px;background-color:#2c3e50;padding:4px;margin-bottom:2px;">
-                    <a href="#" data-information-id="info_3" data-information-statut="on" onclick="informations(this)" style="color:white"><i class="fas fa-eye"></i></a>
+                <div class="mt-4 font-weight-bold">Informations</div>
+                <div class="text-muted small mb-1">Cliquer ci-dessous pour afficher/cacher les sections.</div>
+ 
+                <div>
+                    <a href="#" data-information-id="info_3" data-information-statut="on" onclick="informations(this)" style="color:white;width:25px;border-radius:2px;background-color:#2c3e50;padding:4px;"><i class="fas fa-eye"></i></a> date
                 </div>
-                <div data-toggle="tooltip" data-trigger="hover" data-placement="right" title="équipes" class="text-center" style="width:25px;border-radius:2px;background-color:#2c3e50;padding:4px;margin-bottom:2px;">
-                    <a href="#" data-information-id="info_2" data-information-statut="on" onclick="informations(this)" style="color:white"><i class="fas fa-eye"></i></a>
+
+                <div>
+                    <a href="#" data-information-id="info_2" data-information-statut="on" onclick="informations(this)" style="color:white;width:25px;border-radius:2px;background-color:#2c3e50;padding:4px;"><i class="fas fa-eye"></i></a> équipes
                 </div>
+
                 <div data-toggle="tooltip" data-trigger="hover" data-placement="right" title="lieu" class="text-center" style="width:25px;border-radius:2px;background-color:#2c3e50;padding:4px;margin-bottom:2px;">
                     <a href="#" data-information-id="info_4" data-information-statut="on" onclick="informations(this)" style="color:white"><i class="fas fa-eye"></i></a>
                 </div>                 
@@ -131,12 +134,12 @@
                 </div>
 
                 <div class="mt-4 mb-1 font-weight-bold">Télécharger l'affiche</div>
-                <div class="text-muted small mb-1" style="line-height:1.5;">Le PDF est prêt à être imprimé. Si vous souhaitez modifier/compléter l'affiche, téléchargez l'image et éditez-la.<br />Remarque: il faut quelques secondes pour générer l'affiche.</div>
+                <div class="text-muted small mb-1">Le PDF est prêt à être imprimé. Si vous souhaitez modifier/compléter l'affiche, téléchargez l'image et éditez-la.<br />Remarque: il faut quelques secondes pour générer l'affiche.</div>
                 <div class="mt-2">
                     <a class="btn btn-primary btn-sm" href="#" role="button" onclick="telecharger_pdf()">pdf</a>
                     <a class="btn btn-primary btn-sm" href="#" role="button" onclick="telecharger_image()">image</a>
                 </div>
-                <div class="small mt-5" style="color:silver;line-height:1.3;">Si vous rencontrez des problèmes pour créer l'affiche, vous pouvez écrire à contact@nuitducode.net</div>
+                <div class="small mt-5" style="color:silver;">Si vous rencontrez des problèmes pour créer l'affiche, vous pouvez écrire à contact@nuitducode.net</div>
             </div>
 
             <div class="col-md-9">
@@ -170,20 +173,20 @@
                             </div>
                         </div>
 
-                        <div class="pt-5 font-weight-bold" style="font-size:18px;padding-left:80px;line-height:1.3;color:#261b0c;">                            
-                            <div id="info_3" class="mb-3 text-monospace" style="clear:both;">
+                        <div class="pt-4 font-weight-bold" style="font-size:18px;padding-left:80px;color:#261b0c;">                            
+                            <div id="info_3" class="mb-2 text-monospace" style="clear:both;">
                                 <img src="{{ asset('img/affiche/calendar.png') }}" width="30" style="float:left;" />
                                 <div clas="text-monospace" style="padding:5px 10px 0px 40px" contenteditable="true">20 mai 2025</div>
                             </div>
-                            <div id="info_2" class="mb-3 text-monospace" style="clear:both;">
+                            <div id="info_2" class="mb-2 text-monospace" style="clear:both;">
                                 <img src="{{ asset('img/affiche/group.png') }}" width="30" style="float:left;" />
                                 <div clas="text-monospace" style="padding:5px 10px 0px 40px" contenteditable="true">équipes de 2 ou 3</div>
                             </div>
-                            <div id="info_4" class="mb-3 text-monospace" style="clear:both;">
+                            <div id="info_4" class="mb-2 text-monospace" style="clear:both;">
                                 <img src="{{ asset('img/affiche/pin.png') }}" width="30" style="float:left;" />
                                 <div clas="text-monospace" style="padding:5px 10px 0px 40px" contenteditable="true">salle 101</div>
                             </div>
-                            <div id="info_5" class="mb-3 text-monospace" style="clear:both;">
+                            <div id="info_5" class="mb-2 text-monospace" style="clear:both;">
                                 <img src="{{ asset('img/affiche/pen.png') }}" width="30" style="float:left;" />
                                 <div clas="text-monospace" style="padding:5px 10px 0px 40px" contenteditable="true">inscriptions: ndc@domaine.net</div>
                             </div>
