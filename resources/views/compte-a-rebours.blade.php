@@ -20,7 +20,7 @@
     <div class="text-center text-monospace" style="position:relative;height:100%">
 
         <div style="position:absolute;top:40px;left:0;right:0;height:30%">
-            <img src="{{ asset('img/ndc2024.png') }}" style="height:100%" />
+            <img src="{{ asset('img/ndc2025.png') }}" style="height:100%" />
         </div>
 
         <div style="position:absolute;bottom:0;left:0;right:0;height:65%">
