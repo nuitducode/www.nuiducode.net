@@ -144,7 +144,7 @@
                     <div id="affiche" style="position:relative;width:630px;height:891px;">
 
                         <div class="text-center pt-4">
-                            <img src="{{ asset('img/ndc2024.png') }}" width="280" />
+                            <img src="{{ asset('img/ndc2025.png') }}" width="280" />
 				            <div class="mt-2 font-weight-bold text-monospace" style="font-size:17px;color:#261b0c;"><span class="pl-1 pr-1"contenteditable="true">6h pour coder un jeu</span></div>
 				            <div class="mt-1 text-monospace font-weight-bold" style="font-size:12px;color:gray">~ 8<sup>e</sup> édition ~</div>
                             <div class="mt-4" style="font-size:14px;">
@@ -173,7 +173,7 @@
                         <div class="pt-5 font-weight-bold" style="font-size:18px;padding-left:80px;line-height:1.3;color:#261b0c;">                            
                             <div id="info_3" class="mb-3 text-monospace" style="clear:both;">
                                 <img src="{{ asset('img/affiche/calendar.png') }}" width="30" style="float:left;" />
-                                <div clas="text-monospace" style="padding:5px 10px 0px 40px" contenteditable="true">20 mai 2024</div>
+                                <div clas="text-monospace" style="padding:5px 10px 0px 40px" contenteditable="true">20 mai 2025</div>
                             </div>
                             <div id="info_2" class="mb-3 text-monospace" style="clear:both;">
                                 <img src="{{ asset('img/affiche/group.png') }}" width="30" style="float:left;" />
