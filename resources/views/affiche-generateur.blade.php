@@ -48,34 +48,34 @@
 
                 <div class="font-weight-bold">Fond</div>
                 <div>
-                    <a href="" data-toggle="tooltip" data-trigger="hover" data-placement="top" title="gris clair" onclick="fond('#f8fafc')" style="display:inline-block;width:30px;height:30px;border-radius:2px;background-color:#f8fafc;color:#f8fafc;border:solid 4px #bdc3c7;">-</a>
-                    <a href="" data-toggle="tooltip" data-trigger="hover" data-placement="top" title="blanc" onclick="fond('#ffffff')" style="display:inline-block;width:30px;height:30px;border-radius:2px;background-color:#ffffff;color:#ffffff;border:solid 4px #bdc3c7;">-</a>
+                    <a href="#" data-toggle="tooltip" data-trigger="hover" data-placement="top" title="gris clair" onclick="fond('#f8fafc')" style="display:inline-block;width:30px;height:30px;border-radius:2px;background-color:#f8fafc;color:#f8fafc;border:solid 4px #bdc3c7;">-</a>
+                    <a href="#" data-toggle="tooltip" data-trigger="hover" data-placement="top" title="blanc" onclick="fond('#ffffff')" style="display:inline-block;width:30px;height:30px;border-radius:2px;background-color:#ffffff;color:#ffffff;border:solid 4px #bdc3c7;">-</a>
                 </div>
 
                 <div class="mt-4 font-weight-bold">Catégories</div>
                 <div class="text-muted small mb-1">Cliquer ci-dessous pour afficher/cacher les catégories.</div>
                 <div class="mb-1 small">
-                    <a href="" data-categorie-id="c1" data-categorie-statut="on" onclick="categories(this)" style="display:inline-block;text-align:center;color:white;width:30px;border-radius:2px;background-color:#2ca05a;padding:2px;margin-right:6px;"><i class="fas fa-eye"></i></a>CM1 > 6<sup>e</sup>
+                    <a href="#" data-categorie-id="c1" data-categorie-statut="on" onclick="categories(this)" style="display:inline-block;text-align:center;color:white;width:30px;border-radius:2px;background-color:#2ca05a;padding:2px;margin-right:6px;"><i class="fas fa-eye"></i></a>CM1 > 6<sup>e</sup>
                 </div>
 
                 <div class="mb-1 small">
-                    <a href="" data-categorie-id="c2" data-categorie-statut="on" onclick="categories(this)" style="display:inline-block;text-align:center;color:white;width:30px;border-radius:2px;background-color:#2ca05a;padding:2px;margin-right:6px;"><i class="fas fa-eye"></i></a>5<sup>e</sup> > 6<sup>e</sup>
+                    <a href="#" data-categorie-id="c2" data-categorie-statut="on" onclick="categories(this)" style="display:inline-block;text-align:center;color:white;width:30px;border-radius:2px;background-color:#2ca05a;padding:2px;margin-right:6px;"><i class="fas fa-eye"></i></a>5<sup>e</sup> > 6<sup>e</sup>
                 </div>
 
                 <div class="mb-1 small">
-                    <a href="" data-categorie-id="c3" data-categorie-statut="on" onclick="categories(this)" style="display:inline-block;text-align:center;color:white;width:30px;border-radius:2px;background-color:#2ca05a;padding:2px;margin-right:6px;"><i class="fas fa-eye"></i></a>Lycée
+                    <a href="#" data-categorie-id="c3" data-categorie-statut="on" onclick="categories(this)" style="display:inline-block;text-align:center;color:white;width:30px;border-radius:2px;background-color:#2ca05a;padding:2px;margin-right:6px;"><i class="fas fa-eye"></i></a>Lycée
                 </div> 
 
                 <div class="mb-1 small">
-                    <a href="" data-categorie-id="c4" data-categorie-statut="on" onclick="categories(this)" style="display:inline-block;text-align:center;color:white;width:30px;border-radius:2px;background-color:#2ca05a;padding:2px;margin-right:6px;"><i class="fas fa-eye"></i></a>NSI 1<sup>re</sup>
+                    <a href="#" data-categorie-id="c4" data-categorie-statut="on" onclick="categories(this)" style="display:inline-block;text-align:center;color:white;width:30px;border-radius:2px;background-color:#2ca05a;padding:2px;margin-right:6px;"><i class="fas fa-eye"></i></a>NSI 1<sup>re</sup>
                 </div>
 
                 <div class="mb-1 small">
-                    <a href="" data-categorie-id="c5" data-categorie-statut="on" onclick="categories(this)" style="display:inline-block;text-align:center;color:white;width:30px;border-radius:2px;background-color:#2ca05a;padding:2px;margin-right:6px;"><i class="fas fa-eye"></i></a>NSI Tle
+                    <a href="#" data-categorie-id="c5" data-categorie-statut="on" onclick="categories(this)" style="display:inline-block;text-align:center;color:white;width:30px;border-radius:2px;background-color:#2ca05a;padding:2px;margin-right:6px;"><i class="fas fa-eye"></i></a>NSI Tle
                 </div>
                 
                 <div class="mb-1 small">
-                    <a href="" data-categorie-id="c6" data-categorie-statut="on" onclick="categories(this)" style="display:inline-block;text-align:center;color:white;width:30px;border-radius:2px;background-color:#2ca05a;padding:2px;margin-right:6px;"><i class="fas fa-eye"></i></a>Post-bac
+                    <a href="#" data-categorie-id="c6" data-categorie-statut="on" onclick="categories(this)" style="display:inline-block;text-align:center;color:white;width:30px;border-radius:2px;background-color:#2ca05a;padding:2px;margin-right:6px;"><i class="fas fa-eye"></i></a>Post-bac
                 </div>
 
 
