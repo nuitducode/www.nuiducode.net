@@ -134,7 +134,7 @@
                         <div class="text-center pt-4">
                             <img src="{{ asset('img/ndc2025.png') }}" width="280" />
 				            <div class="mt-2 font-weight-bold text-monospace" style="font-size:17px;color:#261b0c;"><span class="pl-1 pr-1"contenteditable="true">6h pour coder un jeu</span></div>
-				            <div class="mt-1 text-monospace font-weight-bold" style="font-size:12px;color:gray">~ 8<sup>e</sup> édition ~</div>
+				            <div class="mt-1 text-monospace font-weight-bold" style="font-size:12px;color:gray">~ 9<sup>e</sup> édition ~</div>
                             <div class="mt-4" style="font-size:14px;">
                                 <span id="c1" class="categorie text-monospace">CM1 > 6<sup>e</sup></span>
                                 <span id="c2" class="categorie text-monospace">5<sup>e</sup> > 3<sup>e</sup></span>
