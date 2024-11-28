@@ -7,7 +7,7 @@
 			<a href="{{ route('donnees-personnelles') }}" class="text-muted">données personnelles</a> | <a href="mailto:contact@nuitducode.net" class="text-muted">contact</a>
 			<br />
 			<a href="https://twitter.com/laurentabbal" target="_blank" class="text-monospace">@laurentabbal</a> | <a rel="me" href="https://mastodon.social/@laurentabbal" target="_blank" class="text-monospace">@laurentabbal@mastodon.social</a>
-			<div class="text-monospace text-muted text-center small">
+			<div class="text-monospace text-muted text-center">
 				Sauf mention contraire, le contenu de ce site (texte, images, ressources...) est sous licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA</a>
 			</div>
 		</div>
