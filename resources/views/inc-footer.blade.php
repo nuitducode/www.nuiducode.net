@@ -8,5 +8,8 @@
 			<br />
 			<a href="https://twitter.com/laurentabbal" target="_blank" class="text-monospace">@laurentabbal</a> | <a rel="me" href="https://mastodon.social/@laurentabbal" target="_blank" class="text-monospace">@laurentabbal@mastodon.social</a>
 		</div>
+		<div class="text-monospace text-muted text-center small">
+		Sauf mention contraire, le contenu de ce site (texte, images, ressources...) est sous licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA</a>
+		</div>
 	</div>
 </div>
