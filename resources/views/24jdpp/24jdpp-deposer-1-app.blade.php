@@ -93,7 +93,7 @@ header("Pragma: no-cache");
 
                     var regex = /^[a-zA-Z0-9\-_ ]+$/;
                     document.getElementById('error_files').innerHTML = "&nbsp;";
-                    document.getElementById('error_remarques').innerHTML = "&nbsp;";
+                    //document.getElementById('error_remarques').innerHTML = "&nbsp;";
 
                     var nb_py = 0
                     var nb_pyxres = 0
@@ -128,7 +128,7 @@ header("Pragma: no-cache");
                 //send all the form data along with the files:
                 this.on("sendingmultiple", function(data, xhr, formData) {
                     formData.append("jour", {{ $jour }});
-                    formData.append("remarques", jQuery("#remarques").val());
+                    //formData.append("remarques", jQuery("#remarques").val());
                 });
                 this.on("successmultiple", function(files, response) {
                     console.log('success sending');
