@@ -36,9 +36,11 @@ header("Pragma: no-cache");
                     <div id="formdropzone" class="dropzone"></div>
                     <div id="error_files" class="mt-1 text-danger text-monospace small">&nbsp;</div>
 
+                    <!--
                     <div class="text-info mt-2">REMARQUES<span class="ml-2 small text-muted text-monospace font-italic">optionnel</span></div>
                     <textarea class="form-control" id="remarques" name="remarques" rows="5" required></textarea>
                     <div id="error_remarques" class="mt-1 text-danger text-monospace small" role="alert">&nbsp;</div>
+                    -->
 
 					<button type="submit" id="submit_request" class="btn btn-primary mt-2 pl-4 pr-4"><i class="fas fa-check"></i></button>
 
