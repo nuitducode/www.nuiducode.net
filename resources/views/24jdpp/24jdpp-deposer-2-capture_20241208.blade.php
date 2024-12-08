@@ -9,7 +9,6 @@ header("Pragma: no-cache");
 <head>
     @include('inc-meta')
     <script src="https://cdn.jsdelivr.net/gh/kitao/pyxel/wasm/pyxel.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gif.js/dist/gif.js"></script>
     <title>24 jours de Python-Pyxel | Capture</title>
     <style>
         .default-pyxel-screen {
@@ -37,24 +36,15 @@ header("Pragma: no-cache");
 
 	<div class="container mt-2 mb-2">
 		<div class="row">
-			<div class="col-md-10 offset-md-1">
+			<div class="col-md-8 offset-md-2">
 
                 <div class="text-center"><img src="{{ url('/')}}/img/n-d-c.png" width="250" /></div>
                 <div class="text-center text-monospace text-dark mt-1 font-weight-bold" style="font-size:110%;">~ 24 JOURS DE PYTHON-PYXEL ~</div>	
                 <div class="text-center text-monospace text-danger mb-2 font-weight-bold" style="font-size:120%;">JOUR {{ session('depot_24_app_jour') }}</div>	
                 <div class="text-center text-monospace text-success font-weight-bold" style="font-size:100%;">Étape 2/3</div>	
          
-                <div class="text-left text-monospace mt-2 mb-3">
-                    Lancer le programme puis faire une capture. Utiliser le chiffre du clavier, pas du pavé numérique.
-                    <ul>
-                        <li>
-                            Pour capturer une seule image: faire la combinaison de touches <kbd>Alt</kbd>+<kbd>1</kbd>.
-                        </li>
-                        <li>
-                            Pour capturer un gif animé: faire la combinaison de touches <kbd>Alt</kbd>+<kbd>2</kbd> pour démarrer la capture, puis <kbd>Alt</kbd>+<kbd>3</kbd> pour l'arrêter.
-                        </li>
-                    </ul>
-                    Vous pouvez faire plusieurs tentatives avant de valider la capture.
+                <div class="text-center text-monospace mt-2 mb-3">
+                    Lancer le programme puis faire une capture avec la combinaison de touches <kbd>Alt</kbd>+<kbd>1</kbd> (le <code>1</code> du clavier, pas du pavé numrique). Vous pouvez faire plusieurs tentatives avant de valider l'image.
                 </div>
 
             </div>
@@ -66,12 +56,12 @@ header("Pragma: no-cache");
             </div>
             <div class="col-md-6 text-left">
 
-                <span id="confirmer_button">
-                    <a  id="save-button" onclick="showConfirm('confirmer_button', 'confirmer_confirm')" class="btn btn-success btn-sm" style="padding-left:18px;padding-right:20px;display:none;" href="#" role="button" data-toggle="tooltip" data-placement="top" title="sauvegarder l'image"><i class="fa-solid fa-arrow-right-to-bracket fa-rotate-90"></i></a>
+                <span id="supprimer_button">
+                    <a  id="save-button" onclick="showConfirm('supprimer_button', 'supprimer_confirm')" class="btn btn-success btn-sm" style="padding-left:18px;padding-right:20px;display:none;" href="#" role="button" data-toggle="tooltip" data-placement="top" title="sauvegarder l'image"><i class="fa-solid fa-arrow-right-to-bracket fa-rotate-90"></i></a>
                 </span>
-                <span id="confirmer_confirm" style="display:none">
-                    <a class="btn btn-danger btn-sm text-monospace" style="padding-left:18px;padding-right:20px;" href="/24jdpp-deposer-fin" role="button"><i class="fa-solid fa-arrow-right-to-bracket fa-rotate-90 mr-3"></i>confirmer</a>
-                    <div onclick="hideConfirm('confirmer_button', 'confirmer_confirm')" class="btn btn-light btn-sm" type="button"><i class="fa-solid fa-xmark"></i></div>
+                <span id="supprimer_confirm" style="display:none">
+                    <a onclick="saveImage()" class="btn btn-danger btn-sm text-monospace" style="padding-left:18px;padding-right:20px;" href="#" role="button"><i class="fa-solid fa-arrow-right-to-bracket fa-rotate-90 mr-3"></i>confirmer</a>
+                    <div onclick="hideConfirm('supprimer_button', 'supprimer_confirm')" class="btn btn-light btn-sm" type="button"><i class="fa-solid fa-xmark"></i></div>
                 </span>
 
 			</div>
@@ -87,7 +77,6 @@ header("Pragma: no-cache");
     <script>
         document.addEventListener('click', (event) => {
             const target = event.target;
-
             if (target.tagName === 'A' && target.download) {
                 // Empêche le téléchargement automatique
                 event.preventDefault();
@@ -95,28 +84,10 @@ header("Pragma: no-cache");
                 // Récupérer l'URL de l'image
                 const imageURL = target.href;
 
-                // Télécharger le fichier sous forme de Blob
-                fetch(imageURL)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error(`HTTP error! status: ${response.status}`);
-                        }
-                        return response.blob();
-                    })
-                    .then(blob => {
-                        console.log("Blob téléchargé :", blob);
+                // Afficher l'image sur la page
+                displayImage(imageURL);
 
-                        // Afficher l'image sur la page
-                        displayImage(URL.createObjectURL(blob));
-
-                        // Envoyer le fichier Blob au serveur
-                        envoyerBlobAuServeur(blob);
-
-                        console.log("Téléchargement intercepté et annulé.");
-                    })
-                    .catch(error => {
-                        console.error("Erreur lors du téléchargement :", error);
-                    });
+                console.log("Téléchargement intercepté et annulé.");
             }
         });
     </script>
@@ -136,6 +107,7 @@ header("Pragma: no-cache");
         container.style.border = '3px dashed silver';
         container.style.borderRadius = '5px';
         document.body.appendChild(container);
+
 
         function displayImage(imageURL) {
             // Afficher le bouton de sauvegarde
@@ -160,35 +132,62 @@ header("Pragma: no-cache");
             container.appendChild(img);
         }
 
+        function saveImage() {
+            const img = document.getElementById('current-image');
+            if (!img) {
+                alert("Aucune image à sauvegarder !");
+                return;
+            }
+
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+
+            img.onload = function () {
+                canvas.width = img.naturalWidth; // Largeur originale de l'image
+                canvas.height = img.naturalHeight; // Hauteur originale de l'image
+
+                ctx.drawImage(img, 0, 0);
+                canvas.toBlob(function (blob) {
+                    console.log("Blob taille :", blob.size); // Taille du Blob en octets
+                    console.log("Blob type :", blob.type);   // Type MIME du Blob (ex: image/png)
+                    console.log('blob :' + blob);
+                    envoyerBlobAuServeur(blob);
+                }, 'image/png');
+            };
+
+            // Assurez-vous que l'image est déjà chargée
+            if (img.complete) {
+                img.onload();
+            } else {
+                console.error("L'image n'est pas prête à être utilisée.");
+            }
+        }
+
         function envoyerBlobAuServeur(blob) {
             const formData = new FormData();
-            formData.append("image", blob, "image_sauvegardee");
+            formData.append('image', blob, 'capture.png');
 
             fetch('/24jdpp-deposer-capture', {
                 method: 'POST',
                 headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}' // Laravel CSRF token
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 },
                 body: formData
             })
                 .then(response => {
                     if (response.ok) {
-                        return response.json();
+                        console.log('Image sauvegardée avec succès.');
+                        console.log(response.text());
+                        window.location.replace("/24jdpp-deposer-fin");
                     } else {
-                        return response.text().then(errorText => {
-                            console.error('Erreur lors de l\'envoi au serveur :', errorText);
+                        response.text().then(errorText => {
+                            console.log('Erreur: ' + errorText);
                         });
                     }
                 })
-                .then(data => {
-                    if (data && data.message) {
-                        console.log("Fichier sauvegardé avec succès sur le serveur.");
-                    }
-                })
-                .catch(error => {
-                    console.error("Erreur réseau lors de l'envoi :", error);
-                });
+                .catch(error => console.error('Erreur:', error));
         }
+
 
     </script>
 

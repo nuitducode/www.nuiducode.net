@@ -28,7 +28,14 @@ header("Pragma: no-cache");
 
                 <div class="text-center text-monospace mt-2 mb-2">Capture enregistrée!</div>
                 <div class="text-center text-monospace mt-2 mb-2"><a  class="btn btn-light btn-sm" href="/24jdpp/{{ session('depot_24_app_jour') }}" role="button" >quitter</a></div>
-                <div class="text-center text-monospace mt-2 mb-5"><img src="{{ asset('storage/vingtquatre-apps/jour-'.session('depot_24_app_jour').'/'.Crypt::decryptString(session('depot_24_app_jeton')).'/screenshot.png') }}" alt="Image enregistrée" style="border-radius:4px;"></div>
+                <?php
+                if (Storage::exists('public/vingtquatre-apps/jour-'.session('depot_24_app_jour').'/'.Crypt::decryptString(session('depot_24_app_jeton')).'/screenshot.gif')){
+                    $capture = 'screenshot.gif';
+                }else{
+                    $capture = 'screenshot.png';
+                }
+                ?>
+                <div class="text-center text-monospace mt-2 mb-5"><img src="{{ asset('storage/vingtquatre-apps/jour-'.session('depot_24_app_jour').'/'.Crypt::decryptString(session('depot_24_app_jeton')).'/'.$capture) }}" alt="Image enregistrée" style="border-radius:4px;"></div>
 
 			</div>
 

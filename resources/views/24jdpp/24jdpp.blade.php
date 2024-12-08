@@ -22,7 +22,18 @@
 		<div class="row">
             <div class="col-md-12 text-center">
                 @foreach($apps as $app)
-                    <a href="/24jdpp-lecteur/{{ Crypt::encryptString($app['id']) }}"><img src="{{ asset('storage/vingtquatre-apps/jour-'.$app['jour'].'/'.$app['jeton'] .'/screenshot.png') }}" width="200" style="margin:5px;border-radius:4px;"></a>
+                    <?php
+                    $gif_exists = Storage::exists('public/vingtquatre-apps/jour-'.$app['jour'].'/'.$app['jeton'] .'/screenshot.gif');
+                    $png_exists = Storage::exists('public/vingtquatre-apps/jour-'.$app['jour'].'/'.$app['jeton'] .'/screenshot.png');
+                    if ($gif_exists){
+                        $capture = 'screenshot.gif';
+                    } else {
+                        $capture = 'screenshot.png';
+                    }
+                    ?>
+                    @if($gif_exists OR $png_exists)
+                        <a href="/24jdpp-lecteur/{{ Crypt::encryptString($app['id']) }}"><img src="{{ asset('storage/vingtquatre-apps/jour-'.$app['jour'].'/'.$app['jeton'] .'/'.$capture) }}" width="200" style="margin:5px;border-radius:4px;"></a>
+                    @endif
                 @endforeach
 		    </div>
 		</div><!-- /row -->
