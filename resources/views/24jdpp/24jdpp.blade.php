@@ -41,7 +41,7 @@
                     ?>
                 </div>
                 <div class="text-center text-monospace text-danger mb-2 font-weight-bold" style="font-size:120%;">JOUR {{ $jour }}</div>	
-                <div class="text-center text-monospace mt-2 mb-2"><a class="btn btn-light btn-sm" href="https://nuit-du-code.forge.apps.education.fr/24-jours-de-python-pyxel/" role="button" >voir tous les sujets</a></div>	
+                <div class="text-center text-monospace mt-2 mb-2"><a class="btn btn-light btn-sm" href="https://24jdpp.forge.apps.education.fr/" role="button" >voir tous les sujets</a></div>	
             </div>
         </div>
 
