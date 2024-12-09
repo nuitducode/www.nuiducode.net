@@ -35,7 +35,7 @@
                     <?php
                     $liens='';
                     for ($i = 1; $i <= 24; $i++) {
-                        $liens = $liens."[<a href='https://nuitducode-dev/24jdpp/$i'>$i</a>]";
+                        $liens = $liens."[<a href='https://www.nuitducode.net/24jdpp/$i'>$i</a>]";
                     }
                     echo $liens;
                     ?>
