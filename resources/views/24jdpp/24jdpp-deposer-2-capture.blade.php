@@ -62,7 +62,7 @@ header("Pragma: no-cache");
 
 		<div class="row">
 			<div class="col-md-6 text-right"> 
-                <a class="btn btn-light btn-sm" href="{{ request()->fullUrl() }}" role="button" data-toggle="tooltip" data-placement="top" title="relancer le programme"><i class="fa-solid fa-rotate"></i></a>
+                <a class="btn btn-light btn-sm" href="{{ request()->fullUrl() }}" role="button" data-toggle="tooltip" data-placement="left" title="relancer le programme"><i class="fa-solid fa-rotate"></i></a>
             </div>
             <div class="col-md-6 text-left">
 
