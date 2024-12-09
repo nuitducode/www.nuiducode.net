@@ -49,7 +49,7 @@
                     }
                     ?>
                     @if(($gif_exists OR $png_exists) AND $app->is_public == 1)
-                        <div class="capture" style="position:relative;width:180px;margin:4px;display:inline-block">
+                        <div class="capture" style="position:relative;width:200px;margin:4px;display:inline-block">
                             @if(Auth::check() && Auth::user()->is_admin == 1)
                                 <div class="del_button">
                                     <a class="btn btn-danger btn-sm pl-3 pr-3" href="/24jdpp-capture-delete/{{ Crypt::encryptString($app['id']) }}" role="button"><i class="fa-solid fa-trash"></i></a>	
