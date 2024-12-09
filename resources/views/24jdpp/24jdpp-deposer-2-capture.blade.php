@@ -39,7 +39,7 @@ header("Pragma: no-cache");
 		<div class="row">
 			<div class="col-md-10 offset-md-1">
 
-                <div class="text-center"><img src="{{ url('/')}}/img/n-d-c.png" width="250" /></div>
+                <div class="text-center"><img src="{{ url('/')}}/img/n-d-c.png" width="100" /></div>
                 <div class="text-center text-monospace text-dark mt-1 font-weight-bold" style="font-size:110%;">~ 24 JOURS DE PYTHON-PYXEL ~</div>	
                 <div class="text-center text-monospace text-danger mb-2 font-weight-bold" style="font-size:120%;">JOUR {{ session('depot_24_app_jour') }}</div>	
                 <div class="text-center text-monospace text-success font-weight-bold" style="font-size:100%;">Étape 2/3</div>	

@@ -21,13 +21,13 @@ header("Pragma: no-cache");
 
 			<div class="col-md-8 offset-md-2">
 
-                <div class="text-center"><img src="{{ url('/')}}/img/n-d-c.png" width="250" /></div>
+                <div class="text-center"><img src="{{ url('/')}}/img/n-d-c.png" width="100" /></div>
                 <div class="text-center text-monospace text-dark mt-1 font-weight-bold" style="font-size:110%;">~ 24 JOURS DE PYTHON-PYXEL ~</div>	
                 <div class="text-center text-monospace text-danger mb-2 font-weight-bold" style="font-size:120%;">JOUR  {{ session('depot_24_app_jour') }}</div>	
                 <div class="text-center text-monospace text-success mb-4 font-weight-bold" style="font-size:100%;">Étape 3/3</div>	
 
                 <div class="text-center text-monospace mt-2 mb-2">Capture enregistrée!</div>
-                <div class="text-center text-monospace mt-2 mb-2"><a  class="btn btn-light btn-sm" href="/24jdpp/{{ session('depot_24_app_jour') }}" role="button" >quitter</a></div>
+                <div class="text-center text-monospace mt-2 mb-2"><a  class="btn btn-light btn-sm" href="/24jdpp/{{ session('depot_24_app_jour') }}" role="button" >vous pouvez quitter cette page</a></div>
                 <?php
                 if (Storage::exists('public/vingtquatre-apps/jour-'.session('depot_24_app_jour').'/'.Crypt::decryptString(session('depot_24_app_jeton')).'/screenshot.gif')){
                     $capture = 'screenshot.gif';
