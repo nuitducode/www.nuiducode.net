@@ -37,7 +37,7 @@
         </div>
 
 		<div class="row">
-            <div class="col-md-12 text-center">
+            <div class="col-md-12 text-center p-0">
                 @foreach($apps as $app)
                     <?php
                     $gif_exists = Storage::exists('public/vingtquatre-apps/jour-'.$app['jour'].'/'.$app['jeton'] .'/screenshot.gif');
