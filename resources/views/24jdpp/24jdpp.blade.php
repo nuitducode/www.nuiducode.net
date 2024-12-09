@@ -29,7 +29,7 @@
     <div class="container-fluid mt-2 mb-2">
 		<div class="row mb-4">
 			<div class="col-md-8 offset-md-2">
-                <div class="text-center"><img src="{{ url('/')}}/img/n-d-c.png" width="100" /></div>
+                <div class="text-center"><a href='https://www.nuitducode.net' target="_blank"><img src="{{ url('/')}}/img/n-d-c.png" width="100" /></a></div>
                 <div class="text-center text-monospace text-dark mt-1 font-weight-bold" style="font-size:110%;">~ 24 JOURS DE PYTHON-PYXEL ~</div>	
                 <div class="text-center text-monospace text-dark mb-2 font-weight-bold small">
                     <?php
