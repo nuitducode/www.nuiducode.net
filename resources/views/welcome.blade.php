@@ -55,6 +55,11 @@
 					La <b style="color:#2c3e50">Nuit du Code</b> est un <b style="color:#cf63cf">marathon de programmation</b> durant lequel les élèves, par équipes de deux ou trois, ont <b style="color:#cf63cf">6h<sup style="cursor:help;color:gray;padding-left:2px;" data-html="true" data-toggle="tooltip" data-placement="top" title="ou moins pour les élèves de cycle 3"><i class="fas fa-question-circle fa-xs"></i></sup> pour coder un jeu</b> avec <a href="https://scratch.mit.edu/" target="_blank"><img src="{{ asset('img/scratch-logo.svg') }}" /></a> ou <a href="https://www.python.org/" target="_blank"><img src="{{ asset('img/python-logo.svg') }}" /></a>.
 				</p>
 
+				<div class="text-center mt-2 mb-3">
+					<a class="btn btn-primary mr-2" href="https://nuit-du-code.forge.apps.education.fr/DOCUMENTATION/SCRATCH/01-introduction/" role="button">entraînement scratch</a>
+					<a class="btn btn-primary ml-2" href="https://nuit-du-code.forge.apps.education.fr/DOCUMENTATION/PYTHON/01-presentation/" role="button">entraînement python / pyxel</a>
+				</div>
+
 				<p class="text-monospace text-justify">
 					Peuvent participer: tous les établissements scolaires français situés en France ou à l'étranger ainsi que tous les établissements scolaires francophones où qu'ils soient. Les catégories vont du cours moyen au post-bac en passant par le collège et le lycée. Chaque établissement peut inscrire autant d'élèves qu'il le souhaite. Les inscriptions sont gratuites.
 				</p>
@@ -193,7 +198,7 @@
 					</a>
 				</div>			
 
-				<div class="bouton mb-4">
+				<div class="bouton mb-3">
 					<a href="/jeux-ndc">
 						<svg xmlns="http://www.w3.org/2000/svg" width="150" viewBox="0 0 241 58">
 							<g aria-label="scratchbox" font-size="1.5em" color="#ffffff" fill="#ffffff" font-family="Nunito" font-weight="400" letter-spacing="0" style="line-height:1.25" word-spacing="0">
@@ -217,29 +222,7 @@
 				</div>
 			-->
 
-				<div class="bouton">
-					<a href="https://nuit-du-code.forge.apps.education.fr/DOCUMENTATION/SCRATCH/01-introduction/" target="_blank">
-						<svg xmlns="http://www.w3.org/2000/svg" width="150" viewBox="0 0 241 58">
-							<g aria-label="scratchbox" font-size="1.5em" color="#ffffff" fill="#ffffff" font-family="Nunito" font-weight="400" letter-spacing="0" style="line-height:1.25" word-spacing="0">
-								<path fill="#4c97ff" stroke="#3373cc" d="M0.5 4.5a4 4 0 0 1 4-4h8c2 0 3 1 4 2l4 4c1 1 2 2 4 2h12c2 0 3-1 4-2l4-4c1-1 2-2 4-2h188a4 4 0 0 1 4 4v40a4 4 0 0 1-4 4h-188c-2 0-3 1-4 2l-4 4c-1 1-2 2-4 2h-12c-2 0-3-1-4-2l-4-4c-1-1-2-2-4-2h-8a4 4 0 0 1-4-4z"/>
-								<text x="0.7em" y="1.6em">entraînement scratch</text>
-							</g>
-						</svg>
-					</a>
-				</div>
-
-				<div class="bouton">
-					<a href="https://nuit-du-code.forge.apps.education.fr/DOCUMENTATION/PYTHON/01-presentation/" target="_blank">
-						<svg xmlns="http://www.w3.org/2000/svg" width="150" viewBox="0 0 241 58">
-							<g aria-label="scratchbox" font-size="1.5em" color="#ffffff" fill="#ffffff" font-family="Nunito" font-weight="400" letter-spacing="0" style="line-height:1.25" word-spacing="0">
-								<path fill="#4c97ff" stroke="#3373cc" d="M0.5 4.5a4 4 0 0 1 4-4h8c2 0 3 1 4 2l4 4c1 1 2 2 4 2h12c2 0 3-1 4-2l4-4c1-1 2-2 4-2h188a4 4 0 0 1 4 4v40a4 4 0 0 1-4 4h-188c-2 0-3 1-4 2l-4 4c-1 1-2 2-4 2h-12c-2 0-3-1-4-2l-4-4c-1-1-2-2-4-2h-8a4 4 0 0 1-4-4z"/>
-								<text x="0.7em" y="1.6em">entraînement python</text>
-							</g>
-						</svg>
-					</a>
-				</div>
-
-				<div class="bouton mt-3">
+				<div class="bouton mt-2">
 					<a href="https://github.com/nuitducode/ORGANISATION-2025/discussions" target="_blank">
 						<svg xmlns="http://www.w3.org/2000/svg" width="150" viewBox="0 0 241 58">
 							<g aria-label="scratchbox" font-size="1.5em" color="#ffffff" fill="#ffffff" font-family="Nunito" font-weight="400" letter-spacing="0" style="line-height:1.25" word-spacing="0">
@@ -251,8 +234,16 @@
 				</div>
 
 				<br />
-				<a href="https://mastodon.social/@nuitducode" target="_blank"><button type="button" class="btn btn-light btn-sm text-muted ml-1 mr-1 pt-2"><i class="fa-brands fa-mastodon"></i></button></a>
-				<a href="https://twitter.com/nuitducode" target="_blank"><button type="button" class="btn btn-light btn-sm text-muted ml-1 mr-1 pt-2"><i class="fa-brands fa-twitter"></i></button></a>
+				<a href="https://mastodon.social/@nuitducode" target="_blank">
+					<button type="button" class="btn btn-light btn-sm text-muted ml-1 mr-1 pt-2">
+						<i class="fa-brands fa-mastodon"></i>
+					</button>
+				</a>
+				<a href="https://x.com/nuitducode" target="_blank">
+					<button type="button" class="btn btn-light btn-sm text-muted ml-1 mr-1 pt-2">
+						<i class="fa-brands fa-square-x-twitter"></i>
+					</button>
+				</a>
 				<br />
 				<br />						
 				<br />						
