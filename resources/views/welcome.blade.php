@@ -11,11 +11,11 @@
 
 		<div class="row mb-5">
 
-			<div class="col-md-5 text-center">
+			<div class="col-md-4 text-center">
 				<img src="{{ asset('img/ndc2025.png') }}" width="280" />
 			</div>
 
-			<div class="col-md-4 text-center">
+			<div class="col-md-5 text-center">
 				<div class="mt-2 mb-3">
                     <div class="text-monospace text-danger font-weight-bold" style="font-size:24px">SCRATCH <span style="color:silver;">&#8231;</span> PYTHON</div>
                     <div class="text-center"><span style="margin-left:10px;"><img src="{{ asset('img/affiche/scratch.png') }}" width="45" /></span><span style="margin-left:60px;"><img src="{{ asset('img/affiche/python.png') }}" width="45" /></span></div>
