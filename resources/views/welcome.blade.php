@@ -9,18 +9,27 @@
 
 	<div class="container mt-4 mb-5">
 
+		<div class="row mb-5">
+
+			<div class="col-md-5 text-center">
+				<img src="{{ asset('img/ndc2025.png') }}" width="280" />
+			</div>
+
+			<div class="col-md-4 text-center">
+				<div class="mt-2 mb-3">
+                    <div class="text-monospace text-danger font-weight-bold" style="font-size:24px">SCRATCH <span style="color:silver;">&#8231;</span> PYTHON</div>
+                    <div class="text-center"><span style="margin-left:10px;"><img src="{{ asset('img/affiche/scratch.png') }}" width="45" /></span><span style="margin-left:60px;"><img src="{{ asset('img/affiche/python.png') }}" width="45" /></span></div>
+                </div>
+				<div class="font-weight-bold text-monospace" style="font-size:16px;color:#261b0c;">6h pour coder un jeu</div>
+				<div class="text-monospace font-weight-bold" style="font-size:12px;color:gray">~ 9<sup>e</sup> édition ~</div>
+				<div class="mt-3 mb-3 text-monospace font-weight-bold" style="font-size:17px;color:#4cbf56">mai - juin 2025</div>
+			</div>
+
+		</div>
+
 		<div class="row mb-4">
 
-			<div class="col-md-9 text-center">
-				<img src="{{ asset('img/ndc2025.png') }}" width="280" />
-				<div class="font-weight-bold text-monospace" style="font-size:17px;color:#261b0c;">6h pour coder un jeu</div>
-				<div class="text-monospace font-weight-bold" style="font-size:12px;color:gray">~ 9<sup>e</sup> édition ~</div>
-				<div class="mt-2">
-                    <div class="text-monospace text-danger font-weight-bold" style="font-size:18px">SCRATCH <span style="color:silver;">&#8231;</span> PYTHON</div>
-                    <div class="text-center"><span style="margin-left:10px;"><img src="{{ asset('img/affiche/scratch.png') }}" width="35" /></span><span style="margin-left:60px;"><img src="{{ asset('img/affiche/python.png') }}" width="35" /></span></div>
-                </div>
-				<div class="mt-3 mb-3 text-monospace font-weight-bolder" style="color:#4cbf56">mai - juin 2025</div>
-				
+			<div class="col-md-9 text-center">				
 				<?php
 				/*
 				<p class="text-center">
@@ -34,7 +43,7 @@
 				</p>
 				
 				<p class="text-center mt-3 small">
-					<span style="font-weight:bold;color:#d35400">{{ App\Models\User::count(); }}</span>
+					<span style="font-weight:bold;color:#d35400">{{ 27 + App\Models\User::count(); }}</span>
 					<span class="text-monospace" style="color:silver"> établissements inscrits</span>
 					<span class="ml-3 " style="font-weight:bold;color:#d35400">{{ App\Models\User::sum('nb_participants'); }}</span>
 					<span class="text-monospace" style="color:silver"> élèves</span>
