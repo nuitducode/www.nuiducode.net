@@ -59,7 +59,7 @@
                 </div>
 
                 <div class="mb-1 small">
-                    <a href="#" data-categorie-id="c2" data-categorie-statut="on" onclick="categories(this)" style="display:inline-block;text-align:center;color:white;width:30px;border-radius:2px;background-color:#2ca05a;padding:2px;margin-right:6px;"><i class="fas fa-eye"></i></a>5<sup>e</sup> > 6<sup>e</sup>
+                    <a href="#" data-categorie-id="c2" data-categorie-statut="on" onclick="categories(this)" style="display:inline-block;text-align:center;color:white;width:30px;border-radius:2px;background-color:#2ca05a;padding:2px;margin-right:6px;"><i class="fas fa-eye"></i></a>5<sup>e</sup> > 3<sup>e</sup>
                 </div>
 
                 <div class="mb-1 small">
