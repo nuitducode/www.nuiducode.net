@@ -43,7 +43,7 @@
 				</p>
 				
 				<p class="text-center mt-3 small">
-					<span style="font-weight:bold;color:#d35400">{{ 27 + App\Models\User::count(); }}</span>
+					<span style="font-weight:bold;color:#d35400">{{ 28 + App\Models\User::count(); }}</span>
 					<span class="text-monospace" style="color:silver"> établissements inscrits</span>
 					<span class="ml-3 " style="font-weight:bold;color:#d35400">{{ App\Models\User::sum('nb_participants'); }}</span>
 					<span class="text-monospace" style="color:silver"> élèves</span>
