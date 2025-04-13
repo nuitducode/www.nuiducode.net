@@ -71,9 +71,9 @@
                         <table class="table table-borderless table-sm text-secondary">
 
                             <tr><td><b>08/19</b></td><td style="width:100%">Ouverture des inscriptions  pour la NDC 2025</td></tr>
-                            <tr><td><b>05/09</b></td><td style="width:100%"><a href="https://github.com/nuitducode/ORGANISATION-2025/discussions/1" target="_blank">Bulletin #01</a></td></tr>
-                            <tr><td><b>24/02</b></td><td style="width:100%"><a href="https://github.com/nuitducode/ORGANISATION-2025/discussions/5" target="_blank">Bulletin #02</a></td></tr>
-                            <tr><td><b>10/04</b></td><td style="width:100%"><a href="https://github.com/nuitducode/ORGANISATION-2025/discussions/7" target="_blank">Bulletin #03</a></td></tr>
+                            <tr><td><b>05/09</b></td><td style="width:100%">Bulletin <a href="https://github.com/nuitducode/ORGANISATION-2025/discussions/1" target="_blank">#01</a></td></tr>
+                            <tr><td><b>24/02</b></td><td style="width:100%">Bulletin <a href="https://github.com/nuitducode/ORGANISATION-2025/discussions/5" target="_blank">#02</a></td></tr>
+                            <tr><td><b>10/04</b></td><td style="width:100%">Bulletin <a href="https://github.com/nuitducode/ORGANISATION-2025/discussions/7" target="_blank">#03</a></td></tr>
                             
                         </table>
                     </div>
@@ -253,7 +253,7 @@
 
                             <!-- == 2 == -->
                             <h3 id="s02" class="mt-5"><span class="badge badge-pill badge-primary pt-1">2</span> Univers de jeu</h3>
-                            
+
                             <div class="ml-4 mt-0 mb-3" style="border:1px solid #e35551;border-radius:4px;padding:20px 20px 0px 20px;">
                                 <div class="text-monospace text-danger small" style="text-align:justify">
                                     <b>IMPORTANT</b><br />
