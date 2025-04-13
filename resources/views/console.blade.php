@@ -71,6 +71,9 @@
                         <table class="table table-borderless table-sm text-secondary">
 
                             <tr><td><b>08/19</b></td><td style="width:100%">Ouverture des inscriptions  pour la NDC 2025</td></tr>
+                            <tr><td><b>05/09</b></td><td style="width:100%"><a href="https://github.com/nuitducode/ORGANISATION-2025/discussions/1" target="_blank">Bulletin #01</a></td></tr>
+                            <tr><td><b>24/02</b></td><td style="width:100%"><a href="https://github.com/nuitducode/ORGANISATION-2025/discussions/5" target="_blank">Bulletin #02</a></td></tr>
+                            <tr><td><b>10/04</b></td><td style="width:100%"><a href="https://github.com/nuitducode/ORGANISATION-2025/discussions/7" target="_blank">Bulletin #03</a></td></tr>
                             
                         </table>
                     </div>
@@ -210,8 +213,6 @@
                             <!-- == 1 == -->
                             <h3 id="s01" class="m-0 mb-2"><span class="badge badge-pill badge-primary pt-1">1</span> Documents pour les équipes</h3>
 
-                            <div class="text-danger text-monospace small ml-4 mb-2">Attention: ces documents vont être mis à jour bientôt pour l'édition 2025.</div>
-
                             <div class="row ml-2">
                                 <div class="col">
                                     <a class=" btn btn-light btn-block btn-sm" href="https://forge.apps.education.fr/nuit-du-code/DOCUMENTATION/-/raw/main/docs/assets/documents/regles-et-conseils-scratch.pdf" role="button">Règles et Conseils<br /><span style="font-size:80%;color:gray">Scratch</span></a>
@@ -250,25 +251,9 @@
                             </div>
 
 
-
-                            @if (Auth::user()->is_admin == 1)
-							<div class="mt-5 text-danger text-monospace">--------------------------------- MODE ADMIN ---------------------------------</div>
-
-
-
-
-
                             <!-- == 2 == -->
                             <h3 id="s02" class="mt-5"><span class="badge badge-pill badge-primary pt-1">2</span> Univers de jeu</h3>
-
-
-
-
-                            <?php
-                            /*
-                            <iframe src="https://turbowarp.org/embed/?project_url=www.nuitducode.net/01.sb3" width="482" height="412" allowtransparency="true" frameborder="0" scrolling="no" allowfullscreen></iframe>
-                            */
-                            ?>
+                            
                             <div class="ml-4 mt-0 mb-3" style="border:1px solid #e35551;border-radius:4px;padding:20px 20px 0px 20px;">
                                 <div class="text-monospace text-danger small" style="text-align:justify">
                                     <b>IMPORTANT</b><br />
@@ -296,6 +281,9 @@
                             </div>
 
 
+                            @if (Auth::user()->is_admin == 1)
+						    <div class="mt-5 text-danger text-monospace">--------------------------------- MODE ADMIN ---------------------------------</div>
+                            
                             <!-- == 3 == -->
                             <h3 id="s03" class="mt-5"><span class="badge badge-pill badge-primary pt-1">3</span> Dépôt & évaluation des jeux</h3>
                             <div class="mb-1 ml-3">
