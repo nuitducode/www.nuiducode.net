@@ -49,7 +49,7 @@ if (Auth::user()->is_admin != 1) {
                                         @foreach($jeux AS $jeu)
                                         <tr>
                                             <td class="align-middle">{{$jeu->nom_equipe}}</td>
-                                            <td class="align-middle"><a href="https://turbowarp.org?project_url=www.nuitducode.net/storage/depot-jeux/scratch/{{$jeu->etablissement_jeton}}/{{$jeu->scratch_id}}.sb3" target="_blank">{{$jeu->scratch_id}}</a></td>
+                                            <td class="align-middle"><a href="https://nuitducode.github.io/ndc-lecteur-scratch/embed.html?project_url=www.nuitducode.net/storage/depot-jeux/scratch/{{$jeu->etablissement_jeton}}/{{$jeu->scratch_id}}.sb3" target="_blank">{{$jeu->scratch_id}}</a></td>
                                         </tr>
                                         @endforeach
                                     </tbody>

@@ -52,11 +52,11 @@
 							<img src="{{ asset('img/scratch_evaluation.png') }}" style="position:relative;top:40%" />    
 						</div>	
 
-						<button type="button" class="btn btn-success btn-sm mt-3" onClick="this.previousElementSibling.innerHTML='<iframe id=\'iframe_{{$jeu->id}}\'  src=\'https://turbowarp.org/embed?project_url=www.nuitducode.net/storage/{{$jeu_dossier}}\' width=\'100%\' height=\'402\' allowtransparency=\'true\' frameborder=\'0\' scrolling=\'no\'></iframe>'">lancer / recharger le jeu</button>
+						<button type="button" class="btn btn-success btn-sm mt-3" onClick="this.previousElementSibling.innerHTML='<iframe id=\'iframe_{{$jeu->id}}\'  src=\'https://nuitducode.github.io/ndc-lecteur-scratch/embed.html?project_url=www.nuitducode.net/storage/{{$jeu_dossier}}\' width=\'100%\' height=\'402\' allowtransparency=\'true\' frameborder=\'0\' scrolling=\'no\'></iframe>'">lancer / recharger le jeu</button>
 
 						<button type="button" class="mt-3 btn btn-light btn-sm ml-3 pl-3 pr-3" onclick="fullscreen('iframe_{{$jeu->id}}')" data-toggle="tooltip" data-placement="right" data-title="mode plein écran"><i class="fas fa-expand"></i></button> 
 
-						<div class="mt-4 mb-2 text-monospace text-left small" style="color:silver">Si vous voulez voir le code ou si le jeu ne s'affiche pas correctement, vous pouvez l'ouvrir dans un autre onglet en cliquant sur <a href="https://turbowarp.org?project_url=www.nuitducode.net/storage/{{$jeu_dossier}}" target="_blank">ici</a>.</div>
+						<div class="mt-4 mb-2 text-monospace text-left small" style="color:silver">Si vous voulez voir le code ou si le jeu ne s'affiche pas correctement, vous pouvez l'ouvrir dans un autre onglet en cliquant sur <a href="https://nuitducode.github.io/ndc-lecteur-scratch/embed.html?project_url=www.nuitducode.net/storage/{{$jeu_dossier}}" target="_blank">ici</a>.</div>
 
 						<div class="mt-2 mb-2 text-monospace text-left small" style="color:silver">Télécharger le fichier <a href="https://www.nuitducode.net/storage/{{$jeu_dossier}}" download>sb3</a></div>
 

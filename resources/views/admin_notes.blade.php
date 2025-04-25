@@ -66,7 +66,7 @@ if (Auth::user()->is_admin != 1) {
                                             <h3 class="mt-0" style="color:#4cbf56">@if($evaluation['finaliste'] == 1)<i class="fas fa-crown mr-1" style="color:#f39c12"></i>@endif {{$evaluation['nom_equipe']}}</h3>
 
 											<div class="text-center">
-												<a href="https://turbowarp.org?project_url=www.nuitducode.net/storage/depot-jeux/scratch/{{$jeu->etablissement_jeton}}/{{$jeu->scratch_id}}.sb3" class="btn btn-success btn-sm" target="_blank" role="button">
+												<a href="https://nuitducode.github.io/ndc-lecteur-scratch/embed.html?project_url=www.nuitducode.net/storage/depot-jeux/scratch/{{$jeu->etablissement_jeton}}/{{$jeu->scratch_id}}.sb3" class="btn btn-success btn-sm" target="_blank" role="button">
 													<i class="fas fa-gamepad fa-2x"></i>
 												</a>
 											</div>

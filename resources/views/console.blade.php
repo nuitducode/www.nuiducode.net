@@ -281,9 +281,6 @@
                             </div>
 
 
-                            @if (Auth::user()->is_admin == 1)
-						    <div class="mt-5 text-danger text-monospace">--------------------------------- MODE ADMIN ---------------------------------</div>
-                            
                             <!-- == 3 == -->
                             <h3 id="s03" class="mt-5"><span class="badge badge-pill badge-primary pt-1">3</span> Dépôt & évaluation des jeux</h3>
                             <div class="mb-1 ml-3">
@@ -309,11 +306,17 @@
                             </div>
 
 
+
                             <!-- == 4 == -->
                             <h3 id="s04" class="mt-5"><span class="badge badge-pill badge-primary pt-1">4</span> Bilan des évaluations & Sélection</h3>
                             <div class="mb-1 ml-4">
                                 <a class=" btn btn-info" href="/console/ndc/jeux-evaluations" role="button"><i class="fas fa-trophy"></i></a>
                             </div>
+
+
+                            @if (Auth::user()->is_admin == 1)
+						    <div class="mt-5 text-danger text-monospace">--------------------------------- MODE ADMIN ---------------------------------</div>
+
 
 
                             <!-- == 5 == -->
@@ -395,6 +398,7 @@
                                 @endif
 
                             </div>
+
 
 						
                             <!-- == 6 == -->

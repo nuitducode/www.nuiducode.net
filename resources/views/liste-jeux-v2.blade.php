@@ -50,7 +50,7 @@
                                         @foreach($jeux AS $jeu)
                                         <tr>
                                             <td class="align-middle">{{$jeu->nom_equipe}}</td>
-                                            <td class="align-middle"><a href="https://turbowarp.org/embed/?project_url=www.nuitducode.net/storage/2024-depot-jeux-v2/scratch/{{Auth::user()->jeton}}/{{$jeu->scratch_id}}.sb3" target="_blank">{{$jeu->scratch_id}}</a></td>
+                                            <td class="align-middle"><a href="https://nuitducode.github.io/ndc-lecteur-scratch/embed.html?project_url=www.nuitducode.net/storage/2024-depot-jeux-v2/scratch/{{Auth::user()->jeton}}/{{$jeu->scratch_id}}.sb3" target="_blank">{{$jeu->scratch_id}}</a></td>
                                             <td class="text-right" style="width:160px;">
                                                 <button class="btn btn-dark btn-sm text-light" type="button" data-toggle="collapse" data-target="#collapse_{{$jeu->id}}" aria-expanded="false" aria-controls="collapse_{{$jeu->id}}">
                                                     <i class='fas fa-trash fa-sm'></i>

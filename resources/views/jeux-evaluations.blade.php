@@ -105,7 +105,7 @@
                                             <div class="card-footer">
 											
                                                 <div class="text-center">
-                                                    <a href="https://turbowarp.org/embed/?project_url=www.nuitducode.net/storage/depot-jeux/scratch/{{$etablissement_jeton}}/{{$evaluation['scratch_id']}}.sb3" class="btn btn-success btn-sm" target="_blank" role="button"><i class="fas fa-gamepad fa-2x"></i></a>
+                                                    <a href="https://nuitducode.github.io/ndc-lecteur-scratch/embed.html?project_url=www.nuitducode.net/storage/depot-jeux/scratch/{{$etablissement_jeton}}/{{$evaluation['scratch_id']}}.sb3" class="btn btn-success btn-sm" target="_blank" role="button"><i class="fas fa-gamepad fa-2x"></i></a>
                                                 </div>
 
 												<div class="mt-2 text-monospace small">
