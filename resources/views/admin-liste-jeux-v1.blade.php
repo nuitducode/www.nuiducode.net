@@ -18,6 +18,7 @@ if (Auth::user()->is_admin != 1) {
 <body>
 
     @include('inc-nav-console')
+    @include('inc-fonctions')
 
 	<div class="container mt-3 mb-5">
 		<div class="row">
@@ -59,7 +60,6 @@ if (Auth::user()->is_admin != 1) {
                                     <tbody>
                                         @foreach($jeux AS $jeu)
 
-                                            @include('inc-fonctions')
                                             <?php
                                             $etablissement = App\Models\User::where('id', $jeu->etablissement_id)->first();
                                             $sb3_path = storage_path("app/public/depot-jeux/scratch/".$jeu->etablissement_jeton."/".$jeu->scratch_id.".sb3");
@@ -129,6 +129,7 @@ if (Auth::user()->is_admin != 1) {
                                     </thead>
                                     <tbody>
                                         @foreach($jeux AS $jeu)
+
                                             <?php
                                             $etablissement = App\Models\User::where('id', $jeu->etablissement_id)->first();
                                             $dir = storage_path("app/public/depot-jeux/python/".$jeu->etablissement_jeton."/".$jeu->python_id);
@@ -150,6 +151,7 @@ if (Auth::user()->is_admin != 1) {
                                             $popover = htmlspecialchars($signature_contenu, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
                                             $status = "<i class='".$status_class."' data-container='body' data-toggle='popover' data-html='true' data-placement='left' data-content='".$popover."'></i>";
                                             ?>
+
                                             <tr>
                                                 <td class="w-100">{{$jeu->nom_equipe}}</td>
                                                 <td class="pl-2 pr-2" nowrap>
@@ -167,6 +169,7 @@ if (Auth::user()->is_admin != 1) {
                                                 <td class="pl-2 pr-2">{{$ndc_date}}</td>
                                                 <td class="pl-2 pr-2">{{$signature_date}}</td>
                                             </tr>
+
                                         @endforeach
                                     </tbody>
                                 </table>
