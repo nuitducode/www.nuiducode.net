@@ -133,23 +133,30 @@ if (Auth::user()->is_admin != 1) {
                                             <?php
                                             $etablissement = App\Models\User::where('id', $jeu->etablissement_id)->first();
                                             $dir = storage_path("app/public/depot-jeux/python/".$jeu->etablissement_jeton."/".$jeu->python_id);
+                                            $status = '';
+                                            $signature_jeton = '';
+                                            $signature_date = '';
+
                                             $pattern = $dir.'/*.pyxres';
                                             $matches = glob($dir.'/*.pyxres');
-                                            $pyxres_path = storage_path("app/public/depot-jeux/python/".$jeu->etablissement_jeton."/".$jeu->python_id."/".basename($matches[0]));
-                                            $signature_array = verifyPyxresSignature($pyxres_path);
-                                            $signature_id = $signature_array['id'];
-                                            $signature_jeton = $signature_id[6].$signature_id[4].$signature_id[2].$signature_id[0];
-                                            $signature_date = $signature_array['date'];
-                                            
-                                            $signature_contenu = "<pre>".print_r($signature_array, true)."</pre>";
-                                            $ndc_date = date('md', strtotime($etablissement->ndc_date));
-                                            if ($etablissement->jeton == $signature_jeton AND $ndc_date == date('md', strtotime($signature_date))){
-                                                $status_class = 'fa-solid fa-circle-check text-success';
-                                            }else{
-                                                $status_class = 'fa-solid fa-circle-exclamation text-danger';
+                                            if (isset($matches[0])){
+                                                storage_path("app/public/depot-jeux/python/".$jeu->etablissement_jeton."/".$jeu->python_id."/".basename($matches[0]));
+                                                $pyxres_path = storage_path("app/public/depot-jeux/python/".$jeu->etablissement_jeton."/".$jeu->python_id."/".basename($matches[0]));
+                                                $signature_array = verifyPyxresSignature($pyxres_path);
+                                                $signature_id = $signature_array['id'];
+                                                $signature_jeton = $signature_id[6].$signature_id[4].$signature_id[2].$signature_id[0];
+                                                $signature_date = $signature_array['date'];
+                                                
+                                                $signature_contenu = "<pre>".print_r($signature_array, true)."</pre>";
+                                                $ndc_date = date('md', strtotime($etablissement->ndc_date));
+                                                if ($etablissement->jeton == $signature_jeton AND $ndc_date == date('md', strtotime($signature_date))){
+                                                    $status_class = 'fa-solid fa-circle-check text-success';
+                                                }else{
+                                                    $status_class = 'fa-solid fa-circle-exclamation text-danger';
+                                                }
+                                                $popover = htmlspecialchars($signature_contenu, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+                                                $status = "<i class='".$status_class."' data-container='body' data-toggle='popover' data-html='true' data-placement='left' data-content='".$popover."'></i>";
                                             }
-                                            $popover = htmlspecialchars($signature_contenu, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-                                            $status = "<i class='".$status_class."' data-container='body' data-toggle='popover' data-html='true' data-placement='left' data-content='".$popover."'></i>";
                                             ?>
 
                                             <tr>
