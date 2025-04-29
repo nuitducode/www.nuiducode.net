@@ -6,15 +6,6 @@
 </head>
 <body>
 
-@include('inc-fonctions')
-<?php
-/*
-$tempPath = storage_path("app/public/depot-jeux/scratch/aaaa/1.sb3");
-$infos = verifySb3Signatures($tempPath);
-dump($infos);
-*/
-?>
-
 	<div class="container mb-5">
 
         <div class="row mb-5 mt-4">

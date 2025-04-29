@@ -8,6 +8,12 @@ if (Auth::user()->is_admin != 1) {
 <head>
     @include('inc-meta')
     <title>ADMIN | JEUX</title>
+    <style>
+        .popover {
+            width: 700px;
+            max-width: 700px;
+        }    
+    </style>
 </head>
 <body>
 
@@ -22,7 +28,7 @@ if (Auth::user()->is_admin != 1) {
 
 			<div class="col-md-10">
 
-                <h1 class="mb-0">JEUX V2</h1>
+                <h1 class="mb-0">JEUX V1</h1>
                 
                 <h2>SCRATCH</h2>
                 <div style="border:1px silver solid;border-radius:5px;padding:20px;background-color:white;">
@@ -39,13 +45,50 @@ if (Auth::user()->is_admin != 1) {
                         <div class="col-md-12">
                             <div class="table-responsive">
                                 <table class="table table-borderless table-hover table-striped table-sm text-monospace text-muted small">
-                                    <thead><tr><th scope="col">Nom de l'équipe</th><th scope="col">Identifiant</th><th scope="col"></th></tr></thead>
+                                    <thead><tr>
+                                        <th scope="col" class="pl-1 pr-1">Nom de l'équipe</th>
+                                        <th scope="col" class="pl-2 pr-2">Jeton</th>
+                                        <th scope="col" class="pl-2 pr-2"><i class="fa-solid fa-shield-halved"></i></th>
+                                        <th scope="col" class="pl-2 pr-2">Id</th>
+                                        <th scope="col" class="pl-2 pr-2" nowrap>Id<i class="ml-1 fa-solid fa-shield-halved"></i></th>
+                                        <th scope="col" class="pl-2 pr-2">Date</th>
+                                        <th scope="col" class="pl-2 pr-2" nowrap>Date<i class="ml-1 fa-solid fa-shield-halved"></i></th>
+
+                                    </tr></thead>
                                     <tbody>
                                         @foreach($jeux AS $jeu)
-                                        <tr>
-                                            <td class="align-middle">{{$jeu->nom_equipe}}</td>
-                                            <td class="align-middle"><a href="https://nuitducode.github.io/ndc-lecteur-scratch/embed.html?project_url=www.nuitducode.net/storage/depot-jeux/scratch/{{$jeu->etablissement_jeton}}/{{$jeu->scratch_id}}.sb3" target="_blank">{{$jeu->scratch_id}}</a></td>
-                                        </tr>
+
+                                            @include('inc-fonctions')
+                                            <?php
+                                            $etablissement = App\Models\User::where('id', $jeu->etablissement_id)->first();
+                                            $tempPath = storage_path("app/public/depot-jeux/scratch/aaaa/1.sb3");
+                                            $signature = verifySb3Signatures($tempPath);
+                                            $token = json_decode($signature['first_signature_found']);
+                                            $token_id = $token->id;
+                                            $token_date = $token->date;
+                                            $signature_jeton = $token_id[6].$token_id[4].$token_id[2].$token_id[0];
+                                            $signature_contenu = "<pre>".print_r($signature, true)."</pre>";
+                                            $date_ndc = date('md', strtotime($etablissement->ndc_date));
+                                            $date_signature = date('md', strtotime($token_date));
+                                            if ($etablissement->jeton == $signature_jeton AND $date_ndc == $date_signature){
+                                                $status_class = 'fa-solid fa-circle-check text-success';
+                                            }else{
+                                                $status_class = 'fa-solid fa-circle-exclamation text-danger';
+                                            }
+                                            $popover = htmlspecialchars($signature_contenu, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+                                            $status = "<i class='".$status_class."' data-container='body' data-toggle='popover' data-html='true' data-placement='left' data-content='".$popover."'></i>";
+                                            ?>
+
+                                            <tr>
+                                                <td class="w-100">{{$jeu->nom_equipe}}</td>
+                                                <td class="pl-2 pr-2"><a href="https://nuitducode.github.io/ndc-lecteur-scratch/embed.html?project_url=www.nuitducode.net/storage/depot-jeux/scratch/{{$jeu->etablissement_jeton}}/{{$jeu->scratch_id}}.sb3" target="_blank">{{$jeu->scratch_id}}</a></td>
+                                                <td class="pl-2 pr-2">{!!$status!!}</td>
+                                                <td class="pl-2 pr-2">{{$etablissement->jeton}}</td>
+                                                <td class="pl-2 pr-2">{{$signature_jeton}}</td>
+                                                <td class="pl-2 pr-2">{{$date_ndc}}</td>
+                                                <td class="pl-2 pr-2">{{$date_signature}}</td>
+                                            </tr>
+
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -112,6 +155,14 @@ if (Auth::user()->is_admin != 1) {
 	</div><!-- /container -->
 
 	@include('inc-bottom-js')
+<script>
+    $('[data-toggle="popover"]').popover({
+  container: 'body',
+  html: true,
+  boundary: 'window',  // ou 'window'
+
+});
+</script>
 
 </body>
 </html>

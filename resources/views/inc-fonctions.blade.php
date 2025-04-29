@@ -221,11 +221,11 @@ function verifySb3Signatures(string $sb3FilePath): array
     // Retourner un récapitulatif
     return [
         'success' => true,
-        'total_png_svg_entries' => $totalPngSvgEntries,
-        'files_with_valid_signature' => $filesWithValidSignature,
-        'files_without_signature' => $filesWithoutSignature,
-        'files_decryption_failed' => $filesDecryptionFailed,
         'first_signature_found' => $firstSignatureFound,
         'all_signatures_identical' => $allSignaturesIdentical,
+        'total_png_svg_entries' => $totalPngSvgEntries,
+        'files_decryption_failed' => $filesDecryptionFailed,
+        'files_without_signature' => $filesWithoutSignature,
+        'files_with_valid_signature' => $filesWithValidSignature,
     ];
 }
