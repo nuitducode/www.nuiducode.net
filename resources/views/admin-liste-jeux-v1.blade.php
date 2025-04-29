@@ -55,6 +55,8 @@ if (Auth::user()->is_admin != 1) {
                                             <th scope="col" class="pl-2 pr-2" nowrap>Id<i class="ml-1 fa-solid fa-shield-halved"></i></th>
                                             <th scope="col" class="pl-2 pr-2">Date</th>
                                             <th scope="col" class="pl-2 pr-2" nowrap>Date<i class="ml-1 fa-solid fa-shield-halved"></i></th>
+                                            <th scope="col" class="pl-2 pr-2" nowrap>Dépot</th>
+                                            <th scope="col" class="pl-2 pr-2" nowrap>Δ</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -77,6 +79,21 @@ if (Auth::user()->is_admin != 1) {
                                             }
                                             $popover = htmlspecialchars($signature_contenu, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
                                             $status = "<i class='".$status_class."' data-container='body' data-toggle='popover' data-html='true' data-placement='left' data-content='".$popover."'></i>";
+
+                                            $depot_date = date('m/d H\hi', strtotime($jeu->created_at));
+
+                                            // difference dates
+                                            $date1 = DateTime::createFromFormat('YmdHi', date('Y') . $signature_date);    
+                                            $date2 = new DateTime($jeu->created_at);
+                                            $diffSec = abs($date2->getTimestamp() - $date1->getTimestamp());
+                                            $hours   = floor($diffSec / 3600);
+                                            $minutes = floor(($diffSec % 3600) / 60);
+                                            $delta = "{$hours}h {$minutes}";
+                                            if ($hours >= 6) {
+                                                $delta_class = "text-danger";
+                                            } else {
+                                                $delta_class = "";
+                                            }
                                             ?>
 
                                             <tr>
@@ -86,7 +103,9 @@ if (Auth::user()->is_admin != 1) {
                                                 <td class="pl-2 pr-2">{{$etablissement->jeton}}</td>
                                                 <td class="pl-2 pr-2">{{$signature_jeton}}</td>
                                                 <td class="pl-2 pr-2">{{substr($ndc_date, 0, 2)}}/{{substr($ndc_date, 2)}}</td>
-                                                <td class="pl-2 pr-2">{{$signature_date}}</td>
+                                                <td class="pl-2 pr-2" nowrap>{{substr($signature_date, 0, 2)}}/{{substr($signature_date, 2, 2)}} {{substr($signature_date, 4, 2)}}h{{substr($signature_date, 6, 2)}}</td>
+                                                <td class="pl-2 pr-2" nowrap>{{$depot_date}}</td>
+                                                <td class="pl-2 pr-2 {{$delta_class}}" nowrap>{{$delta}}</td>
                                             </tr>
 
                                         @endforeach
@@ -125,6 +144,8 @@ if (Auth::user()->is_admin != 1) {
                                             <th scope="col" class="pl-2 pr-2" nowrap>Id<i class="ml-1 fa-solid fa-shield-halved"></i></th>
                                             <th scope="col" class="pl-2 pr-2">Date</th>
                                             <th scope="col" class="pl-2 pr-2" nowrap>Date<i class="ml-1 fa-solid fa-shield-halved"></i></th>
+                                            <th scope="col" class="pl-2 pr-2" nowrap>Dépot</th>
+                                            <th scope="col" class="pl-2 pr-2" nowrap>Δ</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -145,7 +166,7 @@ if (Auth::user()->is_admin != 1) {
                                                 $signature_array = verifyPyxresSignature($pyxres_path);
                                                 $signature_id = $signature_array['id'];
                                                 $signature_jeton = $signature_id[6].$signature_id[4].$signature_id[2].$signature_id[0];
-                                                $signature_date = substr($signature_array['date'], 0, 2) . "/" . substr($signature_array['date'], 2, 2) . " à " . substr($signature_array['date'], 4, 2) . "h" . substr($signature_array['date'], 6, 2);
+                                                $signature_date = substr($signature_array['date'], 0, 2) . "/" . substr($signature_array['date'], 2, 2) . " " . substr($signature_array['date'], 4, 2) . "h" . substr($signature_array['date'], 6, 2);
                                                 
                                                 $signature_contenu = "<pre>".print_r($signature_array, true)."</pre>";
                                                 $ndc_date = date('md', strtotime($etablissement->ndc_date));
@@ -156,6 +177,21 @@ if (Auth::user()->is_admin != 1) {
                                                 }
                                                 $popover = htmlspecialchars($signature_contenu, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
                                                 $status = "<i class='".$status_class."' data-container='body' data-toggle='popover' data-html='true' data-placement='left' data-content='".$popover."'></i>";
+
+                                                $depot_date = date('m/d H\hi', strtotime($jeu->created_at));
+
+                                                // difference dates
+                                                $date1 = DateTime::createFromFormat('YmdHi', date('Y') . substr($signature_array['date'], 0, 8));    
+                                                $date2 = new DateTime($jeu->created_at);
+                                                $diffSec = abs($date2->getTimestamp() - $date1->getTimestamp());
+                                                $hours   = floor($diffSec / 3600);
+                                                $minutes = floor(($diffSec % 3600) / 60);
+                                                $delta = "{$hours}h {$minutes}";
+                                                if ($hours >= 6) {
+                                                    $delta_class = "text-danger";
+                                                } else {
+                                                    $delta_class = "";
+                                                }
                                             }
                                             ?>
 
@@ -175,6 +211,8 @@ if (Auth::user()->is_admin != 1) {
                                                 <td class="pl-2 pr-2">{{$signature_jeton}}</td>
                                                 <td class="pl-2 pr-2">{{substr($ndc_date, 0, 2)}}/{{substr($ndc_date, 2)}}</td>
                                                 <td class="pl-2 pr-2" nowrap>{{$signature_date}}</td>
+                                                <td class="pl-2 pr-2" nowrap>{{$depot_date}}</td>
+                                                <td class="pl-2 pr-2 {{$delta_class}}" nowrap>{{$delta}}</td>
                                             </tr>
 
                                         @endforeach
