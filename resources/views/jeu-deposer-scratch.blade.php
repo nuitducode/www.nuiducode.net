@@ -83,8 +83,17 @@ header("Pragma: no-cache");
                     <div id="formdropzone" class="dropzone"></div>
                     <div id="error_files" class="mt-1 text-danger text-monospace small">&nbsp;</div>
 
-                    <div class="text-info mt-2">PRÉSENTATION / MODE D'EMPLOI DU JEU <sup class="text-danger">*</sup></div>
-                    <textarea class="form-control" id="documentation" name="documentation" rows="8" required></textarea>
+                    <div class="text-info mt-2">MODE D'EMPLOI / PRÉSENTATION <sup class="text-danger">*</sup></div>
+                    <textarea class="form-control text-monospace" id="documentation" name="documentation" rows="10" required>
+**UNIVERS CHOISI**:
+
+**MODE D'EMPLOI**
+
+
+**PRÉSENTATION / EXPLICATIONS**
+
+
+                    </textarea>
                     <div id="error_documentation" class="mt-1 text-danger text-monospace small" role="alert">&nbsp;</div>
 
 					<button type="submit" id="submit_request" class="btn btn-primary mt-3 pl-4 pr-4"><i class="fas fa-check"></i></button>
