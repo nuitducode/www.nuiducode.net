@@ -302,3 +302,5 @@ function verifyPyxresSignature(string $pyxresFilePath): array
     $zip->close();
     return $result;
 }
+
+?>
