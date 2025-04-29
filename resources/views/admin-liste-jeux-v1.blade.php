@@ -149,7 +149,7 @@ if (Auth::user()->is_admin != 1) {
                                                 
                                                 $signature_contenu = "<pre>".print_r($signature_array, true)."</pre>";
                                                 $ndc_date = date('md', strtotime($etablissement->ndc_date));
-                                                if ($etablissement->jeton == $signature_jeton AND $ndc_date == date('md', strtotime($signature_date))){
+                                                if ($etablissement->jeton == $signature_jeton AND $ndc_date == substr($signature_date, 0, 4)){
                                                     $status_class = 'fa-solid fa-circle-check text-success';
                                                 }else{
                                                     $status_class = 'fa-solid fa-circle-exclamation text-danger';
