@@ -157,6 +157,7 @@ if (Auth::user()->is_admin != 1) {
                                             $status = '';
                                             $signature_jeton = '';
                                             $signature_date = '';
+                                            $delta = '';
 
                                             $pattern = $dir.'/*.pyxres';
                                             $matches = glob($dir.'/*.pyxres');
