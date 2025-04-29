@@ -232,67 +232,112 @@ function verifySb3Signatures(string $sb3FilePath): array
 
 function verifyPyxresSignature(string $pyxresFilePath): array
 {
+    Log::info('Démarrage de verifyPyxresSignature', ['path' => $pyxresFilePath]);
+
     $zip = new ZipArchive();
-    if ($zip->open($pyxresFilePath, ZipArchive::CHECKCONS) !== true) {
+    $openResult = $zip->open($pyxresFilePath, ZipArchive::CHECKCONS);
+    if ($openResult !== true) {
+        Log::error('Impossible d’ouvrir le fichier .pyxres', [
+            'path'      => $pyxresFilePath,
+            'errorCode' => $openResult,
+        ]);
         throw new \RuntimeException("Impossible d'ouvrir le fichier .pyxres : {$pyxresFilePath}");
     }
+    Log::info('Fichier ZIP ouvert avec succès', ['numFiles' => $zip->numFiles]);
 
     $result = [
-        'date'  => null,
-        'id' => null,
+        'date' => null,
+        'id'   => null,
     ];
 
-    // On parcourt les entrées pour trouver pyxel_resource/image0(.png|.jpg|...)
     for ($i = 0; $i < $zip->numFiles; $i++) {
         $name = $zip->getNameIndex($i);
-        // Ancien format
+        Log::debug('Itération de l\'entrée ZIP', ['index' => $i, 'name' => $name]);
+
+        // Ancien format : pyxel_resource/image0(.png|.jpg|...)
         if (preg_match('#^pyxel_resource/image0(\.[^/]+)?$#i', $name)) {
+            Log::debug('Format ancien détecté', ['entry' => $name]);
+
             $raw = $zip->getFromName($name);
             if ($raw === false) {
+                Log::error('Impossible de récupérer le contenu de l\'entrée', ['entry' => $name]);
                 break;
             }
+            Log::debug('Contenu brut récupéré', ['length' => strlen($raw)]);
 
-            // On cherche la suite hex en fin de contenu
             if (preg_match('/([0-9a-f]+)$/i', $raw, $m)) {
-                $hexSig = $m[1];
-                $plain  = @hex2bin($hexSig);
+                $hexSig = substr($m[1], -30);
+                Log::debug('Signature hex trouvée', ['hexSig' => $hexSig]);
+
+                $plain = @hex2bin($hexSig);
                 if ($plain !== false && strlen($plain) >= 4) {
-                    $result['date']  = substr($plain, 0, 4);
-                    $result['id'] = substr($plain, 4);
+                    $result['date'] = substr($plain, 0, 8);
+                    $result['id']   = substr($plain, 8);
+                    Log::info('Signature analysée (ancien format)', [
+                        'date' => $result['date'],
+                        'id'   => $result['id'],
+                    ]);
+                } else {
+                    Log::warning('Échec conversion hex2bin ou contenu trop court', [
+                        'plain' => var_export($plain, true),
+                    ]);
                 }
+            } else {
+                Log::warning('Aucune signature hex trouvée dans le contenu', ['entry' => $name]);
             }
+
             break;
         }
-        // Nouveau format (toml)
-        if (preg_match('#^pyxel_resource.toml(\.[^/]+)?$#i', $name)) {
+
+        // Nouveau format : pyxel_resource.toml
+        if (preg_match('#^pyxel_resource\.toml(\.[^/]+)?$#i', $name)) {
+            Log::debug('Format TOML détecté', ['entry' => $name]);
+
             $raw = $zip->getFromName($name);
             if ($raw === false) {
+                Log::error('Impossible de récupérer le contenu TOML', ['entry' => $name]);
                 break;
             }
+            Log::debug('Contenu TOML brut récupéré', ['length' => strlen($raw)]);
 
-            // 1) On capture la première occurrence de [[images]] jusqu’à la fermeture de data = [[…]]
-            if (preg_match(
-                '/\[\[images\]\].*?data\s*=\s*\[\[(.*?)\]\]/s', 
-                $raw, 
-                $m
-            )) {
-                $block = $m[1]; // tout ce qui est à l’intérieur des [[ … ]]
+            try {
+                if (preg_match('/\[\[images\]\].*?data\s*=\s*\[\[(.*?)\]\]/s', $raw, $m)) {
+                    $block = $m[1];
+                    $nums = [];
+                    preg_match_all('/\d+/', $block, $nums);
+                    $array_all     = array_map('intval', $nums[0]);
+                    $array_last30  = array_slice($array_all, -30);
+                    $array_hex_vals = array_map('dechex', $array_last30);
+                    $hex_vals      = @hex2bin(implode('', $array_hex_vals));
 
-                // 2) On extrait tous les entiers
-                preg_match_all('/\d+/', $block, $nums);
+                    Log::debug('Bloc [[images]] extrait', [
+                        'count_all'   => count($array_all),
+                        'count_last'  => count($array_last30),
+                        'hex_vals_len'=> $hex_vals !== false ? strlen($hex_vals) : null,
+                    ]);
 
-                // 3) On convertit en int et on prend les 30 derniers
-                $array_all = array_map('intval', $nums[0]);
-                $array_last30 = array_slice($array_all, -30);
-                $array_hex_vals = array_map('dechex', $array_last30);
-                $hex_vals  = @hex2bin(implode('', $array_hex_vals));
-                if ($hex_vals !== false && strlen($hex_vals) == 15) {
-                    $result['date']  = substr($hex_vals, 0, 8);
-                    $result['id'] = substr($hex_vals, 8);
+                    if ($hex_vals !== false && strlen($hex_vals) === 15) {
+                        $result['date'] = substr($hex_vals, 0, 8);
+                        $result['id']   = substr($hex_vals, 8);
+                        Log::info('Signature analysée (TOML)', [
+                            'date' => $result['date'],
+                            'id'   => $result['id'],
+                        ]);
+                    } else {
+                        Log::warning('Échec conversion TOML hex2bin ou longueur inattendue', [
+                            'hex_vals_hex' => $hex_vals !== false ? bin2hex($hex_vals) : null,
+                        ]);
+                    }
+                } else {
+                    Log::error('Section [[images]] ou champ data introuvable dans le TOML', [
+                        'entry' => $name,
+                    ]);
                 }
-
-            } else {
-                Log::error("Section [[images]] ou champ data introuvable : " . $e->getMessage());
+            } catch (\Exception $e) {
+                Log::error('Exception lors du parsing du TOML', [
+                    'message'   => $e->getMessage(),
+                    'trace'     => $e->getTraceAsString(),
+                ]);
             }
 
             break;
@@ -300,7 +345,10 @@ function verifyPyxresSignature(string $pyxresFilePath): array
     }
 
     $zip->close();
+    Log::info('Fin de verifyPyxresSignature', ['result' => $result]);
+
     return $result;
 }
+
 
 ?>

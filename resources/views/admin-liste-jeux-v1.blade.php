@@ -145,11 +145,11 @@ if (Auth::user()->is_admin != 1) {
                                                 $signature_array = verifyPyxresSignature($pyxres_path);
                                                 $signature_id = $signature_array['id'];
                                                 $signature_jeton = $signature_id[6].$signature_id[4].$signature_id[2].$signature_id[0];
-                                                $signature_date = $signature_array['date'];
+                                                $signature_date = substr($signature_array['date'], 0, 2) . "/" . substr($signature_array['date'], 2, 2) . " à " . substr($signature_array['date'], 4, 2) . "h" . substr($signature_array['date'], 6, 2);
                                                 
                                                 $signature_contenu = "<pre>".print_r($signature_array, true)."</pre>";
                                                 $ndc_date = date('md', strtotime($etablissement->ndc_date));
-                                                if ($etablissement->jeton == $signature_jeton AND $ndc_date == substr($signature_date, 0, 4)){
+                                                if ($etablissement->jeton == $signature_jeton AND $ndc_date == substr($signature_array['date'], 0, 4)){
                                                     $status_class = 'fa-solid fa-circle-check text-success';
                                                 }else{
                                                     $status_class = 'fa-solid fa-circle-exclamation text-danger';
@@ -174,7 +174,7 @@ if (Auth::user()->is_admin != 1) {
                                                 <td class="pl-2 pr-2">{{$etablissement->jeton}}</td>
                                                 <td class="pl-2 pr-2">{{$signature_jeton}}</td>
                                                 <td class="pl-2 pr-2">{{$ndc_date}}</td>
-                                                <td class="pl-2 pr-2">{{$signature_date}}</td>
+                                                <td class="pl-2 pr-2" nowrap>{{$signature_date}}</td>
                                             </tr>
 
                                         @endforeach
