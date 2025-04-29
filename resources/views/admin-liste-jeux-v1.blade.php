@@ -85,7 +85,7 @@ if (Auth::user()->is_admin != 1) {
                                                 <td class="pl-2 pr-2">{!!$status!!}</td>
                                                 <td class="pl-2 pr-2">{{$etablissement->jeton}}</td>
                                                 <td class="pl-2 pr-2">{{$signature_jeton}}</td>
-                                                <td class="pl-2 pr-2">{{$ndc_date}}</td>
+                                                <td class="pl-2 pr-2">{{substr($ndc_date, 0, 2)}}/{{substr($ndc_date, 2)}}</td>
                                                 <td class="pl-2 pr-2">{{$signature_date}}</td>
                                             </tr>
 
@@ -173,7 +173,7 @@ if (Auth::user()->is_admin != 1) {
                                                 <td class="pl-2 pr-2">{!!$status!!}</td>
                                                 <td class="pl-2 pr-2">{{$etablissement->jeton}}</td>
                                                 <td class="pl-2 pr-2">{{$signature_jeton}}</td>
-                                                <td class="pl-2 pr-2">{{$ndc_date}}</td>
+                                                <td class="pl-2 pr-2">{{substr($ndc_date, 0, 2)}}/{{substr($ndc_date, 2)}}</td>
                                                 <td class="pl-2 pr-2" nowrap>{{$signature_date}}</td>
                                             </tr>
 
