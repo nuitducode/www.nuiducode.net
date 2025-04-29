@@ -45,32 +45,32 @@ if (Auth::user()->is_admin != 1) {
                         <div class="col-md-12">
                             <div class="table-responsive">
                                 <table class="table table-borderless table-hover table-striped table-sm text-monospace text-muted small">
-                                    <thead><tr>
-                                        <th scope="col" class="pl-1 pr-1">Nom de l'équipe</th>
-                                        <th scope="col" class="pl-2 pr-2">Jeton</th>
-                                        <th scope="col" class="pl-2 pr-2"><i class="fa-solid fa-shield-halved"></i></th>
-                                        <th scope="col" class="pl-2 pr-2">Id</th>
-                                        <th scope="col" class="pl-2 pr-2" nowrap>Id<i class="ml-1 fa-solid fa-shield-halved"></i></th>
-                                        <th scope="col" class="pl-2 pr-2">Date</th>
-                                        <th scope="col" class="pl-2 pr-2" nowrap>Date<i class="ml-1 fa-solid fa-shield-halved"></i></th>
-
-                                    </tr></thead>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" class="pl-1 pr-1">Nom de l'équipe</th>
+                                            <th scope="col" class="pl-2 pr-2">Jeton</th>
+                                            <th scope="col" class="pl-2 pr-2"><i class="fa-solid fa-shield-halved"></i></th>
+                                            <th scope="col" class="pl-2 pr-2">Id</th>
+                                            <th scope="col" class="pl-2 pr-2" nowrap>Id<i class="ml-1 fa-solid fa-shield-halved"></i></th>
+                                            <th scope="col" class="pl-2 pr-2">Date</th>
+                                            <th scope="col" class="pl-2 pr-2" nowrap>Date<i class="ml-1 fa-solid fa-shield-halved"></i></th>
+                                        </tr>
+                                    </thead>
                                     <tbody>
                                         @foreach($jeux AS $jeu)
 
                                             @include('inc-fonctions')
                                             <?php
                                             $etablissement = App\Models\User::where('id', $jeu->etablissement_id)->first();
-                                            $tempPath = storage_path("app/public/depot-jeux/scratch/aaaa/1.sb3");
-                                            $signature = verifySb3Signatures($tempPath);
-                                            $token = json_decode($signature['first_signature_found']);
-                                            $token_id = $token->id;
-                                            $token_date = $token->date;
-                                            $signature_jeton = $token_id[6].$token_id[4].$token_id[2].$token_id[0];
-                                            $signature_contenu = "<pre>".print_r($signature, true)."</pre>";
-                                            $date_ndc = date('md', strtotime($etablissement->ndc_date));
-                                            $date_signature = date('md', strtotime($token_date));
-                                            if ($etablissement->jeton == $signature_jeton AND $date_ndc == $date_signature){
+                                            $sb3_path = storage_path("app/public/depot-jeux/scratch/".$jeu->etablissement_jeton."/".$jeu->scratch_id.".sb3");
+                                            $signature_array = verifySb3Signatures($sb3_path);
+                                            $signature = json_decode($signature_array['first_signature_found']);
+                                            $signature_id = $signature->id;
+                                            $signature_jeton = $signature_id[6].$signature_id[4].$signature_id[2].$signature_id[0];
+                                            $signature_date = $signature->date;
+                                            $signature_contenu = "<pre>".print_r($signature_array, true)."</pre>";
+                                            $ndc_date = date('md', strtotime($etablissement->ndc_date));
+                                            if ($etablissement->jeton == $signature_jeton AND $ndc_date == date('md', strtotime($signature_date))){
                                                 $status_class = 'fa-solid fa-circle-check text-success';
                                             }else{
                                                 $status_class = 'fa-solid fa-circle-exclamation text-danger';
@@ -85,8 +85,8 @@ if (Auth::user()->is_admin != 1) {
                                                 <td class="pl-2 pr-2">{!!$status!!}</td>
                                                 <td class="pl-2 pr-2">{{$etablissement->jeton}}</td>
                                                 <td class="pl-2 pr-2">{{$signature_jeton}}</td>
-                                                <td class="pl-2 pr-2">{{$date_ndc}}</td>
-                                                <td class="pl-2 pr-2">{{$date_signature}}</td>
+                                                <td class="pl-2 pr-2">{{$ndc_date}}</td>
+                                                <td class="pl-2 pr-2">{{$signature_date}}</td>
                                             </tr>
 
                                         @endforeach
@@ -117,27 +117,56 @@ if (Auth::user()->is_admin != 1) {
                                 <table class="table table-borderless table-hover table-striped table-sm text-monospace text-muted small">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Nom de l'équipe</th>
-                                            <th scope="col">Fichiers</th>
-                                            <th scope="col">Identifiant</th>
+                                            <th scope="col" class="pl-1 pr-1">Nom de l'équipe</th>
+                                            <th scope="col" class="pl-2 pr-2">Fichiers</th>
+                                            <th scope="col" class="pl-2 pr-2">Jeton</th>
+                                            <th scope="col" class="pl-2 pr-2"><i class="fa-solid fa-shield-halved"></i></th>
+                                            <th scope="col" class="pl-2 pr-2">Id</th>
+                                            <th scope="col" class="pl-2 pr-2" nowrap>Id<i class="ml-1 fa-solid fa-shield-halved"></i></th>
+                                            <th scope="col" class="pl-2 pr-2">Date</th>
+                                            <th scope="col" class="pl-2 pr-2" nowrap>Date<i class="ml-1 fa-solid fa-shield-halved"></i></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($jeux AS $jeu)
-                                        <tr>
-                                            <td class="align-middle">{{$jeu->nom_equipe}}</td>
-											<td class="align-middle">
-												<?php
-												$files = File::files(storage_path("app/public/depot-jeux/python/".$jeu->etablissement_jeton.'/'.$jeu->python_id));
-												foreach($files AS $file) {
-													echo '<kbd>'.basename($file).'</kbd> ';
-												}
-												?>
-											</td>
-                                            <td class="align-middle">
-												<a href="/console/jouer-jeu-pyxel/{{$jeu->etablissement_jeton}}-{{$jeu->python_id}}" target="_blank">{{$jeu->python_id}}</a>
-											</td>
-                                        </tr>
+                                            <?php
+                                            $etablissement = App\Models\User::where('id', $jeu->etablissement_id)->first();
+                                            $dir = storage_path("app/public/depot-jeux/python/".$jeu->etablissement_jeton."/".$jeu->python_id);
+                                            $pattern = $dir.'/*.pyxres';
+                                            $matches = glob($dir.'/*.pyxres');
+                                            $pyxres_path = storage_path("app/public/depot-jeux/python/".$jeu->etablissement_jeton."/".$jeu->python_id."/".basename($matches[0]));
+                                            $signature_array = verifyPyxresSignature($pyxres_path);
+                                            $signature_id = $signature_array['id'];
+                                            $signature_jeton = $signature_id[6].$signature_id[4].$signature_id[2].$signature_id[0];
+                                            $signature_date = $signature_array['date'];
+                                            
+                                            $signature_contenu = "<pre>".print_r($signature_array, true)."</pre>";
+                                            $ndc_date = date('md', strtotime($etablissement->ndc_date));
+                                            if ($etablissement->jeton == $signature_jeton AND $ndc_date == date('md', strtotime($signature_date))){
+                                                $status_class = 'fa-solid fa-circle-check text-success';
+                                            }else{
+                                                $status_class = 'fa-solid fa-circle-exclamation text-danger';
+                                            }
+                                            $popover = htmlspecialchars($signature_contenu, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+                                            $status = "<i class='".$status_class."' data-container='body' data-toggle='popover' data-html='true' data-placement='left' data-content='".$popover."'></i>";
+                                            ?>
+                                            <tr>
+                                                <td class="w-100">{{$jeu->nom_equipe}}</td>
+                                                <td class="pl-2 pr-2" nowrap>
+                                                    <?php
+                                                    $files = File::files(storage_path("app/public/depot-jeux/python/".$jeu->etablissement_jeton.'/'.$jeu->python_id));
+                                                    foreach($files AS $file) {
+                                                        echo '<kbd>'.basename($file).'</kbd> ';
+                                                    }
+                                                    ?>
+                                                </td>
+                                                <td class="pl-2 pr-2"><a href="/console/jouer-jeu-pyxel/{{$jeu->etablissement_jeton}}-{{$jeu->python_id}}" target="_blank">{{$jeu->python_id}}</a></td>
+                                                <td class="pl-2 pr-2">{!!$status!!}</td>
+                                                <td class="pl-2 pr-2">{{$etablissement->jeton}}</td>
+                                                <td class="pl-2 pr-2">{{$signature_jeton}}</td>
+                                                <td class="pl-2 pr-2">{{$ndc_date}}</td>
+                                                <td class="pl-2 pr-2">{{$signature_date}}</td>
+                                            </tr>
                                         @endforeach
                                     </tbody>
                                 </table>

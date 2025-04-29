@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Log;
 
 
-
 function readPngSignatureFromContent(string $pngContent, string $filenameForLog = 'unknown.png'): ?string
 {
     // Vérifier la signature PNG standard (Cette partie peut rester en dehors du try si elle ne lance pas d'exception)
@@ -228,4 +227,78 @@ function verifySb3Signatures(string $sb3FilePath): array
         'files_without_signature' => $filesWithoutSignature,
         'files_with_valid_signature' => $filesWithValidSignature,
     ];
+}
+
+
+function verifyPyxresSignature(string $pyxresFilePath): array
+{
+    $zip = new ZipArchive();
+    if ($zip->open($pyxresFilePath, ZipArchive::CHECKCONS) !== true) {
+        throw new \RuntimeException("Impossible d'ouvrir le fichier .pyxres : {$pyxresFilePath}");
+    }
+
+    $result = [
+        'date'  => null,
+        'id' => null,
+    ];
+
+    // On parcourt les entrées pour trouver pyxel_resource/image0(.png|.jpg|...)
+    for ($i = 0; $i < $zip->numFiles; $i++) {
+        $name = $zip->getNameIndex($i);
+        // Ancien format
+        if (preg_match('#^pyxel_resource/image0(\.[^/]+)?$#i', $name)) {
+            $raw = $zip->getFromName($name);
+            if ($raw === false) {
+                break;
+            }
+
+            // On cherche la suite hex en fin de contenu
+            if (preg_match('/([0-9a-f]+)$/i', $raw, $m)) {
+                $hexSig = $m[1];
+                $plain  = @hex2bin($hexSig);
+                if ($plain !== false && strlen($plain) >= 4) {
+                    $result['date']  = substr($plain, 0, 4);
+                    $result['id'] = substr($plain, 4);
+                }
+            }
+            break;
+        }
+        // Nouveau format (toml)
+        if (preg_match('#^pyxel_resource.toml(\.[^/]+)?$#i', $name)) {
+            $raw = $zip->getFromName($name);
+            if ($raw === false) {
+                break;
+            }
+
+            // 1) On capture la première occurrence de [[images]] jusqu’à la fermeture de data = [[…]]
+            if (preg_match(
+                '/\[\[images\]\].*?data\s*=\s*\[\[(.*?)\]\]/s', 
+                $raw, 
+                $m
+            )) {
+                $block = $m[1]; // tout ce qui est à l’intérieur des [[ … ]]
+
+                // 2) On extrait tous les entiers
+                preg_match_all('/\d+/', $block, $nums);
+
+                // 3) On convertit en int et on prend les 30 derniers
+                $array_all = array_map('intval', $nums[0]);
+                $array_last30 = array_slice($array_all, -30);
+                $array_hex_vals = array_map('dechex', $array_last30);
+                $hex_vals  = @hex2bin(implode('', $array_hex_vals));
+                if ($hex_vals !== false && strlen($hex_vals) == 15) {
+                    $result['date']  = substr($hex_vals, 0, 8);
+                    $result['id'] = substr($hex_vals, 8);
+                }
+
+            } else {
+                Log::error("Section [[images]] ou champ data introuvable : " . $e->getMessage());
+            }
+
+            break;
+        }
+    }
+
+    $zip->close();
+    return $result;
 }
