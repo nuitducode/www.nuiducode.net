@@ -117,7 +117,7 @@
                 var month = document.getElementById("month").value
                 var hour = document.getElementById("hour").value
                 var minute = document.getElementById("minute").value
-                var date = "2024-"+month+"-"+day+"T"+hour+":"+minute+":00";
+                var date = "2025-"+month+"-"+day+"T"+hour+":"+minute+":00";
                 var targetTime = new Date(date).getTime();
                 var difference = targetTime - now;
                 console.log(difference);

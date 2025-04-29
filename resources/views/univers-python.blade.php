@@ -11,7 +11,7 @@
         <div class="row mb-5 mt-4">
 			<div class="col-md-8 offset-md-2 text-center">
                 <div class=""><img src="{{ asset('img/ndc.png') }}" width="280" /></div>
-                <div class="font-weight-bold text-monospace" style="font-size:21px;color:#261b0c;">UNIVERS DE JEU 2024</div>
+                <div class="font-weight-bold text-monospace" style="font-size:21px;color:#261b0c;">UNIVERS DE JEU 2025</div>
                 <div class="text-monospace text-danger font-weight-bold" style="font-size:18px">
                     PYTHON<br /><img src="{{ asset('img/affiche/python.png') }}" width="35" />
                 </div>
@@ -25,8 +25,9 @@
                         <ul>
                             <li>Les univers de jeu et les liens fournis ne doivent être partagés avec personne d'autre.</li>
                             <li>Les univers de jeu ne doivent pas être utilisés pour créer d'autres jeux.</li>
+                            <li>Les jeux créés ne doivent pas être diffusés ou partagés ni publiés sur internet.</li>
                         </ul>
-                    <li class="mb-1">Vous ne devez utiliser que les ressources fournies. Vous ne pouvez pas importer de ressources extérieures, utiliser du code déjà prêt, consulter de la documentation ni utiliser des notes personnelles. Par contre, vous pouvez poser des questions aux enseignants et à vos camarades des autres équipes.</li>
+                    <li class="mb-1">Vous ne devez utiliser que les ressources fournies. Vous ne pouvez pas utiliser une IA, importer de ressources extérieures, utiliser du code déjà prêt, consulter de la documentation ni utiliser des notes personnelles. Par contre, vous pouvez poser des questions aux enseignants et à vos camarades des autres équipes.</li>
                 </ul>
             </div>
         </div>
@@ -54,33 +55,29 @@
 
                 <?php
                 // =============
-                $edition = 2024;
+                $edition = 2025;
                 // =============
                 ?>
                 
                 <div class="col-12">
-                    <div class="">Vous pouvez choisir un thème ou un des quatre univers ci-dessous.</div>
+                    <div class="">Vous pouvez choisir le thème <b>ou bien</b> un des quatre univers ci-dessous.</div>
 
-                    <div class="font-weight-bold mt-4 mb-2">THÈMES</div>
-                    <ul>
-                        <li class="mb-1">
-                            <b>Thème 1</b>: "JO-métriques: les Jeux Olympiques avec des formes géométriques"<br />Pour ce thème vous ne pouvez pas utiliser de fichier <samp>.pyxres</samp>. Tout doit être fait avec des formes géométriques.
-                        </li>
-                        <li class="mb-1">
-                            <b>Thème 2</b>: "Chasse au trésor sous terre ou sous l'eau"<br />Pour ce thème, vous devez utiliser ce fichier vide
-                            <form method="POST" action="{{ route('telecharger-univers') }}" class="pl-1 pr-1" style="display:inline">
-                                    @csrf
-                                    <input type="hidden" name="fichier" value="theme2.pyxres">
-                                    <input type="hidden" name="langage" value="python">
-                                    <input type="hidden" name="edition" value="{{$edition}}">
-                                    <button type="submit" class="btn btn-sm btn-primary">
-                                        <i class="fas fa-arrow-down"></i><span class="pl-2 text-monospace">theme2.pyxres</span>
-                                    </button>
-                            </form>
-                            ou utiliser seulement des formes géométriques.
-                        </li>
-                    </ul>
-                    <div class="ml-4 text-monospace small text-danger">Si vous choisissez un thème, indiquez clairement le thème choisi dans la présentation de votre jeu.</div>
+                    <div class="font-weight-bold mt-4 mb-2">THÈME</div>
+                  
+                    <div class="mb-1">
+                        <b>"Bataille navale"</b><br />Si vous prévoyez d'utiliser l'éditeur d'images, vous <u>devez</u> utiliser ce fichier vide
+                        <form method="POST" action="{{ route('telecharger-univers') }}" class="pl-1 pr-1" style="display:inline">
+                                @csrf
+                                <input type="hidden" name="fichier" value="theme.pyxres">
+                                <input type="hidden" name="langage" value="python">
+                                <input type="hidden" name="edition" value="{{$edition}}">
+                                <input type="hidden" name="token" value="{{$token}}">
+                                <button type="submit" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-arrow-down"></i><span class="pl-2 text-monospace">theme.pyxres</span>
+                                </button>
+                        </form>
+                        <u>sans changer son nom</u>.<br />L'utilisation de l'éditeur d'images n'est pas obligatoire. Vous pouvez créer votre jeu en utilisant des formes géométriques seulement.
+                    </div>
 
                     <div class="font-weight-bold mt-5">UNIVERS</div>
                 </div>
@@ -90,13 +87,14 @@
 
                 <div class="col mb-4">
                     <div class="card h-100">
-                        <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/python/1.png') }}"  />
+                        <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/python/du548r2t5der3fp-1.png') }}"  />
                         <div class="card-body text-center p-2" style="background-color:#f8fafc">
                             <form method="POST" action="{{ route('telecharger-univers') }}">
                                 @csrf
                                 <input type="hidden" name="fichier" value="1.pyxres">
                                 <input type="hidden" name="langage" value="python">
                                 <input type="hidden" name="edition" value="{{$edition}}">
+                                <input type="hidden" name="token" value="{{$token}}">
                                 <button type="submit" class="btn btn-sm btn-primary">
                                     <i class="fas fa-arrow-down"></i><span class="pl-2 text-monospace">1.pyxres</span>
                                 </button>
@@ -107,13 +105,14 @@
 
                 <div class="col mb-4">
                     <div class="card h-100">
-                        <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/python/2.png') }}"  />
+                        <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/python/du548r2t5der3fp-2.png') }}"  />
                         <div class="card-body text-center p-2" style="background-color:#f8fafc">
                             <form method="POST" action="{{ route('telecharger-univers') }}">
                                 @csrf
                                 <input type="hidden" name="fichier" value="2.pyxres">
                                 <input type="hidden" name="langage" value="python">
                                 <input type="hidden" name="edition" value="{{$edition}}">
+                                <input type="hidden" name="token" value="{{$token}}">
                                 <button type="submit" class="btn btn-sm btn-primary">
                                     <i class="fas fa-arrow-down"></i><span class="pl-2 text-monospace">2.pyxres</span>
                                 </button>
@@ -124,13 +123,14 @@
 
                 <div class="col mb-4">
                     <div class="card h-100">
-                        <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/python/3.png') }}"  />
+                        <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/python/du548r2t5der3fp-3.png') }}"  />
                         <div class="card-body text-center p-2" style="background-color:#f8fafc">
                             <form method="POST" action="{{ route('telecharger-univers') }}">
                                 @csrf
                                 <input type="hidden" name="fichier" value="3.pyxres">
                                 <input type="hidden" name="langage" value="python">
                                 <input type="hidden" name="edition" value="{{$edition}}">
+                                <input type="hidden" name="token" value="{{$token}}">
                                 <button type="submit" class="btn btn-sm btn-primary">
                                     <i class="fas fa-arrow-down"></i><span class="pl-2 text-monospace">3.pyxres</span>
                                 </button>
@@ -141,13 +141,14 @@
                 
                 <div class="col mb-4">
                     <div class="card h-100">
-                        <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/python/4.png') }}"  />
+                        <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/python/du548r2t5der3fp-4.png') }}"  />
                         <div class="card-body text-center p-2" style="background-color:#f8fafc">
                             <form method="POST" action="{{ route('telecharger-univers') }}">
                                 @csrf
                                 <input type="hidden" name="fichier" value="4.pyxres">
                                 <input type="hidden" name="langage" value="python">
                                 <input type="hidden" name="edition" value="{{$edition}}">
+                                <input type="hidden" name="token" value="{{$token}}">
                                 <button type="submit" class="btn btn-sm btn-primary">
                                     <i class="fas fa-arrow-down"></i><span class="pl-2 text-monospace">4.pyxres</span>
                                 </button>

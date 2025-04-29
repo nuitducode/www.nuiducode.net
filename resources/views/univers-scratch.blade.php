@@ -6,12 +6,21 @@
 </head>
 <body>
 
+@include('inc-fonctions')
+<?php
+/*
+$tempPath = storage_path("app/public/depot-jeux/scratch/aaaa/1.sb3");
+$infos = verifySb3Signatures($tempPath);
+dump($infos);
+*/
+?>
+
 	<div class="container mb-5">
 
         <div class="row mb-5 mt-4">
 			<div class="col-md-8 offset-md-2 text-center">
                 <div class=""><img src="{{ asset('img/ndc.png') }}" width="280" /></div>
-                <div class="font-weight-bold text-monospace" style="font-size:21px;color:#261b0c;">UNIVERS DE JEU 2024</div>
+                <div class="font-weight-bold text-monospace" style="font-size:21px;color:#261b0c;">UNIVERS DE JEU 2025</div>
                 <div class="text-monospace text-danger font-weight-bold" style="font-size:18px">
                     SCRATCH<br /><img src="{{ asset('img/affiche/scratch.png') }}" width="35" />
                 </div>
@@ -25,10 +34,11 @@
                     <ul>
                         <li>Les univers de jeu et les liens fournis ne doivent être partagés avec personne d'autre.</li>
                         <li>Les univers de jeu ne doivent pas être utilisés pour créer d'autres jeux.</li>
+                        <li>Les jeux créés ne doivent pas être diffusés ou partagés ni publiés sur internet.</li>
                     </ul>
                     <li class="mb-1"><b>NE PAS PARTAGER VOTRE JEU SUR LE SITE DE SCRATCH</b>. Si vous avez cliqué sur «Share» par mégarde, allez dans «My Stuff» et cliquez sur «Unshare». Un contrôle automatique est fait régulièrement. Les jeux partagés sur le site de Scratch ne seront pas évalués.</li>
-                    <li class="mb-1">Vous ne devez utiliser que les ressources fournies. Vous ne pouvez pas importer de ressources extérieures, utiliser du code déjà prêt, consulter de la documentation ni utiliser des notes personnelles. Par contre, vous pouvez poser des questions aux enseignants et à vos camarades des autres équipes.</li>
-                    <li>Le respect des consignes fait partie de l’évaluation du jeu.</li>
+                    <li class="mb-1">Vous ne devez utiliser que les ressources fournies. Vous ne pouvez pas utiliser une IA, importer de ressources extérieures, utiliser du code déjà prêt, consulter de la documentation ni utiliser des notes personnelles. Par contre, vous pouvez poser des questions aux enseignants et à vos camarades des autres équipes.</li>
+                    <li>Le respect des consignes fait partie de l'évaluation du jeu.</li>
                 </ul>
             </div>
         </div>
@@ -53,119 +63,33 @@
 
         <div id="udj" class="mt-5" style="display:none">  
         
-            <div class="ml-5 mt-5 mb-4 text-center"><i class="fas fa-exclamation-circle text-danger"></i> Les deux derniers univers de jeu sont plutôt de niveau lycée pour des élèves qui ont l'habitude d'utiliser Scratch.</div>
-
             <div class="row row-cols-1 row-cols-md-3">
 
                 <?php
                 // =============
-                $edition = 2024;
+                $edition = 2025;
                 // =============
                 ?>
 
-                <div class="col mb-4">
-                    <div class="card h-100">
-                        <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/scratch/1.png') }}"  />
-                        <div class="card-body text-center p-2" style="background-color:#f8fafc">
-                            <form method="POST" action="{{ route('telecharger-univers') }}">
-                                @csrf
-                                <input type="hidden" name="fichier" value="1.sb3">
-                                <input type="hidden" name="langage" value="scratch">
-                                <input type="hidden" name="edition" value="{{$edition}}">
-                                <button type="submit" class="btn btn-sm btn-primary">
-                                    <i class="fas fa-arrow-down"></i><span class="pl-2 text-monospace">1.sb3</span>
-                                </button>
-                            </form>
+                @for ($i = 1; $i <= 6; $i++)
+                    <div class="col mb-4">
+                        <div class="card h-100">
+                            <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/scratch/du548r2t5der3fp-'.$i.'.png') }}"  />
+                            <div class="card-body text-center p-2" style="background-color:#f8fafc">
+                                <form method="POST" action="{{ route('telecharger-univers') }}">
+                                    @csrf
+                                    <input type="hidden" name="fichier" value="{{$i}}.sb3">
+                                    <input type="hidden" name="langage" value="scratch">
+                                    <input type="hidden" name="edition" value="{{$edition}}">
+                                    <input type="hidden" name="token" value="{{$token}}">
+                                    <button type="submit" class="btn btn-sm btn-primary">
+                                        <i class="fas fa-arrow-down"></i><span class="pl-2 text-monospace">{{$i}}.sb3</span>
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col mb-4">
-                    <div class="card h-100">
-                        <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/scratch/2.png') }}"  />
-                        <div class="card-body text-center p-2" style="background-color:#f8fafc">
-                            <form method="POST" action="{{ route('telecharger-univers') }}">
-                                @csrf
-                                <input type="hidden" name="fichier" value="2.sb3">
-                                <input type="hidden" name="langage" value="scratch">
-                                <input type="hidden" name="edition" value="{{$edition}}">
-                                <button type="submit" class="btn btn-sm btn-primary">
-                                    <i class="fas fa-arrow-down"></i><span class="pl-2 text-monospace">2.sb3</span>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col mb-4">
-                    <div class="card h-100">
-                        <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/scratch/3.png') }}"  />
-                        <div class="card-body text-center p-2" style="background-color:#f8fafc">
-                            <form method="POST" action="{{ route('telecharger-univers') }}">
-                                @csrf
-                                <input type="hidden" name="fichier" value="3.sb3">
-                                <input type="hidden" name="langage" value="scratch">
-                                <input type="hidden" name="edition" value="{{$edition}}">
-                                <button type="submit" class="btn btn-sm btn-primary">
-                                    <i class="fas fa-arrow-down"></i><span class="pl-2 text-monospace">3.sb3</span>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col mb-4">
-                    <div class="card h-100">
-                        <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/scratch/4.png') }}"  />
-                        <div class="card-body text-center p-2" style="background-color:#f8fafc">
-                            <form method="POST" action="{{ route('telecharger-univers') }}">
-                                @csrf
-                                <input type="hidden" name="fichier" value="4.sb3">
-                                <input type="hidden" name="langage" value="scratch">
-                                <input type="hidden" name="edition" value="{{$edition}}">
-                                <button type="submit" class="btn btn-sm btn-primary">
-                                    <i class="fas fa-arrow-down"></i><span class="pl-2 text-monospace">4.sb3</span>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col mb-4">
-                    <div class="card h-100">
-                        <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/scratch/5.png') }}"  />
-                        <div class="card-body text-center p-2" style="background-color:#f8fafc">
-                            <form method="POST" action="{{ route('telecharger-univers') }}">
-                                @csrf
-                                <input type="hidden" name="fichier" value="5.sb3">
-                                <input type="hidden" name="langage" value="scratch">
-                                <input type="hidden" name="edition" value="{{$edition}}">
-                                <button type="submit" class="btn btn-sm btn-primary">
-                                    <i class="fas fa-arrow-down"></i><span class="pl-2 text-monospace">5.sb3</span>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col mb-4">
-                    <div class="card h-100">
-                        <img class="rounded" src="{{ asset('storage/univers/'.$edition.'/scratch/6.png') }}"  />
-                        <div class="card-body text-center p-2" style="background-color:#f8fafc">
-                            <form method="POST" action="{{ route('telecharger-univers') }}">
-                                @csrf
-                                <input type="hidden" name="fichier" value="6.sb3">
-                                <input type="hidden" name="langage" value="scratch">
-                                <input type="hidden" name="edition" value="{{$edition}}">
-                                <button type="submit" class="btn btn-sm btn-primary">
-                                    <i class="fas fa-arrow-down"></i><span class="pl-2 text-monospace">6.sb3</span>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+                @endfor
 
         </div>
 		
