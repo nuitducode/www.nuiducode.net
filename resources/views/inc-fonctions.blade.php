@@ -271,8 +271,10 @@ function verifyPyxresSignature(string $pyxresFilePath): array
 
                 $plain = @hex2bin($hexSig);
                 if ($plain !== false && strlen($plain) >= 4) {
-                    $result['date'] = substr($plain, 0, 8);
-                    $result['id']   = substr($plain, 8);
+                    if (strpos($hex_vals, "\0") === false) {
+                        $result['date'] = substr($hex_vals, 0, 8);
+                        $result['id']   = substr($hex_vals, 8);
+                    }
                     Log::info('Signature analysée (ancien format)', [
                         'date' => $result['date'],
                         'id'   => $result['id'],
@@ -317,8 +319,10 @@ function verifyPyxresSignature(string $pyxresFilePath): array
                     ]);
 
                     if ($hex_vals !== false && strlen($hex_vals) === 15) {
-                        $result['date'] = substr($hex_vals, 0, 8);
-                        $result['id']   = substr($hex_vals, 8);
+                        if (strpos($hex_vals, "\0") === false) {
+                            $result['date'] = substr($hex_vals, 0, 8);
+                            $result['id']   = substr($hex_vals, 8);
+                        }
                         Log::info('Signature analysée (TOML)', [
                             'date' => $result['date'],
                             'id'   => $result['id'],

@@ -182,7 +182,7 @@ if (Auth::user()->is_admin != 1) {
                                                 $depot_date = date('m/d H\hi', strtotime($jeu->created_at));
 
                                                 // difference dates
-                                                $date1 = DateTime::createFromFormat('YmdHi', date('Y') . substr($signature_array['date'], 0, 8));    
+                                                $date1 = DateTime::createFromFormat('mdHi', $signature_array['date']);    
                                                 $date2 = new DateTime($jeu->created_at);
                                                 $diffSec = abs($date2->getTimestamp() - $date1->getTimestamp());
                                                 $hours   = floor($diffSec / 3600);
