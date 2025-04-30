@@ -60,12 +60,20 @@
                 ?>
                 
                 <div class="col-12">
-                    <div class="">Vous pouvez choisir le thème <b>ou bien</b> un des quatre univers ci-dessous.</div>
+                    
+
+                    <div class="mt-4 mb-5 text-danger text-monospace"><i class="fa-solid fa-circle-exclamation"></i> Vous devez conserver les noms des fichiers <kbd>.pyxres</kbd>. Ils doivent être nommés <kbd>1.pyxres</kbd>, <kbd>2.pyxres</kbd>, <kbd>3.pyxres</kbd>, <kbd>4.pyxres</kbd> ou <kbd>theme.pyxres</kbd>.</div>
+
+                    <div>Vous pouvez choisir le thème <b>ou bien</b> un des quatre univers ci-dessous.</div>
 
                     <div class="font-weight-bold mt-4 mb-2">THÈME</div>
                   
                     <div class="mb-1">
-                        <b>"Bataille navale"</b><br />Si vous prévoyez d'utiliser l'éditeur d'images, vous <u>devez</u> utiliser ce fichier vide
+                        <b>"Bataille navale"</b>
+                        <br />
+                        L'utilisation de l'éditeur d'images n'est pas obligatoire. Vous pouvez créer votre jeu en utilisant des formes géométriques seulement.
+                        <br />
+                        Si vous prévoyez d'utiliser l'éditeur d'images, vous <u class="text-danger">devez</u> utiliser ce fichier vide :
                         <form method="POST" action="{{ route('telecharger-univers') }}" class="pl-1 pr-1" style="display:inline">
                                 @csrf
                                 <input type="hidden" name="fichier" value="theme.pyxres">
@@ -76,7 +84,7 @@
                                     <i class="fas fa-arrow-down"></i><span class="pl-2 text-monospace">theme.pyxres</span>
                                 </button>
                         </form>
-                        <u>sans changer son nom</u>.<br />L'utilisation de l'éditeur d'images n'est pas obligatoire. Vous pouvez créer votre jeu en utilisant des formes géométriques seulement.
+                        
                     </div>
 
                     <div class="font-weight-bold mt-5">UNIVERS</div>
