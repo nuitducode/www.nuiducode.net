@@ -88,7 +88,7 @@ if (Auth::user()->is_admin != 1) {
                                             $diffSec = abs($date2->getTimestamp() - $date1->getTimestamp());
                                             $hours   = floor($diffSec / 3600);
                                             $minutes = floor(($diffSec % 3600) / 60);
-                                            $delta = "{$hours}h {$minutes}";
+                                            $delta = "{$hours}h{$minutes}";
                                             if ($hours >= 6) {
                                                 $delta_class = "text-danger";
                                             } else {
@@ -158,41 +158,44 @@ if (Auth::user()->is_admin != 1) {
                                             $signature_jeton = '';
                                             $signature_date = '';
                                             $delta = '';
-
+											$delta_class = '';
                                             $pattern = $dir.'/*.pyxres';
                                             $matches = glob($dir.'/*.pyxres');
                                             if (isset($matches[0])){
                                                 storage_path("app/public/depot-jeux/python/".$jeu->etablissement_jeton."/".$jeu->python_id."/".basename($matches[0]));
                                                 $pyxres_path = storage_path("app/public/depot-jeux/python/".$jeu->etablissement_jeton."/".$jeu->python_id."/".basename($matches[0]));
                                                 $signature_array = verifyPyxresSignature($pyxres_path);
-                                                $signature_id = $signature_array['id'];
-                                                $signature_jeton = $signature_id[6].$signature_id[4].$signature_id[2].$signature_id[0];
-                                                $signature_date = substr($signature_array['date'], 0, 2) . "/" . substr($signature_array['date'], 2, 2) . " " . substr($signature_array['date'], 4, 2) . "h" . substr($signature_array['date'], 6, 2);
-                                                
-                                                $signature_contenu = "<pre>".print_r($signature_array, true)."</pre>";
-                                                $ndc_date = date('md', strtotime($etablissement->ndc_date));
-                                                if ($etablissement->jeton == $signature_jeton AND $ndc_date == substr($signature_array['date'], 0, 4)){
-                                                    $status_class = 'fa-solid fa-circle-check text-success';
-                                                }else{
-                                                    $status_class = 'fa-solid fa-circle-exclamation text-danger';
-                                                }
-                                                $popover = htmlspecialchars($signature_contenu, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-                                                $status = "<i class='".$status_class."' data-container='body' data-toggle='popover' data-html='true' data-placement='left' data-content='".$popover."'></i>";
+												if ($signature_array['id'] !== NULL){
+													$signature_id = $signature_array['id'];
+													$signature_jeton = $signature_id[6].$signature_id[4].$signature_id[2].$signature_id[0];
+													$signature_date = substr($signature_array['date'], 0, 2) . "/" . substr($signature_array['date'], 2, 2) . " " . substr($signature_array['date'], 4, 2) . "h" . substr($signature_array['date'], 6, 2);
+													
+													$signature_contenu = "<pre>".print_r($signature_array, true)."</pre>";
+													$ndc_date = date('md', strtotime($etablissement->ndc_date));
+													if ($etablissement->jeton == $signature_jeton AND $ndc_date == substr($signature_array['date'], 0, 4)){
+														$status_class = 'fa-solid fa-circle-check text-success';
+													}else{
+														$status_class = 'fa-solid fa-circle-exclamation text-danger';
+													}
+													$popover = htmlspecialchars($signature_contenu, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+													$status = "<i class='".$status_class."' data-container='body' data-toggle='popover' data-html='true' data-placement='left' data-content='".$popover."'></i>";
 
-                                                $depot_date = date('m/d H\hi', strtotime($jeu->created_at));
+													$depot_date = date('m/d H\hi', strtotime($jeu->created_at));
 
-                                                // difference dates
-                                                $date1 = DateTime::createFromFormat('mdHi', $signature_array['date']);    
-                                                $date2 = new DateTime($jeu->created_at);
-                                                $diffSec = abs($date2->getTimestamp() - $date1->getTimestamp());
-                                                $hours   = floor($diffSec / 3600);
-                                                $minutes = floor(($diffSec % 3600) / 60);
-                                                $delta = "{$hours}h {$minutes}";
-                                                if ($hours >= 6) {
-                                                    $delta_class = "text-danger";
-                                                } else {
-                                                    $delta_class = "";
-                                                }
+													// difference dates
+													$date1 = DateTime::createFromFormat('mdHi', $signature_array['date']);    
+													$date2 = new DateTime($jeu->created_at);
+													$diffSec = abs($date2->getTimestamp() - $date1->getTimestamp());
+													$hours   = floor($diffSec / 3600);
+													$minutes = floor(($diffSec % 3600) / 60);
+													$delta = "{$hours}h{$minutes}";
+													if ($hours >= 6) {
+														$delta_class = "text-danger";
+													} else {
+														$delta_class = "";
+													}
+													
+												}
                                             }
                                             ?>
 
