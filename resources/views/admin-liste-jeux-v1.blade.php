@@ -60,12 +60,28 @@ if (Auth::user()->is_admin != 1) {
                                         </tr>
                                     </thead>
                                     <tbody>
+
                                         @foreach($jeux AS $jeu)
 
                                             <?php
+
+                                            $status = '';
+                                            $signature_jeton = '';
+                                            $signature_date = '';
+                                            $delta = '';
+                                            $delta_class = '';
+
                                             $etablissement = App\Models\User::where('id', $jeu->etablissement_id)->first();
                                             $sb3_path = storage_path("app/public/depot-jeux/scratch/".$jeu->etablissement_jeton."/".$jeu->scratch_id.".sb3");
-                                            $signature_array = verifySb3Signatures($sb3_path);
+											
+											if ($jeu->metadata === NULL) {
+                                                $signature_array = verifySb3Signatures($sb3_path);
+                                                $jeu->metadata = serialize($signature_array);
+                                                $jeu->save();
+                                            } else {
+                                                $signature_array = unserialize($jeu->metadata);
+                                            }
+                                            
                                             $signature = json_decode($signature_array['first_signature_found']);
                                             $signature_id = $signature->id;
                                             $signature_jeton = $signature_id[6].$signature_id[4].$signature_id[2].$signature_id[0];
@@ -74,7 +90,7 @@ if (Auth::user()->is_admin != 1) {
                                             $ndc_date = date('md', strtotime($etablissement->ndc_date));
                                             if ($etablissement->jeton == $signature_jeton AND $ndc_date == date('md', strtotime($signature_date))){
                                                 $status_class = 'fa-solid fa-circle-check text-success';
-                                            }else{
+                                            } else {
                                                 $status_class = 'fa-solid fa-circle-exclamation text-danger';
                                             }
                                             $popover = htmlspecialchars($signature_contenu, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
@@ -109,6 +125,7 @@ if (Auth::user()->is_admin != 1) {
                                             </tr>
 
                                         @endforeach
+
                                     </tbody>
                                 </table>
                             </div>
@@ -139,7 +156,7 @@ if (Auth::user()->is_admin != 1) {
                                             <th scope="col" class="pl-1 pr-1">Nom de l'équipe</th>
                                             <th scope="col" class="pl-2 pr-2">Fichiers</th>
                                             <th scope="col" class="pl-2 pr-2">Jeton</th>
-                                            <th scope="col" class="pl-2 pr-2"><i class="fa-solid fa-shield-halved"></i></th>
+                                            <th scope="col" class="pl-2 pr-2"><i class="fa-solid fa-square-check"></i></th>
                                             <th scope="col" class="pl-2 pr-2">Id</th>
                                             <th scope="col" class="pl-2 pr-2" nowrap>Id<i class="ml-1 fa-solid fa-shield-halved"></i></th>
                                             <th scope="col" class="pl-2 pr-2">Date</th>
@@ -154,17 +171,27 @@ if (Auth::user()->is_admin != 1) {
                                             <?php
                                             $etablissement = App\Models\User::where('id', $jeu->etablissement_id)->first();
                                             $dir = storage_path("app/public/depot-jeux/python/".$jeu->etablissement_jeton."/".$jeu->python_id);
+											
                                             $status = '';
                                             $signature_jeton = '';
                                             $signature_date = '';
                                             $delta = '';
 											$delta_class = '';
+											
                                             $pattern = $dir.'/*.pyxres';
                                             $matches = glob($dir.'/*.pyxres');
                                             if (isset($matches[0])){
                                                 storage_path("app/public/depot-jeux/python/".$jeu->etablissement_jeton."/".$jeu->python_id."/".basename($matches[0]));
                                                 $pyxres_path = storage_path("app/public/depot-jeux/python/".$jeu->etablissement_jeton."/".$jeu->python_id."/".basename($matches[0]));
-                                                $signature_array = verifyPyxresSignature($pyxres_path);
+                                            
+                                                if ($jeu->metadata === NULL) {
+                                                    $signature_array = verifyPyxresSignature($pyxres_path);
+                                                    $jeu->metadata = serialize($signature_array);
+                                                    $jeu->save();
+                                                } else {
+                                                    $signature_array = unserialize($jeu->metadata);
+                                                }
+
 												if ($signature_array['id'] !== NULL){
 													$signature_id = $signature_array['id'];
 													$signature_jeton = $signature_id[6].$signature_id[4].$signature_id[2].$signature_id[0];
@@ -173,28 +200,32 @@ if (Auth::user()->is_admin != 1) {
 													$signature_contenu = "<pre>".print_r($signature_array, true)."</pre>";
 													$ndc_date = date('md', strtotime($etablissement->ndc_date));
 													if ($etablissement->jeton == $signature_jeton AND $ndc_date == substr($signature_array['date'], 0, 4)){
-														$status_class = 'fa-solid fa-circle-check text-success';
+														$status_signature_class = 'fa-solid fa-circle-check text-success';
 													}else{
-														$status_class = 'fa-solid fa-circle-exclamation text-danger';
+														$status_signature_class = 'fa-solid fa-circle-exclamation text-danger';
 													}
 													$popover = htmlspecialchars($signature_contenu, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-													$status = "<i class='".$status_class."' data-container='body' data-toggle='popover' data-html='true' data-placement='left' data-content='".$popover."'></i>";
+													$status_signature = "<i class='".$status_signature_class." mr-1' data-container='body' data-toggle='popover' data-html='true' data-placement='left' data-content='".$popover."'></i>";
 
 													$depot_date = date('m/d H\hi', strtotime($jeu->created_at));
 
 													// difference dates
-													$date1 = DateTime::createFromFormat('mdHi', $signature_array['date']);    
-													$date2 = new DateTime($jeu->created_at);
-													$diffSec = abs($date2->getTimestamp() - $date1->getTimestamp());
-													$hours   = floor($diffSec / 3600);
-													$minutes = floor(($diffSec % 3600) / 60);
-													$delta = "{$hours}h{$minutes}";
-													if ($hours >= 6) {
-														$delta_class = "text-danger";
-													} else {
-														$delta_class = "";
+													if (DateTime::createFromFormat('mdHi', $signature_array['date'])) {
+														$date1 = DateTime::createFromFormat('mdHi', $signature_array['date']); 
+														$date2 = new DateTime($jeu->created_at);
+														$diffSec = abs($date2->getTimestamp() - $date1->getTimestamp());
+														$hours   = floor($diffSec / 3600);
+														$minutes = floor(($diffSec % 3600) / 60);
+														$delta = "{$hours}h{$minutes}";
+														if ($hours >= 6) {
+															$delta_class = "text-danger";
+															$status_delta_class = 'fa-solid fa-circle-exclamation text-danger';
+														} else {
+															$delta_class = "";
+															$status_delta_class = 'fa-solid fa-circle-check text-success';
+														}
 													}
-													
+													$status_delta = "<i class='".$status_delta_class." mr-1'></i>";
 												}
                                             }
                                             ?>
@@ -203,14 +234,19 @@ if (Auth::user()->is_admin != 1) {
                                                 <td class="w-100">{{$jeu->nom_equipe}}</td>
                                                 <td class="pl-2 pr-2" nowrap>
                                                     <?php
+													$status_pyxres_class = 'fa-solid fa-circle-check text-success';
                                                     $files = File::files(storage_path("app/public/depot-jeux/python/".$jeu->etablissement_jeton.'/'.$jeu->python_id));
                                                     foreach($files AS $file) {
                                                         echo '<kbd>'.basename($file).'</kbd> ';
+														if (strpos(basename($file), 'pyxres') !== false AND basename($file) !== '1.pyxres' AND basename($file) !== '2.pyxres' AND basename($file) !== '3.pyxres' AND basename($file) !== '4.pyxres' AND basename($file) !== 'theme.pyxres') {
+															$status_pyxres_class = 'fa-solid fa-circle-exclamation text-danger';
+														} 
                                                     }
+													$status_pyxres = "<i class='".$status_pyxres_class." mr-1'></i>";
                                                     ?>
                                                 </td>
                                                 <td class="pl-2 pr-2"><a href="/console/jouer-jeu-pyxel/{{$jeu->etablissement_jeton}}-{{$jeu->python_id}}" target="_blank">{{$jeu->python_id}}</a></td>
-                                                <td class="pl-2 pr-2">{!!$status!!}</td>
+                                                <td class="pl-2 pr-2" nowrap>{!!$status_pyxres!!}{!!$status_signature!!}{!!$status_delta!!}</td>
                                                 <td class="pl-2 pr-2">{{$etablissement->jeton}}</td>
                                                 <td class="pl-2 pr-2">{{$signature_jeton}}</td>
                                                 <td class="pl-2 pr-2">{{substr($ndc_date, 0, 2)}}/{{substr($ndc_date, 2)}}</td>
