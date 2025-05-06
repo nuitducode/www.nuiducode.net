@@ -22,7 +22,13 @@
         echo '</body>';
         echo '</html>';        
         exit;       
-    };    
+    };   
+    if ($user->evaluations_status == 0) {
+        echo '<div class="text-success text-monospace text-center mt-5 pb-4" role="alert">Les évaluations sont terminées</div>';
+        echo '</body>';
+        echo '</html>';        
+        exit;       
+    };   
     ?>
 
 	<div class="container mb-5">

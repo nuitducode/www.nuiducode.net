@@ -9,6 +9,16 @@
 
     @include('inc-nav')
 
+    <?php
+    $user = App\Models\User::where([['jeton', $etablissement_jeton]])->first(); 
+    if ($user->depots_status == 0) {
+        echo '<div class="text-success text-monospace text-center mt-5 pb-4" role="alert">Les dépôts sont fermés</div>';
+        echo '</body>';
+        echo '</html>';        
+        exit;       
+    };   
+    ?>
+
 	<div class="container mb-5">
 		<div class="row">
 

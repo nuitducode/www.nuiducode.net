@@ -301,10 +301,24 @@
                                             <a class="btn btn-light btn-sm btn-block pl-4 pr-4" href="/console/ndc/liste-evaluations" role="button">liste des évaluations</a>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="depots_off" @if(Auth::user()->depots_status == 0) checked @endif>
+                                                <label class="custom-control-label text-monospace small" style="padding-top:2px;" for="depots_off">fermer les dépôts</label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="evaluations_off" @if(Auth::user()->evaluations_status == 0) checked @endif>
+                                                <label class="custom-control-label text-monospace small" style="padding-top:2px;" for="evaluations_off">fermer les évaluations</label>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 </table>                                    
                                 
                             </div>
-
 
 
                             <!-- == 4 == -->
@@ -519,6 +533,58 @@
 	</div><!-- /container -->
 
 	@include('inc-bottom-js')
+
+    <script>
+        document.getElementById('depots_off').addEventListener('change', function() {
+            const value = this.checked ? 0 : 1;
+            fetch('{{ route("update-depots-status") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept':       'application/json',
+                    'X-CSRF-Token': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ depots_status: value })
+            })
+            .then(response => {
+                if (!response.ok) throw new Error('Erreur réseau');
+                    return response.json();
+                })
+            .then(data => {
+                //console.log('Mise à jour réussie :', data);
+            })
+            .catch(error => {
+                console.error('Échec de la mise à jour :', error);
+                this.checked = !this.checked;
+            });
+        });
+    </script>
+
+    <script>
+        document.getElementById('evaluations_off').addEventListener('change', function() {
+            const value = this.checked ? 0 : 1;
+            fetch('{{ route("update-evaluations-status") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept':       'application/json',
+                    'X-CSRF-Token': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ evaluations_status: value })
+            })
+            .then(response => {
+                if (!response.ok) throw new Error('Erreur réseau');
+                    return response.json();
+                })
+            .then(data => {
+                //console.log('Mise à jour réussie :', data);
+            })
+            .catch(error => {
+                console.error('Échec de la mise à jour :', error);
+                this.checked = !this.checked;
+            });
+        });
+    </script>
 
 	<script>
 	function copier(id) {
