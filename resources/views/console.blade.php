@@ -67,13 +67,17 @@
 
                 <div class="text-monospace text-secondary mb-3 small">
                     <div>Journal de la NDC</div>
-                    <div class="overflow-auto table-responsive" style="border:1px solid #f1f1f1;background-color:#f1f1f1;border-radius:4px;padding:10px 10px 10px 14px;height:140px">
+                    <div class="overflow-auto table-responsive" style="border:1px solid #f1f1f1;background-color:#f1f1f1;border-radius:4px;padding:10px 10px 10px 14px;height:200px">
                         <table class="table table-borderless table-sm text-secondary">
 
                             <tr><td><b>08/19</b></td><td style="width:100%">Ouverture des inscriptions  pour la NDC 2025</td></tr>
                             <tr><td><b>05/09</b></td><td style="width:100%">Bulletin <a href="https://github.com/nuitducode/ORGANISATION-2025/discussions/1" target="_blank">#01</a></td></tr>
                             <tr><td><b>24/02</b></td><td style="width:100%">Bulletin <a href="https://github.com/nuitducode/ORGANISATION-2025/discussions/5" target="_blank">#02</a></td></tr>
                             <tr><td><b>10/04</b></td><td style="width:100%">Bulletin <a href="https://github.com/nuitducode/ORGANISATION-2025/discussions/7" target="_blank">#03</a></td></tr>
+                            <tr><td><b>15/04</b></td><td style="width:100%">Bulletin <a href="https://github.com/nuitducode/ORGANISATION-2025/discussions/8" target="_blank">#04</a></td></tr>
+                            <tr><td><b>15/04</b></td><td style="width:100%">Bulletin <a href="https://github.com/nuitducode/ORGANISATION-2025/discussions/10" target="_blank">#05</a></td></tr>
+                            <tr><td><b>28/04</b></td><td style="width:100%">La NDC 2025 commence!</a></td></tr>
+                            <tr><td><b>07/05</b></td><td style="width:100%">Ouverture des soumissions de jeux pour la sélection internationale.</a></td></tr>
                             
                         </table>
                     </div>
@@ -468,7 +472,7 @@
                             @if (Auth::user()->is_admin == 1)
 						    <div class="mt-5 text-danger text-monospace">--------------------------------- MODE ADMIN ---------------------------------</div>
 						
-                            
+
                             <!-- == 6 == -->
                             <h3 id="s06" class="mt-5"><span class="badge badge-pill badge-primary pt-1">6</span> Sélection internationale</h3>
                             <div class="mb-1 ml-4">
