@@ -7,7 +7,7 @@ if (Auth::user()->is_admin != 1) {
 <html lang="fr">
 <head>
     @include('inc-meta')
-    <title>ADMIN | JEUX</title>
+    <title>ADMIN | LISTE FINALISTES</title>
     <style>
         .popover {
             width: 700px;
@@ -29,14 +29,14 @@ if (Auth::user()->is_admin != 1) {
 
 			<div class="col-md-10">
 
-                <h1 class="mb-0">JEUX V1</h1>
+                <h1 class="mb-0">LISTE FINALISTES</h1>
                 
                 <h2>SCRATCH</h2>
                 <div style="border:1px silver solid;border-radius:5px;padding:20px;background-color:white;">
                 <?php
                 $categories = ['C3' => 'Cycle 3', 'C4' => 'Cycle 4', 'LY' => 'Lycée'];
                 foreach ($categories AS $categorie_code => $categorie){
-                    $jeux = App\Models\Game::where([['type', 'ndc'], ['categorie', $categorie_code]])->get();
+                    $jeux = App\Models\Game::where([['type', 'ndc'], ['categorie', $categorie_code], ['finaliste', 1]])->get();
                     ?>
                     <h3 class="m-0">{{$categorie}}</h3>
                     @if(count($jeux) == 0)
@@ -146,7 +146,7 @@ if (Auth::user()->is_admin != 1) {
                 <?php
                 $categories = ['PI' => 'Première', 'POO' => 'Terminale', 'PB' => 'Post-bac'];
                 foreach ($categories AS $categorie_code => $categorie){
-                    $jeux = App\Models\Game::where([['type', 'ndc'], ['categorie', $categorie_code]])->get();
+                    $jeux = App\Models\Game::where([['type', 'ndc'], ['categorie', $categorie_code], ['finaliste', 1]])->get();
                     ?>
                     <h3 class="m-0">{{$categorie}}</h3>
                     @if(count($jeux) == 0)
