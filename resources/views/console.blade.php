@@ -328,16 +328,11 @@
                             </div>
 
 
-                            @if (Auth::user()->is_admin == 1)
-						    <div class="mt-5 text-danger text-monospace">--------------------------------- MODE ADMIN ---------------------------------</div>
-
-
-
                             <!-- == 5 == -->
                             <h3 id="finalistes" class="mt-5"><span class="badge badge-pill badge-primary pt-1">5</span> Jeux proposés pour la sélection internationale</h3>
                             <div class="ml-2 mb-1 ml-4 pl-4 pr-4 pb-3 pt-3" style="border-radius:4px;border:1px solid #dfdfdf;background-color:#f3f5f7">
                             
-                                @if (Auth::user()->fin_evaluations == 0 AND date("Y-m-d") > "2025-06-10")
+                                @if (Auth::user()->fin_evaluations == 0 AND date("Y-m-d") > "2025-06-02")
 
                                     <div class="text-monospace small text-secondary">
                                         Vous n'avez pas proposé de jeux. Fin des propositions de listes.
@@ -347,9 +342,7 @@
 
                                     @if (Auth::user()->fin_evaluations == 0)
                                         <div class="text-monospace small text-success">
-                                            Il est recommandé de ne proposer que des jeux qui ont été évalués par au moins quatre personnes différentes et qui ont une note supérieure à 12.
-                                            <br />Pour modifier cette liste, voir "4. BILAN DES ÉVALUATIONS & SÉLECTION".
-                                            <br />Pour valider cette liste, cliquer sur <i class="fas fa-unlock"></i>.
+                                            Il est recommandé de ne proposer que des jeux qui ont été évalués par au moins quatre personnes différentes et qui ont une note supérieure à 12. Pour modifier cette liste, voir "4. BILAN DES ÉVALUATIONS & SÉLECTION".
                                         </div>
                                     @endif
 
@@ -388,15 +381,73 @@
                                         </div>
 
                                         @if(Auth::user()->fin_evaluations == 0)
-                                            <div class="text-center">
-                                                <button class="btn btn-primary btn-sm mt-2 pl-4 pr-4" type="button" data-toggle="collapse" data-target="#collapseValiderFinalistes" aria-expanded="false" aria-controls="collapseValiderFinalistes">
-                                                    <i class="fas fa-unlock"></i>
-                                                </button>
-                                                <div class="collapse" id="collapseValiderFinalistes">
-                                                    <div class='pt-4 pb-2 text-monospace small'>Verrouiller cette liste et proposer ces jeux pour la sélection internationale</div>
-                                                    <a href='/console/valider-finalistes/{{ Crypt::encryptString(Auth::user()->id) }}' class='btn btn-danger btn-sm' style='color:white' role='button'>confirmer</a>
+
+                                            <form method="POST" action="{{ route('valider-finalistes') }}">
+
+                                                @csrf
+
+                                                <div class="border rounded text-monospace p-3" style="background-color:#F8FAFC;">
+                                                    <div class="text-center font-weight-bold text-success">Soummettre cette liste pour la sélection internationnale</div>
+
+                                                    <div class="mt-2 font-weight-bold">Informations</div>
+                                                    <div class="pl-3">
+                                                        <div><u>Début de la NDC</u></div>
+                                                        <div class="pl-3 mb-2">
+                                                            <div class="custom-control custom-radio">
+                                                                <input type="radio" id="d1" name="debut" value="d1" class="custom-control-input">
+                                                                <label class="custom-control-label" for="d1">Les univers de jeux ont été téléchargés avant le début de la NDC par l'enseignant</label>
+                                                            </div>
+                                                            <div class="custom-control custom-radio">
+                                                                <input type="radio" id="d2" name="debut" value="d2" class="custom-control-input">
+                                                                <label class="custom-control-label" for="d2">Les univers de jeu ont été téléchargés par les élèves au tout début de la NDC</label>
+                                                            </div>
+                                                            <div class="custom-control custom-radio">
+                                                                <input type="radio" id="d3" name="debut" value="d3" class="custom-control-input">
+                                                                <label class="custom-control-label" for="d3">Autre</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div><u>Fin de la NDC</u></div>
+                                                        <div class="pl-3 mb-2">
+                                                            <div class="custom-control custom-radio">
+                                                                <input type="radio" id="f1" name="fin" value="f1" class="custom-control-input">
+                                                                <label class="custom-control-label" for="f1">Les jeux ont été déposés par l'enseignant après les 6h de la NDC</label>
+                                                            </div>
+                                                            <div class="custom-control custom-radio">
+                                                                <input type="radio" id="f2" name="fin" value="f2" class="custom-control-input">
+                                                                <label class="custom-control-label" for="f2">Les jeux ont été déposés par les élèves (ou l'enseigant) à la fin des 6h de la NDC (+/- quelques minutes)</label>
+                                                            </div>
+                                                            <div class="custom-control custom-radio">
+                                                                <input type="radio" id="f3" name="fin" value="f3" class="custom-control-input">
+                                                                <label class="custom-control-label" for="f3">Autre</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="mt-3 font-weight-bold">Critères</div>
+                                                    <ul class="mb-0">
+                                                        <li>Les jeux proposés ne comportent aucun bug (ou seulement des bug mineurs qui ne nuisent pas à la jouabilité)</li>
+                                                        <li>Les jeux proposés ont été créés sans aide extérieure: IA, ressources sur internet, ressources sur l'ordinateur, notes papier...</li>
+                                                    </ul>
+
+                                                    <div>Valider les points précédents en écrivant "Je confirme": <input id="confirmation" class="form-control" type="text" style="display:inline;width:120px;" /></div>
+
+                                                    <div class="mt-2">Si vous avez des doutes sur un ou plusieurs jeux, merci de ne pas les proposer (voir "4. BILAN DES ÉVALUATIONS & SÉLECTION" pour modifier la liste).</div>
+
+                                                    <div class="mt-2">Cliquer sur <i class="fas fa-unlock"></i> pour verouiller cette liste et proposer ces jeux pour la sélection internationale.</div>
+
                                                 </div>
-                                            </div>
+
+                                                <div class="text-center">
+                                                    <button id="cadenas" class="btn btn-primary mt-2" style="width:60px;" type="button" data-toggle="collapse" data-target="#collapseValiderFinalistes" aria-expanded="false" aria-controls="collapseValiderFinalistes" style="cursor:not-allowed" disabled>
+                                                        <i class="fas fa-unlock"></i>
+                                                    </button>
+                                                    <div class="collapse" id="collapseValiderFinalistes">
+                                                        <button type="submit" class="mt-2 btn btn-success" style="width:60px;"><i class="fa-solid fa-check"></i></button>
+                                                    </div>
+                                                </div>
+                                            </form>
+
                                         @else
                                             <div class="text-center text-monospace small">
                                                 Si vous voulez déverrouiller cette liste pour la modifier, écrire à contact@nuitducode.net
@@ -414,7 +465,10 @@
                             </div>
 
 
+                            @if (Auth::user()->is_admin == 1)
+						    <div class="mt-5 text-danger text-monospace">--------------------------------- MODE ADMIN ---------------------------------</div>
 						
+                            
                             <!-- == 6 == -->
                             <h3 id="s06" class="mt-5"><span class="badge badge-pill badge-primary pt-1">6</span> Sélection internationale</h3>
                             <div class="mb-1 ml-4">
@@ -533,6 +587,94 @@
 	</div><!-- /container -->
 
 	@include('inc-bottom-js')
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        const input      = document.getElementById('confirmation');
+        const btn        = document.getElementById('cadenas');
+        const submitList = document.getElementById('submit_liste');
+        const radiosDeb  = document.querySelectorAll('input[name="debut"]');
+        const radiosFin  = document.querySelectorAll('input[name="fin"]');
+
+        // --- 1. Interdire copy/paste/cut/drop/contextmenu/ctrl+v uniquement sur #confirmation
+        ['copy','paste','cut','drop','contextmenu'].forEach(evt =>
+            input.addEventListener(evt, e => e.preventDefault())
+        );
+        input.addEventListener('keydown', e => {
+            const k = e.key.toLowerCase();
+            if ((e.ctrlKey||e.metaKey) && ['v','c','x'].includes(k)) e.preventDefault();
+        });
+
+        // Fonction qui vérifie toutes les conditions
+        function updateButtonState() {
+            const texteOk  = input.value === 'Je confirme';
+            const debutOk  = Array.from(radiosDeb).some(r => r.checked);
+            const finOk    = Array.from(radiosFin).some(r => r.checked);
+
+            if (texteOk && debutOk && finOk) {
+            btn.removeAttribute('disabled');
+            btn.style.cursor = 'pointer';
+            } else {
+            btn.setAttribute('disabled', '');
+            btn.style.cursor = 'not-allowed';
+            }
+        }
+
+        // Écouteurs pour réagir dès qu’on tape ou qu’on change une radio
+        input.addEventListener('input', updateButtonState);
+        radiosDeb.forEach(r => r.addEventListener('change', updateButtonState));
+        radiosFin.forEach(r => r.addEventListener('change', updateButtonState));
+        });
+
+/*
+        submitList.addEventListener('click', e => {
+            e.preventDefault();
+            if (btn.disabled) return;
+
+            // récupère les radios cochées
+            const selDeb = document.querySelector('input[name="debut"]:checked');
+            const selFin = document.querySelector('input[name="fin"]:checked');
+
+            // vérifications de sécurité (optionnel si bouton déjà verrouillé)
+            if (!selDeb || !selFin || inputConfirm.value !== 'Je confirme') {
+                return;
+            }
+
+            const payload = {
+                debut:        selDeb.value,
+                fin:          selFin.value,
+            };
+            
+            fetch("", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN':  token
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(function(res) {
+                if (!res.ok) {
+                    throw new Error('HTTP ' + res.status);
+                }
+                return res.json();
+            })
+            .then(function(data) {
+                if (data.redirect) {
+                    window.location.href = data.redirect;
+                } else {
+                    console.log('Succès', data);
+                }
+            })
+            .catch(function(err) {
+                console.error('Erreur envoi NDC :', err);
+                // ici, vous pouvez afficher une alerte ou un toast utilisateur
+            });
+           
+
+        });
+         */
+    </script> 
 
     <script>
         document.getElementById('depots_off').addEventListener('change', function() {
