@@ -32,9 +32,10 @@
 				@if (Auth::user()->is_admin == 1)
 					<div class="mt-3 text-center">
 						<a class=" btn btn-danger btn-sm text-left mt-1" href="/console/admin" role="button"><i class="fa-solid fa-list"></i></a>
-						<a class=" btn btn-danger btn-sm text-left mt-1" href="/console/admin_finalistes" role="button"><i class="fa-solid fa-chart-simple"></i></a>
-						<a class=" btn btn-danger btn-sm text-left mt-1" href="/console/admin_finalistes_par_territoire" role="button"><i class="fa-solid fa-earth-americas"></i></a>
-						<br />
+						<a class=" btn btn-danger btn-sm text-left mt-1" href="/console/admin-finalistes-liste" role="button"><i class="fa-solid fa-gamepad"></i></a>
+						<a class=" btn btn-danger btn-sm text-left mt-1" href="/console/admin-finalistes" role="button"><i class="fa-solid fa-chart-simple"></i></a>
+                        <br />
+						<a class=" btn btn-danger btn-sm text-left mt-1" href="/console/admin-finalistes-par-territoire" role="button"><i class="fa-solid fa-earth-americas"></i></a>
 						<a class=" btn btn-danger btn-sm text-left mt-1 font-weight-bold text-monospace" href="/console/admin-liste-jeux-v1" role="button">v1</a>
 						<a class=" btn btn-danger btn-sm text-left mt-1 font-weight-bold text-monospace" href="/console/admin-liste-jeux-v2" role="button">v2</a>
 					</div>
