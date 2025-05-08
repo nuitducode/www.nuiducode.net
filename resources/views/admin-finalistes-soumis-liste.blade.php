@@ -40,7 +40,7 @@ if (Auth::user()->is_admin != 1) {
                     ->where([
                         ['users.fin_evaluations', '=', 1],  
                         ['games.type', 'ndc'], 
-                        ['games.categorie', $categorie], 
+                        ['games.categorie', $categorie_code], 
                         ['games.finaliste', 1],
                     ])
                     ->select('games.*')
@@ -158,7 +158,7 @@ if (Auth::user()->is_admin != 1) {
                     ->where([
                         ['users.fin_evaluations', '=', 1],  
                         ['games.type', 'ndc'], 
-                        ['games.categorie', $categorie], 
+                        ['games.categorie', $categorie_code], 
                         ['games.finaliste', 1],
                     ])
                     ->select('games.*')
