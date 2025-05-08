@@ -36,7 +36,15 @@ if (Auth::user()->is_admin != 1) {
                 <?php
                 $categories = ['C3' => 'Cycle 3', 'C4' => 'Cycle 4', 'LY' => 'Lycée'];
                 foreach ($categories AS $categorie_code => $categorie){
-                    $jeux = App\Models\Game::where([['type', 'ndc'], ['categorie', $categorie_code], ['finaliste', 1]])->get();
+                    $jeux = App\Models\Game::join('users', 'users.id', '=', 'games.etablissement_id')
+                    ->where([
+                        ['users.fin_evaluations', '=', 1],  
+                        ['games.type', 'ndc'], 
+                        ['games.categorie', $categorie], 
+                        ['games.finaliste', 1],
+                    ])
+                    ->select('games.*')
+                    ->get();
                     ?>
                     <h3 class="m-0">{{$categorie}}</h3>
                     @if(count($jeux) == 0)
