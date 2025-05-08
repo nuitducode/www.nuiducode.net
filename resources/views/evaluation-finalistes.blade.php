@@ -9,14 +9,14 @@
     @include('inc-nav')
 
     <?php
-    /*
+    
     echo '<div class="text-success text-monospace text-center mt-5 pb-4" role="alert">';
     echo 'LES ÉVALUATIONS DÉBUTENT DÉBUT JUIN';
     echo '</div>';
     echo '</body>';
     echo '</html>';
     exit;    
-    */
+    
     /*
     echo '<div class="text-success text-monospace text-center mt-5 pb-4" role="alert">';
     echo 'LES ÉVALUATIONS SONT MAINTEANT TERMINÉES';
