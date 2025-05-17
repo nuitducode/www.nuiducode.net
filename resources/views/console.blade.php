@@ -234,19 +234,21 @@
 
                     <div class="text-center">
 
-                        <div id="warning_donnees_vides" class="mb-3"></div>
+                        <div id="warning_donnees_vides" class="mb-1"></div>
 
                         @if($errors->any())
                             <div class="text-monospace text-danger small mb-2">{{ $errors->first() }}</div>
                         @endif
 
-                        <button type="submit" class="btn btn-primary btn-sm mt-1 pl-4 pr-4"><i class="fas fa-check"></i></button>
-
                         @if (Session::has('data_updated'))
-                            <div class="mt-2 text-monospace text-success small fade-out">{{ Session::get('data_updated') }}</div>
+                            <div class="mb-1 text-monospace text-success small fade-out">{{ Session::get('data_updated') }}</div>
                         @else
-                            <div class="mt-2 text-monospace text-success small">&nbsp;</div>
+                            <div class="mb-1 text-monospace text-success small">&nbsp;</div>
                         @endif
+
+                        <button type="submit" class="btn btn-primary btn-sm mb-2 pl-4 pr-4"><i class="fas fa-check"></i></button>
+
+
                     </div>
 
                 </form>
