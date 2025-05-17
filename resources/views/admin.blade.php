@@ -264,7 +264,7 @@ if (Auth::user()->is_admin != 1) {
                                     <td class="text-primary font-weight-bold" nowrap>{{substr($etablissement->ndc_date,5,5)}}</td>
                                     <td class="text-left">
                                         <?php
-                                        if ($etablissement->scratch_nb_equipes_c3 !== NULL AND $etablissement->scratch_nb_equipes_c3 !== 0 AND $etablissement->scratch_nb_eleves_c3/$etablissement->scratch_nb_equipes_c3 > 3){
+                                        if ($etablissement->scratch_nb_equipes_c3 !== NULL AND $etablissement->scratch_nb_equipes_c3 !== 0 AND ($etablissement->scratch_nb_eleves_c3/$etablissement->scratch_nb_equipes_c3 > 3 OR $etablissement->scratch_nb_eleves_c3/$etablissement->scratch_nb_equipes_c3 < 2)){
                                             echo '<span style="color:red">';
                                         } else {
                                             echo '<span >';
@@ -275,7 +275,7 @@ if (Auth::user()->is_admin != 1) {
                                     </td>
                                     <td class="text-left">
                                         <?php
-                                        if ($etablissement->scratch_nb_equipes_c4 !== NULL AND $etablissement->scratch_nb_equipes_c4 !== 0 AND $etablissement->scratch_nb_eleves_c4/$etablissement->scratch_nb_equipes_c4 > 3){
+                                        if ($etablissement->scratch_nb_equipes_c4 !== NULL AND $etablissement->scratch_nb_equipes_c4 !== 0 AND ($etablissement->scratch_nb_eleves_c4/$etablissement->scratch_nb_equipes_c4 > 3 OR $etablissement->scratch_nb_eleves_c4/$etablissement->scratch_nb_equipes_c4 < 2)){
                                             echo '<span style="color:red">';
                                         } else {
                                             echo '<span >';
@@ -286,7 +286,7 @@ if (Auth::user()->is_admin != 1) {
                                     </td>
                                     <td class="text-left">
                                         <?php
-                                        if ($etablissement->scratch_nb_equipes_lycee !== NULL AND $etablissement->scratch_nb_equipes_lycee !== 0 AND $etablissement->scratch_nb_eleves_lycee/$etablissement->scratch_nb_equipes_lycee > 3){
+                                        if ($etablissement->scratch_nb_equipes_lycee !== NULL AND $etablissement->scratch_nb_equipes_lycee !== 0 AND ($etablissement->scratch_nb_eleves_lycee/$etablissement->scratch_nb_equipes_lycee > 3 OR $etablissement->scratch_nb_eleves_lycee/$etablissement->scratch_nb_equipes_lycee < 2)){
                                             echo '<span style="color:red">';
                                         } else {
                                             echo '<span >';
@@ -297,7 +297,7 @@ if (Auth::user()->is_admin != 1) {
                                     </td>
                                     <td class="text-left">
                                         <?php
-                                        if ($etablissement->python_nb_equipes_pi !== NULL AND $etablissement->python_nb_equipes_pi !== 0 AND $etablissement->python_nb_eleves_pi/$etablissement->python_nb_equipes_pi > 3){
+                                        if ($etablissement->python_nb_equipes_pi !== NULL AND $etablissement->python_nb_equipes_pi !== 0 AND ($etablissement->python_nb_eleves_pi/$etablissement->python_nb_equipes_pi > 3 OR $etablissement->python_nb_eleves_pi/$etablissement->python_nb_equipes_pi < 2)){
                                             echo '<span style="color:red">';
                                         } else {
                                             echo '<span >';
@@ -308,7 +308,7 @@ if (Auth::user()->is_admin != 1) {
                                     </td>
                                     <td class="text-left">
                                         <?php
-                                        if ($etablissement->python_nb_equipes_poo !== NULL AND $etablissement->python_nb_equipes_poo !== 0 AND $etablissement->python_nb_eleves_poo/$etablissement->python_nb_equipes_poo > 3){
+                                        if ($etablissement->python_nb_equipes_poo !== NULL AND $etablissement->python_nb_equipes_poo !== 0 AND ($etablissement->python_nb_eleves_poo/$etablissement->python_nb_equipes_poo > 3 OR $etablissement->python_nb_eleves_poo/$etablissement->python_nb_equipes_poo < 2)){
                                             echo '<span style="color:red">';
                                         } else {
                                             echo '<span >';
@@ -319,7 +319,7 @@ if (Auth::user()->is_admin != 1) {
                                     </td>
                                     <td class="text-left">
                                         <?php
-                                        if ($etablissement->python_nb_equipes_postbac !== NULL AND $etablissement->python_nb_equipes_postbac !== 0 AND $etablissement->python_nb_eleves_postbac/$etablissement->python_nb_equipes_postbac > 3){
+                                        if ($etablissement->python_nb_equipes_postbac !== NULL AND $etablissement->python_nb_equipes_postbac !== 0 AND ($etablissement->python_nb_eleves_postbac/$etablissement->python_nb_equipes_postbac > 3 OR $etablissement->python_nb_eleves_postbac/$etablissement->python_nb_equipes_postbac < 2)){
                                             echo '<span style="color:red">';
                                         } else {
                                             echo '<span >';
