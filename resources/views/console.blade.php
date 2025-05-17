@@ -118,7 +118,7 @@
                                 </tr>
                                 <tr>
                                     <td class="text-center">
-                                        <select id="ndc_mois" name="ndc_mois" class="w-100 form-control form-control" {{$data_state}}>
+                                        <select id="ndc_mois" name="ndc_mois" class="w-100 mt-1 form-control form-control" {{$data_state}}>
                                             <option></option>
                                             <option value="04" @if(isset($mois) AND $mois == '04') selected @endif>avril</option>
                                             <option value="05" @if(isset($mois) AND $mois == '05') selected @endif>mai</option>
