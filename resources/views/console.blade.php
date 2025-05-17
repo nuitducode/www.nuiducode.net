@@ -245,7 +245,7 @@
                         @if (Session::has('data_updated'))
                             <div class="mt-2 text-monospace text-success small fade-out">{{ Session::get('data_updated') }}</div>
                         @else
-                            <div class="mt-1 text-monospace text-success small">&nbsp;</div>
+                            <div class="mt-2 text-monospace text-success small">&nbsp;</div>
                         @endif
                     </div>
 
