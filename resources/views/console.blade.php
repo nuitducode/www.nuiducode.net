@@ -102,7 +102,7 @@
 
                     <div class="row">
 
-                        <div class="col-md-2 mb-4">
+                        <div class="col-md-2 mb-3">
 
                             <h3 class="m-0">JOUR J</h3>
                             <table class="w-100 mt-3 mb-1" style="border-collapse:separate;border-spacing:0px;">
@@ -130,10 +130,10 @@
 
                         </div>
 
-                        <div class="col-md-5 mb-4">
+                        <div class="col-md-5 mb-2">
 
                             <h3 class="m-0">SCRATCH</h3>
-                            <table class="table table-borderless table-sm mt-1 mb-1" style="border-collapse:separate;border-spacing:5px;">
+                            <table class="table table-borderless table-sm" style="border-collapse:separate;border-spacing:5px;">
                                 <tr>
                                     <td></td>
                                     <td class="text-center text-muted" style="line-height:1em;font-size:70%">Nombre d'équipes</td>
@@ -180,10 +180,10 @@
 
                         </div>
 
-                        <div class="col-md-5 mb-4">
+                        <div class="col-md-5 mb-2">
 
                             <h3 class="m-0">PYTHON</h3>
-                            <table class="table table-borderless table-sm mt-1 mb-1" style="border-collapse:separate;border-spacing:5px;">
+                            <table class="table table-borderless table-sm" style="border-collapse:separate;border-spacing:5px;">
                                 <tr>
                                     <td></td>
                                     <td class="text-center text-muted" style="line-height:1em;font-size:70%">Nombre d'équipes</td>
@@ -233,6 +233,8 @@
                     </div><!-- /row -->
 
                     <div class="text-center">
+
+                        <div id="warning_donnees_vides" class="mb-3"></div>
 
                         @if($errors->any())
                             <div class="text-monospace text-danger small mb-2">{{ $errors->first() }}</div>
@@ -311,7 +313,11 @@
                                 </div>
                             </div>
                             <div class="ml-4 mt-1" style="border:1px solid silver;border-radius:4px;padding:20px 20px 20px 20px;background-color:white;">
-                                <div class="text-center mb-4">Lien(s) à ne fournir aux équipes qu'<u>au tout début des 6h</u></div>
+                                <div class="text-center mb-4">
+                                    <div>Lien(s) à ne fournir aux équipes qu'<u>au tout début des 6h</u></div>
+                                    <div id="warning_udj" class="text-monospace text-danger small"></div>
+                                </div>
+                                
                                 <div>
                                     <div>
                                         <u>Scratch</u> <sup><i class="fas fa-question-circle text-muted" data-boundary="window" data-toggle="tooltip" data-placement="right" title="Lien vers les univers de jeu Scratch. Les équipes en prennent connaissance, les étudient et elles en choisissent un."></i></sup> : <span class="text-monospace text-success">{!!$scratch_lien!!}</span>
@@ -634,93 +640,111 @@
 
     <script>
         const groupes = [
-        {
-            prefixe: "scratch",
-            lignes: [
-            { equipes: "scratch_nb_equipes_c3", eleves: "scratch_nb_eleves_c3", label: "Cycle 3" },
-            { equipes: "scratch_nb_equipes_c4", eleves: "scratch_nb_eleves_c4", label: "Cycle 4" },
-            { equipes: "scratch_nb_equipes_lycee", eleves: "scratch_nb_eleves_lycee", label: "Lycée" }
-            ],
-            warningDiv: "warning_scratch"
-        },
-        {
-            prefixe: "python",
-            lignes: [
-            { equipes: "python_nb_equipes_pi", eleves: "python_nb_eleves_pi", label: "1ère NSI" },
-            { equipes: "python_nb_equipes_poo", eleves: "python_nb_eleves_poo", label: "Tle NSI" },
-            { equipes: "python_nb_equipes_postbac", eleves: "python_nb_eleves_postbac", label: "Post-bac" }
-            ],
-            warningDiv: "warning_python"
-        }
+            {
+                prefixe: "scratch",
+                lignes: [
+                    { equipes: "scratch_nb_equipes_c3", eleves: "scratch_nb_eleves_c3", label: "Cycle 3" },
+                    { equipes: "scratch_nb_equipes_c4", eleves: "scratch_nb_eleves_c4", label: "Cycle 4" },
+                    { equipes: "scratch_nb_equipes_lycee", eleves: "scratch_nb_eleves_lycee", label: "Lycée" }
+                ],
+                warningDiv: "warning_scratch"
+            },
+            {
+                prefixe: "python",
+                lignes: [
+                    { equipes: "python_nb_equipes_pi", eleves: "python_nb_eleves_pi", label: "1ère NSI" },
+                    { equipes: "python_nb_equipes_poo", eleves: "python_nb_eleves_poo", label: "Tle NSI" },
+                    { equipes: "python_nb_equipes_postbac", eleves: "python_nb_eleves_postbac", label: "Post-bac" }
+                ],
+                warningDiv: "warning_python"
+            }
         ];
 
         function verifierGroupes() {
-        groupes.forEach(groupe => {
-            let messages = [];
             let totalEquipes = 0, totalEleves = 0;
+            let warningDonnees = false;
+            let messages = []; // messages généraux
 
-            groupe.lignes.forEach(ligne => {
-            const elEquipes = document.getElementById(ligne.equipes);
-            const elEleves = document.getElementById(ligne.eleves);
+            groupes.forEach(groupe => {
+                let messagesGroupe = []; // <-- NOM DIFFÉRENT !
 
-            const nbEquipes = parseInt(elEquipes.value) || 0;
-            const nbEleves = parseInt(elEleves.value) || 0;
+                groupe.lignes.forEach(ligne => {
+                    const elEquipes = document.getElementById(ligne.equipes);
+                    const elEleves = document.getElementById(ligne.eleves);
 
-            totalEquipes += nbEquipes;
-            totalEleves += nbEleves;
+                    // Sécurité : on vérifie que les éléments existent
+                    if (!elEquipes || !elEleves) return; // ou afficher un message d'erreur
 
-            // Cas où équipe ou élèves sont indiqués, mais pas l'autre
-            if ((nbEquipes > 0 && nbEleves === 0) || (nbEleves > 0 && nbEquipes === 0)) {
-                messages.push(
-                `<div class="m-1 text-monospace text-danger small">
-                    <i class="fa-solid fa-circle-exclamation" style="vertical-align:-1px;"></i> ${ligne.label} : nombre d'équipes ou d'élèves manquant
-                </div>`
-                );
-            }
+                    const nbEquipes = parseInt(elEquipes.value) || 0;
+                    const nbEleves = parseInt(elEleves.value) || 0;
 
-            // Vérification du ratio, uniquement si les deux sont > 0
-            if (nbEquipes > 0 && nbEleves > 0) {
-                const ratio = nbEleves / nbEquipes;
-                if (ratio < 2 || ratio > 3) {
-                messages.push(
-                    `<div class="m-1 text-monospace text-danger small">
-                    <i class="fa-solid fa-circle-exclamation" style="vertical-align:-1px;"></i> ${ligne.label} : le nombre d'élèves par équipe doit être compris entre 2 et 3.
-                    </div>`
-                );
-                }
-            }
+                    totalEquipes += nbEquipes;
+                    totalEleves += nbEleves;
+
+                    // Cas où équipe ou élèves sont indiqués, mais pas l'autre
+                    if ((nbEquipes > 0 && nbEleves === 0) || (nbEleves > 0 && nbEquipes === 0)) {
+                        warningDonnees = true
+                        messagesGroupe.push(
+                            `<div class="m-1 text-monospace text-danger small">
+                                <i class="fa-solid fa-circle-exclamation" style="vertical-align:-1px;"></i> ${ligne.label} : nombre d'équipes ou d'élèves manquant
+                            </div>`
+                        );
+                    }
+
+                    // Vérification du ratio, uniquement si les deux sont > 0
+                    if (nbEquipes > 0 && nbEleves > 0) {
+                        const ratio = nbEleves / nbEquipes;
+                        if (ratio < 2 || ratio > 3) {
+                            warningDonnees = true
+                            messagesGroupe.push(
+                                `<div class="m-1 text-monospace text-danger small">
+                                    <i class="fa-solid fa-circle-exclamation" style="vertical-align:-1px;"></i> ${ligne.label} : le nombre d'élèves par équipe doit être compris entre 2 et 3.
+                                </div>`
+                            );
+                        }
+                    }
+                });
+
+                document.getElementById(groupe.warningDiv).innerHTML = messagesGroupe.join("");
             });
 
             // Cas où tout est à 0
             if (totalEquipes === 0 && totalEleves === 0) {
-            messages.push(
-                `<div class="m-1 text-monospace text-info small">
-                <i class="fa-solid fa-circle-info" style="vertical-align:-1px;"></i> Aucun nombre d'élèves ni d'équipes n'a été renseigné pour ${groupe.prefixe.toUpperCase()}.
-                </div>`
-            );
+                warningDonnees = true
+                messages.push(
+                    `<div class="m-1 text-monospace text-danger small">
+                        <i class="fa-solid fa-circle-exclamation" style="vertical-align:-1px;"></i> Aucun nombre d'élèves ni d'équipes n'a été renseigné
+                    </div>`
+                );
             }
 
-            document.getElementById(groupe.warningDiv).innerHTML = messages.join("");
-        });
+            document.getElementById('warning_donnees_vides').innerHTML = messages.join("");
+
+            // Correction : effacer les anciens warnings si tout va bien !
+            if (warningDonnees == true) {
+                document.getElementById('warning_udj').innerHTML = '<i class="fa-solid fa-circle-exclamation" style="vertical-align:-1px;"></i> Il y a un problème avec les données. Voir "DONNÉES".';
+            } else {
+                document.getElementById('warning_udj').innerHTML = '';
+                document.getElementById('warning_donnees_vides').innerHTML = '';
+            }
         }
 
         window.addEventListener('DOMContentLoaded', function() {
-        const ids = [];
-        groupes.forEach(groupe => {
-            groupe.lignes.forEach(ligne => {
-            ids.push(ligne.equipes, ligne.eleves);
+            const ids = [];
+            groupes.forEach(groupe => {
+                groupe.lignes.forEach(ligne => {
+                    ids.push(ligne.equipes, ligne.eleves);
+                });
             });
-        });
 
-        ids.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) el.addEventListener('input', verifierGroupes);
-        });
+            ids.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.addEventListener('input', verifierGroupes);
+            });
 
-        verifierGroupes();
+            verifierGroupes();
         });
     </script>
-   
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
