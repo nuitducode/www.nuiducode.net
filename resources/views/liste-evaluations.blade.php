@@ -46,13 +46,15 @@
                         <div class="col-md-12">
                             <div class="table-responsive">
                                 <table class="table table-borderless table-hover table-striped table-sm text-monospace text-muted small">
-                                    <thead><tr><th scope="col">Évaluateur</th><th scope="col">Catégorie</th><th scope="col">Identifiant Scratch</th><th scope="col">Note</th><th scope="col"></th></tr></thead>
+                                    <thead><tr><th scope="col">Évaluateur</th><th scope="col">Catégorie</th><th scope="col">Identifiant</th><th scope="col">Note</th><th scope="col"></th></tr></thead>
                                     <tbody>
                                         @foreach($evaluations AS $evaluation)
                                         <tr>
                                             <td class="align-middle">{{$evaluation->jury_nom}}</td>
                                             <td class="align-middle">{{$evaluation->jury_type}}</td>
-                                            <td class="align-middle"><a href="https://scratch.mit.edu/projects/{{$evaluation->scratch_id}}" target="_blank">{{$evaluation->scratch_id}}</a></td>
+                                            <td class="align-middle">
+                                                <a href="https://nuitducode.github.io/ndc-lecteur-scratch/embed.html?project_url=www.nuitducode.net/storage/depot-jeux/scratch/{{Auth::user()->jeton}}/{{$jeu->scratch_id}}.sb3" target="_blank">{{$jeu->scratch_id}}</a>
+                                            </td>
                                             <td class="align-middle">{{$evaluation->note}}</td>
                                             <td class="text-right" style="width:160px;">
                                                 <button class="btn btn-dark btn-sm text-light" type="button" data-toggle="collapse" data-target="#collapse_{{$evaluation->id}}" aria-expanded="false" aria-controls="collapse_{{$evaluation->id}}">
