@@ -53,7 +53,7 @@
                                             <td class="align-middle">{{$evaluation->jury_nom}}</td>
                                             <td class="align-middle">{{$evaluation->jury_type}}</td>
                                             <td class="align-middle">
-                                                <a href="https://nuitducode.github.io/ndc-lecteur-scratch/embed.html?project_url=www.nuitducode.net/storage/depot-jeux/scratch/{{Auth::user()->jeton}}/{{$jeu->scratch_id}}.sb3" target="_blank">{{$jeu->scratch_id}}</a>
+                                                <a href="https://nuitducode.github.io/ndc-lecteur-scratch/embed.html?project_url=www.nuitducode.net/storage/depot-jeux/scratch/{{Auth::user()->jeton}}/{{$evaluation->scratch_id}}.sb3" target="_blank">{{$evaluation->scratch_id}}</a>
                                             </td>
                                             <td class="align-middle">{{$evaluation->note}}</td>
                                             <td class="text-right" style="width:160px;">
